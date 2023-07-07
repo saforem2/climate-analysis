@@ -6,12 +6,12 @@ bibliography: references.bib
 # title: "Generative Modeling and Efficient Sampling (for LQCD)"
 # affiliation: "Argonne National Laboratory"
 # theme: darkly
-theme:
-  dark: darkly
-  light: flatly
+# theme:
+#   dark: darkly
+#   light: flatly
 execute:
   keep-ipynb: true
-  freeze: true
+  freeze: auto
 project:
   render:
     - index.qmd
@@ -56,6 +56,8 @@ format:
       source: true
     html-math-method: katex
     css: [css/default.css, css/callouts.css, css/code-callout.css]
+    # theme: darkly
+    theme: custom.scss
     smooth-scroll: true
     citations-hover: true
     footnotes-hover: true
