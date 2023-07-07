@@ -1,0 +1,7 @@
+*.DS_Store
+qmd/_quarto.yml.local
+ignore/*
+old/*
+data/*
+venvs/*
+qmd/.quarto/
