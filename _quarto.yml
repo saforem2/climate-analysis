@@ -1,11 +1,14 @@
 author: "Sam Foreman"
 date: "2023-06-26"
-toc: true
+# toc: true
 number-sections: true
 bibliography: references.bib
 # title: "Generative Modeling and Efficient Sampling (for LQCD)"
 # affiliation: "Argonne National Laboratory"
-theme: darkly
+# theme: darkly
+theme:
+  dark: darkly
+  light: flatly
 execute:
   keep-ipynb: true
   freeze: true
@@ -18,7 +21,7 @@ project:
     port: 4200
 website:
   title: "Climate Analysis with ClimRR"
-  twitter-card: true
+  site-url: "https://saforem2.github.io/climate-analysis"
   navbar:
     background: "#252525"
     foreground: "#A9A9B3"
@@ -40,6 +43,8 @@ website:
         href: https://twitter.com/saforem2
 format:
   html:
+    toc: true
+    toc-location: left
     embed-resources: true
     page-layout: full
     fig-responsive: true
@@ -49,51 +54,51 @@ format:
     highlight-style: atom-one
     code-tools:
       source: true
-    toc: true
     html-math-method: katex
-    theme: [dark, custom.scss]
-      # - light: [light, custom.scss]
     css: [css/default.css, css/callouts.css, css/code-callout.css]
-  revealjs:
-    title-block-style: none
-    slide-number: c/t
-    title-slide-style: pandoc
-    chalkboard:
-      buttons: false
-    auto-animate: true
-    reference-location: section
-    touch: true
-    # loop: true
-    pause: false
-    # classoption: fleqn
-    # fig-responsive: true
-    footnotes-hover: true
+    smooth-scroll: true
     citations-hover: true
-    preview-links: true
-    controls-tutorial: true
-    controls: false
-    logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
-    history: false
-    # margin: 0.15
-    theme: [dark, custom.scss]
-      # - light: [light, custom.scss]
-    css: [css/default.css, css/callouts.css, css/code-callout.css]
-    menu:
-      width: "half"
-    # menu:
-    #   side: right
-    #   width: wide
-    self-contained: false
-    embed-resources: false
-    self-contained-math: false
-    center: true
-    highlight-style: "atom-one"
-    default-image-extension: svg
-    code-line-numbers: true
-    code-overflow: scroll
-    html-math-method: katex
-    fig-align: center
-    execute:
-      freeze: auto
-    mermaid:
-      theme: dark
+    footnotes-hover: true
+  # revealjs:
+  #   title-block-style: none
+  #   slide-number: c/t
+  #   title-slide-style: pandoc
+  #   chalkboard:
+  #     buttons: false
+  #   auto-animate: true
+  #   reference-location: section
+  #   touch: true
+  #   # loop: true
+  #   pause: false
+  #   # classoption: fleqn
+  #   # fig-responsive: true
+  #   footnotes-hover: true
+  #   citations-hover: true
+  #   preview-links: true
+  #   controls-tutorial: true
+  #   controls: false
+  #   logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
+  #   history: false
+  #   # margin: 0.15
+  #   theme: [dark, custom.scss]
+  #     # - light: [light, custom.scss]
+  #   css: [css/default.css, css/callouts.css, css/code-callout.css]
+  #   menu:
+  #     width: "half"
+  #   # menu:
+  #   #   side: right
+  #   #   width: wide
+  #   self-contained: false
+  #   embed-resources: false
+  #   self-contained-math: false
+  #   center: true
+  #   highlight-style: "atom-one"
+  #   default-image-extension: svg
+  #   code-line-numbers: true
+  #   code-overflow: scroll
+  #   html-math-method: katex
+  #   fig-align: center
+  #   execute:
+  #     freeze: auto
+  #   mermaid:
+  #     theme: dark
