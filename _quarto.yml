@@ -26,7 +26,7 @@ website:
       - href: index.qmd
         text: Analysis
   open-graph: true
-  repo-url: https://github.com/saforem2/quarto-examples
+  repo-url: https://github.com/saforem2/climate-analysis
   repo-actions: [edit, issue]
   google-analytics: G-XVM2Y822Y1
   sidebar:
