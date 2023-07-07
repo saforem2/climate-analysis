@@ -5,3 +5,5 @@ old/*
 data/*
 venvs/*
 qmd/.quarto/
+
+/.quarto/
