@@ -1,0 +1,188 @@
+---
+jupyter: climrr
+date: today
+author: Sam Foreman
+institution: Argonne National Laboratory
+callout-appearance: simple
+editor:
+    render-on-save: true
+execute:
+    freeze: true
+---
+
+# Climate Analysis with ClimRR
+
+## Getting Started
+
+### Reading and Writing Files
+
+We use [`GeoPandas`](https://geopandas.org/en/stable/index.html), an open
+source project to make working with geospatial data in python easier. GeoPandas
+extends the datatypes used by [pandas](http://pandas.pydata.org/) to allow
+spatial operations on geometric types.
+
+Geometric operations are performed by [`shapely`](https://shapely.readthedocs.io/).
+
+GeoPandas further depends on [`fiona`](https://fiona.readthedocs.io/) and
+[`matplotlib`](http://matplotlib.org/) for plotting.
+
+GeoPandas can read almost any vector-based spatial data format including ESRI shapefile, GeoJSON files and more using the command
+
+```python
+import geopandas as gpd
+gpd.read_file()
+```
+
+which returns a GeoDataFrame object.`
+
+A `GeoDataFrame` is a tabular data structure that contains a `GeoSeries`.
+
+The most important property of a `GeoDataFrame` is that it always has one
+`GeoSeries` column that holds a special status.
+
+This `GeoSeries` is referred to as the `GeoDataFrame`'s "geometry". When a
+spatial method is applied to a `GeoDataFrame` (or a spatial attribute like area
+is called), this commands will always act on the "geometry" column[^geometry].
+
+[^geometry]: The “geometry” column – no matter its name – can be accessed
+through the geometry attribute (`gdf.geometry`), and the name of the geometry
+column can be found by typing `gdf.geometry.name`.
+
+### Imports / setup
+
+```{python}
+#| code-fold: true
+#| code-summary: Imports
+%matplotlib inline
+import matplotlib_inline
+import matplotlib.pyplot as plt
+import geopandas as gpd
+import warnings
+
+import matplotlib.pyplot as plt
+
+from enrich.style import STYLES
+from rich.theme import Theme
+from rich.console import Console as rConsole
+from ClimRR import get_logger, DATA_DIR, set_plot_style
+
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+
+set_plot_style()
+```
+
+```{python}
+theme = Theme(STYLES)
+log = get_logger('ClimRR')
+console = rConsole(theme=Theme(STYLES), log_path=False, markup=True)
+```
+
+## Load Shapefile and inspect
+
+A shapefile is provided in the [ClimRR Data Download
+(ANL)](https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8) as
+
+::: {.callout-note title="Data Organization" collapse="true"}
+
+{{< include data.qmd >}}
+
+:::
+
+```{python}
+import cartopy.io.shapereader as shpreader
+import shapely.geometry as sgeom
+shpfile = DATA_DIR.joinpath(
+    "GridCells2Shapefile/GridCellsShapefile/GridCells.shp"
+)
+shape = gpd.read_file(shpfile)
+shape.head()
+```
+
+## Tiling the US: Cells + Grids
+
+Our shapefile contains a grid of _cells_ (12km x 12km) which tile the
+continental US.
+
+We can inspect a single cell:
+
+```{python}
+square = shape[shape["Crossmodel"] == 'R146C497']
+square.explore()
+```
+
+## Load data from `*.csv` files
+
+Each entry (row) in the `.csv` has a `Crossmodel` column (e.g. `R146C497`)
+which corresponds to a row in our `shapefile` that uniquely determines its
+location on the Earth.
+
+We can associate with each of the `.csv`s the `geometry` used in our
+`shapefile` to position our data on the globe.
+
+```{python}
+import pandas as pd
+csvs = [i for i in DATA_DIR.rglob('*.csv')]
+data = {}
+for f in csvs:
+    key = f.stem
+    tmp = pd.read_csv(f.as_posix())
+    gdf = shape.merge(tmp, on='Crossmodel')
+    gdf['boundary'] = gdf.boundary
+    gdf['centroid'] = gdf.centroid
+    data[key] = gdf
+    console.print(f"data['{key}'].shape={data[key].shape}")
+```
+
+## Look at the WindSpeed data
+
+Lets inspect one of the entries in our `data[(...)]` dictionary, `WindSpeed`, for example:
+
+```{python}
+data["WindSpeed"].head()
+```
+
+We see that each entry has a `geometry` column, as well as columns for
+`{hist,rcp45_midc, rcp45_endc, rcp85_midc, rcp85_endc, ...}` which contains the
+numerical value of the `WindSpeed` in each cell under different scenarios at
+different points in time.
+
+We can see this explicitly by plotting this value for a single cell:
+
+```{python}
+cell = data["WindSpeed"][data["WindSpeed"]["Crossmodel"] == 'R146C497']
+ax = cell.plot(column="hist", legend=True)
+ax.set_axis_off()
+```
+
+```{python}
+ax = square.boundary.plot()
+ax.set_axis_off()
+_ = ax.set_title('Grid from shapefile: 12 x 12 km')
+```
+
+```{python}
+fig, ax = plt.subplots(
+    figsize=(10, 10),
+    nrows=2,
+    ncols=2,
+    sharex='col',
+    sharey='row'
+)
+ax = ax.flatten()
+
+ax[0] = shape.loc[list(range(500)), :].plot(ax=ax[0])
+ax[0].set_axis_off()
+ax[0].set_title('First 500 polygons')
+
+ax[1] = shape.loc[list(range(1000)), :].plot(ax=ax[1])
+ax[1].set_axis_off()
+ax[1].set_title('First 1k polygons')
+
+ax[2] = shape.loc[list(range(5000)), :].plot(ax=ax[2])
+ax[2].set_axis_off()
+ax[2].set_title('First 10k points')
+
+ax[3] = shape.loc[list(range(20000)), :].plot(ax=ax[3])
+ax[3].set_axis_off()
+_ = ax[3].set_title('First 20k points')
+```
