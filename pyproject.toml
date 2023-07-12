@@ -2,7 +2,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "climate-analysis"
+name = "ClimRR"
 description = ''
 readme = "README.md"
 requires-python = ">=3.8"
@@ -25,20 +25,15 @@ dependencies = [
   "seaborn",
   "xarray",
   "rich",
-  "hydra-core",
-  "wandb",
-  "arviz",
-  "hydra-colorlog",
   "ipympl",
   "matplotlib",
-  "matplotx",
   "geopandas",
   "xagg",
   "numpy",
   "pandas",
   "jupyter",
   "pandas",
-  "jupyter-cache",
+  "enrich @ git+https://github.com/saforem2/enrich",
 ]
 dynamic = ["version"]
 
@@ -48,6 +43,7 @@ dev = [
   "nodejs",
   "pynvim",
   "neovim",
+  "jupyter-cache",
   "ruff",
   "ruff-lsp",
   "pyproject-flake8",
