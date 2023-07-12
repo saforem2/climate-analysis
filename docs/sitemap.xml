@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/chicago.html</loc>
+    <lastmod>2023-07-12T03:56:31.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/ClimRR.html</loc>
+    <lastmod>2023-07-12T04:05:49.765Z</lastmod>
+  </url>
+  <url>
     <loc>https://saforem2.github.io/climate-analysis/index.html</loc>
-    <lastmod>2023-07-07T15:27:04.465Z</lastmod>
+    <lastmod>2023-07-12T04:03:40.491Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/iris.html</loc>
+    <lastmod>2023-07-12T03:56:46.491Z</lastmod>
   </url>
 </urlset>
