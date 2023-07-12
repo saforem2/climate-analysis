@@ -1,0 +1,136 @@
+/*-- scss:defaults --*/
+
+$base-font-size: 16px!default;
+$code-block-font-size: 0.9 em !default;
+
+// The left hand sidebar
+$grid-sidebar-width: 250px !default;
+
+// The main body
+$grid-body-width: 950px !default;
+
+// The right hand margin bar
+$grid-margin-width: 300px !default;
+
+// The gutter that appears between the above columns
+$grid-column-gutter-width: 1.5rem !default;
+
+$toc-font-size: 0.9em!default;
+$table-striped: true;
+$table-hover: true;
+
+// $quarto-hl-cn-color: #FD971f;
+
+/*-- scss:rules --*/
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+details>summary {
+    color: $dim-text;
+    font-size:0.8em;
+}
+//
+// .callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
+//     margin: auto;
+//     display: inline-block;
+//     padding-bottom: 0.2rem!important;
+//     padding-right: 0.4rem!important;
+// }
+.callout.callout-style-default .callout-body, .callout.callout-style-simple .callout-body {
+    font-weight: 400;
+    margin-right: 5rem;
+    margin-bottom: 0.5em;
+}
+
+.callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
+    margin: auto!important;
+    padding-left: 0.5rem!important;
+    // padding-top: auto!important;
+    // margin-bottom: 0.5rem!important;
+}
+
+.callout-title-container {
+    font-size:1.25em!important;
+    padding-top: 0.25rem;
+}
+
+pre,code,kbd,samp {
+    font-family: $font-family-monospace;
+    font-size: 1em;
+    direction: ltr /* rtl:ignore */;
+    unicode-bidi: bidi-override
+}
+pre {
+    font-family: $font-family-monospace!important;
+    color: $body-color;
+    display: contents!important;
+    background-color: $code-block-bg-color;
+    margin-bottom: 1rem;
+    overflow: auto;
+    font-family: $font-family-monospace;
+    padding: .5rem;
+}
+
+pre code {
+    background-color: $code-block-bg-color;
+    color: inherit;
+    word-break: normal;
+    font-family: $font-family-monospace;
+}
+
+code {
+    font-size: $code-block-font-size;
+    color: $code-color;
+    background-color: $code-bg;
+    border-radius: .25rem;
+    padding: .125rem .25rem;
+    font-family: $font-family-monospace;
+    word-wrap: break-word
+}
+
+a>code {
+    color: inherit
+}
+
+.py-1 {
+    padding-top: 0.5em!important;
+    color: $dim-text;
+    opacity: 20%!important;
+}
+
+.table-striped {
+  tbody > tr:nth-of-type(#{$table-striped-order}) > * { // notice the removed ">"!
+    --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
+    color: var(--#{$variable-prefix}table-striped-color);
+  }
+}
+
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+    background-color: $code-bg;
+    color: $code-color;
+    border-radius: 0.25rem;
+}
+
+a:hover {
+    color: $link-color-hover;
+}
+
+div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, div.sidebar-item-container .sidebar-link>code {
+    color: $link-color-hover;
+}
+
+h1 {
+    opacity: 100%;
+    color: $brighter-text;
+}
+
+h2 {
+    opacity: 100%;
+    color: $bright-text;
+}
