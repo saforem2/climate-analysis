@@ -1,8 +1,9 @@
 /*-- scss:defaults --*/
 
 // colors
+// $variable-prefix: dark;
 $brighter-text: #f8f8f8;
-$bright-text: #DDDDDD;
+$bright-text: #b8b8b8;
 $alt-text: #CCCCCC;
 $dim-text:   #777777;
 $dim-color:  #404040;
@@ -33,6 +34,7 @@ $red-text: #FF5252;
 $blue-text: #29B6F6;
 
 $body-bg: #1c1c1c;
+$alt-bg: #2f2f2f;
 $dim-text: #666666;
 $body-color: #bfbfbf;
 
@@ -92,7 +94,8 @@ $dark-bg-link-color: #00B7E5 !default;
 // $code-block-border-color: lighten($body-color, 60%) !default;
 // $dark-bg-code-color: #E599F7 !default;
 $code-fg: #E599F7!default;
-$code-block-bg-color: #1f1f1f !default;
+// $code-block-bg-color: #1f1f1f !default;
+$code-block-bg-color: #202020 !default;
 $code-block-bg: $code-block-bg-color !default;
 
 $code-block-border-color: #1f1f1f !default;
@@ -101,7 +104,8 @@ $code-block-font-size: 0.9 em !default;
 // inline code
 // $code-color: var(--quarto-hl-fu-color) !default;
 // $code-color: $dark-bg-code-color !default;
-$dark-bg-code-color: #FF67FF!default;
+// $dark-bg-code-color: #FF67FF!default;
+$dark-bg-code-color: #E599F7!default;
 $dark-bg-code-bg: #1f1f1f!default;
 $code-color: $dark-bg-code-color;
 $code-bg: $dark-bg-code-bg;
@@ -118,6 +122,9 @@ $algicon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBo
 $algbg: #1c1c1c !default;
 
 $blockquote-bg: $code-bg;
+
+$quarto-hl-in-color: #FD971F;
+// $quarto-hl-bn-in-colo
 
 /*-- scss:rules --*/
 
@@ -208,7 +215,7 @@ div.callout-note.callout-style-default>.callout-header {
     font-size: 1.1em;
 }
 .callout-warning .callout-title-container {
-    color: #FFFF00;
+    color: #FD971F;
     font-size: 1.1em;
 }
 .callout-caution .callout-title-container {
@@ -221,10 +228,10 @@ div.callout-note.callout-style-default>.callout-header {
 }
 
 
-.cell-output cell-output-display {
-    font-family: var(--bs-monospace-font);
-    display: contents;
-}
+// .cell-output cell-output-display {
+//     font-family: var(--bs-monospace-font);
+//     display: contents;
+// }
 
 .table-striped>tbody>tr:nth-of-type(odd)>* {
     --bs-table-accent-bg: var(--bs-table-striped-bg);
@@ -240,4 +247,158 @@ div.callout-note.callout-style-default>.callout-header {
     border-bottom-color: #444444!important;
     border-bottom-style: solid;
     border-bottom-width: 1px;
+}
+
+
+// code span.al {
+//   background-color: #4d1f24;
+//   font-weight: bold;
+//   color: #95da4c;
+// }
+//
+// code span.an {
+//   color: #98c379;
+// }
+//
+// code span.at {
+//   color: #c678dd;
+// }
+//
+// code span.bn {
+//   color: #d19a66;
+// }
+//
+// code span.bu {
+//   color: #c678dd;
+// }
+//
+// code span.ch {
+//   color: #98c379;
+// }
+//
+// code span.co {
+//   font-style: italic;
+//   color: #5c6370;
+// }
+//
+// code span.cv {
+//   font-style: italic;
+//   color: #e06c75;
+// }
+//
+// code span.cn {
+//   color: #d19a66;
+// }
+//
+// code span.cf {
+//   color: #c678dd;
+// }
+//
+// code span.dt {
+//   color: #c678dd;
+// }
+//
+// code span.dv {
+//   color: #d19a66;
+// }
+//
+// code span.do {
+//   color: #a43340;
+// }
+//
+// code span.er {
+//   color: #f44747;
+//   text-decoration: underline;
+// }
+//
+// code span.ex {
+//   font-weight: bold;
+//   color: #61afef;
+// }
+//
+// code span.fl {
+//   color: #d19a66;
+// }
+//
+// code span.fu {
+//   color: #61afef;
+// }
+//
+// code span.im {
+//   color: #98c379;
+// }
+//
+// code span.in {
+//   color: #Fd971F;
+// }
+//
+// code span.kw {
+//   color: #c678dd;
+// }
+//
+// pre > code.sourceCode > span {
+//   color: #abb2bf;
+// }
+//
+// code span {
+//   color: #abb2bf;
+// }
+//
+// code.sourceCode > span {
+//   color: #abb2bf;
+// }
+//
+// div.sourceCode,
+// div.sourceCode pre.sourceCode {
+//   color: #abb2bf;
+// }
+//
+// code span.op {
+//   color: #c678dd;
+// }
+//
+// code span.pp {
+//   color: #c678dd;
+// }
+//
+// code span.re {
+//   background-color: #153042;
+//   color: #2980b9;
+// }
+//
+// code span.sc {
+//   color: #56b6c2;
+// }
+//
+// code span.ss {
+//   color: #da4453;
+// }
+//
+// code span.st {
+//   color: #98c379;
+// }
+//
+// code span.va {
+//   color: #e06c75;
+// }
+//
+// code span.vs {
+//   color: #da4453;
+// }
+//
+// code span.wa {
+//   color: #da4453;
+// }
+//
+// .prevent-inlining {
+//   content: "</";
+// }
+
+
+
+.sourceCode {
+    // margin-top: 1rem;
+    // margin-bottom: 0.1rem;
+    box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 5px;
+    border: none;
 }
