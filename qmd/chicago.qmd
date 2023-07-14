@@ -1,6 +1,5 @@
 ---
 jupyter: climrr
-date: today
 callout-appearance: simple
 editor:
     render-on-save: true
@@ -22,8 +21,8 @@ import warnings
 import matplotlib.pyplot as plt
 
 # from enrich.console import Console, get_theme
-from ClimRR import get_logger, DATA_DIR, set_plot_style
 matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+from ClimRR import get_logger, DATA_DIR, set_plot_style
 set_plot_style()
 log = get_logger('ClimRR')
 from rich.console import Console as rConsole
@@ -44,10 +43,14 @@ data = load_csvs(shape)
 
 ```{python}
 square = shape[shape["Crossmodel"] == 'R146C497']
-square.explore()
+fig, ax = plt.subplots(figsize=(4, 3))
+ax = square.boundary.plot(ax=ax)
+ax.set_axis_off()
+plt.tight_layout()
 ```
 
 ```{python}
+import geopandas as gpd
 import geodatasets
 chipop = gpd.read_file(
     geodatasets.get_path('geoda.chicago_commpop')
@@ -60,12 +63,7 @@ chigroc = gpd.read_file(
 ).to_crs(square.crs)
 ```
 
-```{python}
-fig, ax = plt.subplots(figsize=(10, 7))
-ax = chipop.to_crs(square.crs).plot(column="POP2010", legend=True, ax=ax)
-ax.set_axis_off()
-_ = ax.set_title(f"Chicago population by Neighborhood [2010]")
-```
+We can inspect this data, looking at the `chipop.boundary` for example
 
 ```{python}
 chipop['boundary'] = chipop.boundary
@@ -76,6 +74,15 @@ fig, ax = plt.subplots(figsize=(10, 7))
 ax = chipop.boundary.plot(linewidth=0.8, color='#838383', ax=ax)
 ax.set_axis_off()
 _ = ax.set_title('Chicago Neighborhoods')
+```
+
+Which we can use to plot the population (by neighborhood, in  this case):
+
+```{python}
+fig, ax = plt.subplots(figsize=(10, 7))
+ax = chipop.to_crs(square.crs).plot(column="POP2010", legend=True, ax=ax)
+ax.set_axis_off()
+_ = ax.set_title(f"Chicago population by Neighborhood [2010]")
 ```
 
 ```{python}

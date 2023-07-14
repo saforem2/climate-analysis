@@ -1,6 +1,5 @@
 ---
 jupyter: climrr
-date: today
 callout-appearance: simple
 editor:
     render-on-save: true
