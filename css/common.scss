@@ -19,6 +19,8 @@ $toc-font-size: 0.9em!default;
 $table-striped: true;
 $table-hover: true;
 
+$code-block-border-left: $link-color-hover!default;
+
 // $quarto-hl-cn-color: #FD971f;
 
 /*-- scss:rules --*/
@@ -42,22 +44,78 @@ details>summary {
 //     padding-bottom: 0.2rem!important;
 //     padding-right: 0.4rem!important;
 // }
+
+
+.callout.callout-style-default,
+.callout.callout-style-simple {
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: grid;
+    align-items: center;
+}
+
+.callout.callout-style-simple .callout-body,
+.callout.callout-style-default .callout-body,
+.callout.callout-style-simple div.callout-caption,
+.callout.callout-style-default div.callout-caption {
+  font-size: inherit;
+}
+
+.callout.callout-titled .callout-icon::before {
+    margin-top: unset!important;
+}
+
+.callout.callout-titled .callout-icon::before {
+    height: -webkit-fill-available!important;
+}
+
+.callout.callout-style-default .callout-icon::before,
+.callout.callout-style-simple .callout-icon::before {
+    width: 1.1rem!important;
+    height: 1.1rem!important;
+    background-size: 1.1rem 1.1rem!important;
+}
+// .callout.callout-style-default .callout-icon::before,
+// .callout.callout-style-simple .callout-icon::before {
+//   height: 2rem;
+//   width: 2rem;
+//   background-size: 2rem 2rem;
+// }
+
+// .callout.callout-captioned .callout-icon::before {
+//   margin-top: 1rem;
+// }
+
+.callout.callout-captioned .callout-caption p {
+  margin-top: 0.5em;
+}
+
+.callout.callout-captioned
+  .callout-body
+  > .callout-content
+  > :last-child {
+    margin: auto;
+}
+
 .callout.callout-style-default .callout-body, .callout.callout-style-simple .callout-body {
     font-weight: 400;
-    margin-right: 5rem;
-    margin-bottom: 0.5em;
+    margin-right: 0.5rem;
+    // margin-bottom: 0.5em;
 }
 
 .callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
     margin: auto!important;
-    padding-left: 0.5rem!important;
+    // padding-left: 0.5rem!important;
     // padding-top: auto!important;
     // margin-bottom: 0.5rem!important;
 }
 
 .callout-title-container {
-    font-size:1.25em!important;
-    padding-top: 0.25rem;
+    font-size: 1.1remimportant;
+    // padding-top: 0.25rem;
 }
 
 pre,code,kbd,samp {
@@ -81,6 +139,7 @@ pre code {
     background-color: $code-block-bg-color;
     color: inherit;
     word-break: normal;
+    overflow-x: scroll;
     font-family: $font-family-monospace;
 }
 
@@ -96,6 +155,10 @@ code {
 
 a>code {
     color: inherit
+}
+
+pre > code.sourceCode {
+    text-align: -webkit-left;
 }
 
 .py-1 {
@@ -134,3 +197,153 @@ h2 {
     opacity: 100%;
     color: $bright-text;
 }
+//
+// #title-block-header.quarto-title-block.default .quarto-title-meta-contents p, #title-block-header.quarto-title-block.default .quarto-title-authors p, #title-block-header.quarto-title-block.default .quarto-title-affiliations p {
+//     margin-bottom: auto;
+//     line-height: 0.75em;
+//     font-size: 0.75em;
+//     color: $dim-text;
+// }
+//
+// #title-block-header.quarto-title-block.default .quarto-title-meta-contents a {
+//     color: $dim-text;
+//     display: none;
+// }
+//
+
+#title-block-header {
+    display: grid;
+    margin-block-end: 1.5rem;
+    position: relative;
+    margin-top: -1px;
+    line-height: 0.1em;
+    font-size: 0.8em;
+    color: $dim-text;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-author {
+    display: block!important;
+}
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents {
+    color: $dim-text;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents a {
+    color: $dim-text!important;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents a:hover {
+    color: $link-color-hover!important;
+    border-bottom: 1px solid $link-color;
+}
+
+//
+// #title-block-header.quarto-title-block.default .quarto-title-meta-heading {
+//     text-transform: uppercase;
+//     margin-top: 1em;
+//     font-size: .8em;
+//     opacity: .8;
+//     font-weight: 400;
+//     display: none;
+// }
+
+
+blockquote p {
+    margin-block-start: 0.2em;
+    margin-block-end: 0.5em!important;
+    font-style: none!important;
+}
+
+blockquote {
+    display: block;
+    font-style: unset;
+    position: relative;
+    width: 100%;
+    // margin: var(--r-block-margin) auto;
+    margin: inherit;
+    padding: 5px;
+    font-style: none!important;
+    background: $blockquote-bg;
+    box-shadow: 0px 0px 2px rgba(0,0,0,.2);
+    border-radius: 4px!important;
+    display: block;
+    position: relative;
+    // width: fit-content!important;
+    /* padding-left: 2pt; */
+    /* padding-right: 2pt; */
+    // font-size: 0.95em;
+    // font-style: italic;$dark-bg-code-bg
+    color: $alt-text;
+    border-left: 4px solid $mygrey-080!important;
+    box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px!important;
+    // margin: var(--r-block-margin) auto;
+    // padding: 5px;
+    /* max-width: min-content + 20px; */
+    /* min-width: max-content; */
+    // margin-left: 5pt!important;
+    margin-right: revert!important;
+    padding: 0em 0.1em 0em 0.3em;
+    // display: -webkit-inline-box;
+
+}
+
+blockquote p:first-child,blockquote p:last-child {
+    display: inline-block
+}
+
+
+
+.callout.callout-style-default div.callout-title {
+    font-size: 1.1em;
+}
+
+small * {
+    vertical-align: baseline!important;
+}
+
+// .msupsub {
+//     vertical-align: baseline;
+// }
+
+.slide figure>figcaption {
+    text-align:center;
+}
+
+figure>figcaption {
+    margin-top: 0.2em;
+}
+
+boxed {
+    border-radius: 6px!important;
+    display: block;
+    position: relative;
+    width: fit-content!important;
+    color: $mygrey-080;
+    background-color: #1f1f1f;
+    box-shadow: RGBA(0, 0, 0, 0.85) 0px 5px 15px!important;
+    margin-right: revert!important;
+    padding: 0em 0.1em 0em 0.3em;
+}
+
+.callout.callout-titled>.callout-header {
+    margin-bottom: -0.55rem;
+    // margin-bottom: -0.5rem;
+    // margin-top: -0.33rem;
+}
+
+.callout .callout-title-container {
+    font-weight: 500;
+    font-size: 1.1rem!important;
+    padding-top: 0.1rem;
+}
+
+// .slide ul li, .slide ol li {
+//     margin-top: 0.2em!important;
+//     margin-bottom: 0.1em!important;
+// }
+
+// .hanging-indent div.csl-entry {
+//     font-size: 0.9em;
+//     margin-left: 2em;
+//     text-indent: -2em!Important;
+// }
