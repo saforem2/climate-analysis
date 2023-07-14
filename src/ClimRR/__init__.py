@@ -3,6 +3,7 @@ src/climrr/__init__.py
 """
 from __future__ import absolute_import, annotations, division, print_function
 
+import os
 import logging
 import warnings
 from pathlib import Path
@@ -17,16 +18,39 @@ from enrich.style import STYLES
 from rich.console import Console
 from rich.theme import Theme
 
-theme = Theme(STYLES)
 console = Console(theme=Theme(STYLES), log_path=False, markup=True)
 
-warnings.filterwarnings('ignore')
+os.environ['MPLBACKEND'] = ''
 
+warnings.filterwarnings('ignore')
 
 HERE = Path(__file__).parent
 ROOT = HERE.parent.parent
 DATA_DIR = ROOT / "data"
 DEFAULT_CRS: str = 'EPSG:3857'
+
+COLORS = {
+    "blue":     "#2196F3",
+    "red":      "#EF5350",
+    "green":    "#4CAF50",
+    "orange":   "#FFA726",
+    "purple":   "#AE81FF",
+    "yellow":   "#ffeb3b",
+    "pink":     "#EC407A",
+    "teal":     "#009688",
+    "white":    "#CFCFCF",
+    "grey000":   "#111111",
+    "grey010":   "#111111",
+    "grey020":   "#222222",
+    "grey030":   "#333333",
+    "grey040":   "#444444",
+    "grey050":   "#555555",
+    "grey060":   "#666666",
+    "grey070":   "#777777",
+    "grey080":   "#888888",
+    "grey090":   "#999999",
+    "grey100":   "#FFFFFF",
+}
 
 
 def save_counties_data(counties):
@@ -128,6 +152,9 @@ def set_plot_style(params: Optional[dict] = None):
         'ytick.labelcolor': '#838383',
         'savefig.transparent': True,
     }
+    plt.rcParams['axes.prop_cycle'] = plt.cycler(
+        'color', list(COLORS.values())
+    )
     plt.rcParams |= defaults
     if params is not None:
         plt.rcParams |= params
