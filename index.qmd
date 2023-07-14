@@ -1,117 +1,201 @@
 ---
-juupyter: climrr
-date: today
-author: Sam Foreman
-institution: Argonne National Laboratory
+jupyter: climrr
 callout-appearance: simple
-title-block-style: default
+# reference-location: margin
+# citation-location: margin
+# title: "Intro to HPC: Climate Analysis"
+# title-block-banner: false
+# title-block-banner: "#2196F3"
+title-block-banner: false
+# https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg
 editor:
    render-on-save: true
 execute:
    freeze: true
+# published-title: ""
+
+# jolla trestles solana marquee broadside
+# author:
+#   - name: Sam Foreman
+#     id: sf
+#     url: https://samforeman.me
+#     orcid: 0000-0002-9981-0876
+#     email: foremans@anl.gov
+#     affiliation: 
+#       - name: Argonne National Laboratory
+#         city: Chicago
+#         state: IL
+#         url: https://alcf.anl.gov
+# about:
+#    links:
+#       - icon: github
+#         href: https://github.com/saforem2/quarto-examples
+#       - icon: twitter
+#         href: https://twitter.com/saforem2
+#    template: solana
+#    image: https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg
+#    image-width: 10em
+#    image-shape: rounded
 ---
 
-# Climate Risk \& Resilience Portal: ClimRR
+# Climate Analysis with ClimRR
+
+> Empowering individuals, governments, and organizations to examine simulated
+> future climate conditions at mid- and end-of-century for a range of climate
+> perils.
+
+::: {.column-margin}
+
+::: {#fig-climrr style="text-align:center;"}
+
+<img src="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg" width="100%" />
+
+[Image Source](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
+:::
+
+:::
 
 The [ClimRR Portal](https://www.anl.gov/ccrds/ClimRR) can be viewed online, and
 is a great resource for interactive exploration.
 
-::: {.callout-important title="Accessing Data" collapse="false"}
-The data needed for running this notebook can be downloaded from the web at:
+
+Climate change is increasing the complexity, intensity, and frequency of
+disasters.
+
+Understanding future climate conditions in cities and towns across the United
+States is necessary to prepare for future climate realities.  
+
+To address this requirement, ClimRR[^climrr] — the Climate Risk and Resilience
+Portal — empowers individuals, governments, and organizations to examine
+simulated future climate conditions at mid- and end-of-century for a range of
+climate perils.
+
+
+<!-- ::: {.grid style="justify-items: start; align-items: center;"}
+
+::: {.g-col-6 style="text-align:left; place-self: center;"}
+
+_Empowering individuals, governments, and organizations to examine simulated
+future climate conditions at mid- and end-of-century for a range of climate
+perils._
+
+::: {.g-col-6 style="text-align:left; place-self: end;"}
+
+:::
+
+:::
+  
+::: {.g-col-6 style="align-self: center;"}
+
+::: {#fig-climrr style="text-align:center;"}
+![[](https://www.anl.gov/ccrds/ClimRR)](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
+
+[Image Source](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
+:::
+
+:::
+
+::: -->
+
+::: {.callout-important title="Download Data" collapse="true" style="width:100%; place-self: end;"}
 
 - [ClimRR Data Download (ANL)](https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8)
 - [Counties - United States of America](https://public.opendatasoft.com/explore/dataset/georef-united-states-of-america-county/export/?disjunctive.ste_code&disjunctive.ste_name&disjunctive.coty_code&disjunctive.coty_name&sort=year&dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6Imdlb3JlZi11bml0ZWQtc3RhdGVzLW9mLWFtZXJpY2EtY291bnR5Iiwib3B0aW9ucyI6eyJkaXNqdW5jdGl2ZS5zdGVfY29kZSI6dHJ1ZSwiZGlzanVuY3RpdmUuc3RlX25hbWUiOnRydWUsImRpc2p1bmN0aXZlLmNvdHlfY29kZSI6dHJ1ZSwiZGlzanVuY3RpdmUuY290eV9uYW1lIjp0cnVlLCJzb3J0IjoieWVhciJ9fSwiY2hhcnRzIjpbeyJhbGlnbk1vbnRoIjp0cnVlLCJ0eXBlIjoibGluZSIsImZ1bmMiOiJDT1VOVCIsInNjaWVudGlmaWNEaXNwbGF5Ijp0cnVlLCJjb2xvciI6IiNGRjUxNUEifV0sInhBeGlzIjoieWVhciIsIm1heHBvaW50cyI6IiIsInRpbWVzY2FsZSI6InllYXIiLCJzb3J0IjoiIn1dLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D)
 
 :::
 
-For completeness, we include text below from[^metadata]
+[^climrr]: ClimRR was developed by the [Center for Climate Resilience and Decision
+Science (CCRDS)](https://www.anl.gov/ccrds) at Argonne National Laboratory in collaboration with AT&T and
+the United States Department of Homeland Security’s [Federal Emergency
+Management Agency (FEMA)](https://www.fema.gov/). 
 
-[^metadata]: [ClimRR Metadata and Data Dictionary](https://anl.app.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8/file/1055145398460)
 
-## Climate Scenarios
+[^variables]: [Online Reference for Variables](https://disgeoportal.egs.anl.gov/ClimRR/?page=ClimRR-Data&views=Lack-of-Precipitation)
 
-Climate scenarios are the set of conditions used to represent estimates of
-future greenhouse gas (GHG) concentrations in the atmosphere. Climate models
-then evaluate how these GHG concentrations affect future (projected) climate.
 
-The data in ClimRR include model results from two future climate scenarios,
-called Representative Concentration Pathways (RCPs):
+> ::: {style="font-size:1.5em; padding-top: -1em!important; margin:auto;"}
+> **Project Description**  
+> :::
+> Are different populations unequally affected  by climate change? This project
+> will explore the intersection of climate data and energy justice, providing an
+> introductory understanding of data science techniques in assessing disparate
+> outcomes on vulnerable or underserved populations in the United States.
+> By shedding light on energy disparities, the project aims to contribute to the
+> ongoing discussions surrounding energy equity and inform policymakers and
+> stakeholders for more inclusive energy initiatives. Energy justice refers to
+> the equitable distribution of clean, affordable, and reliable energy resources
+> among all communities, regardless of their socioeconomic status or demographic
+> characteristics.
+> 
+> This project will focus on the analysis of climate data and low-income energy
+> affordability data across the United States. The analysis will focus on
+> examining energy consumption patterns, renewable energy adoption rates, and
+> energy affordability across different geographical regions and demographic
+> groups.
+> 
+> To assess disparate outcomes, the project will employ various statistical
+> techniques to compare energy-related indicators among vulnerable populations.
+> 
+> This work may involve analyzing energy access in low-income neighborhoods,
+> evaluating the impact of energy policies on marginalized communities, or
+> examining the correlation between energy affordability and socioeconomic
+> factors.
+> 
+> The findings of the analysis will be interpreted to gain insights into the
+> disparities in energy justice and its impact on vulnerable populations. The
+> project aims to identify areas where energy inequalities exist and provide a
+> data-driven foundation for advocating for equitable energy policies and
+> programs.
 
-1. **RCP4.5**: in this scenario, human GHG emissions peak around 2040, then
-   decline
-2. **RCP8.5**: in this scenario, human GHG emissions continue to rise
-   throughout the 21-st century
 
-Each RCP is modeled over a **mid-century period** (2045—2054) and
-**end-of-century-period** (2081 to 2094). A **historical period** (1995—2004)
-is also modeled using GHG concentrations during this period.
+::: {.column-page}
 
-## Downscaled Climate Models
+## Additional Projects
 
-A global climate model (GCM) is a complex mathematical representation of the
-major climate system components (atmosphere, land surface, ocean, and sea ice)
-and their interactions.
+| **Project (and link project description)**                                                                                                                                                                                                                                         | Institution              | **Lead**                 | **Reviewers**                         |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:------------------------:|:------------------------:|:-------------------------------------:|
+| [AI-Powered Equity Analysis of Renewable Energy Laws](https://shinstitute.org/ai-powered-equity-analysis-of-renewable-energy-laws/)                                                                                                                                           | ANL                      | Murat Keceli             | Scott Feister, Kellen Leland          |
+| [Solar Power for Affordable Housing through Computational Design of Low-Cost/High-Efficiency Solar Cells](https://shinstitute.org/solar-power-for-affordable-housing-through-computational-design-of-low-cost-high-efficiency-solar-cells/)                                   | ANL                      | Alvaro Vazquez-Mayagoita | Dan Fulton, Helen He                  |
+| [Energy Justice Analysis of Climate Data](https://shinstitute.org/energy-justice-analysis-of-climate-data/)                                                                                                                                                                   | ANL                      | Sam Foreman              | Suzanne Parete-Koon, Scott Feister    |
+| [Energy Cost for Disadvantaged Populations and Methods of Energy Efficiency and Energy Optimization in Computing Systems](https://shinstitute.org/energy-cost-for-disadvantaged-populations-and-methods-of-energy-efficiency-and-energy-optimization-in-computing-systems/) | NERSC                    | Charles Lively           | Sam Foreman, Wilbur Ouma              |
+| [Understanding the Impact of HPC Center Energy Usage on Low-income and Minority Populations](https://shinstitute.org/understanding-the-impact-of-hpc-center-energy-usage-on-low-income-and-minority-populations/)                                                           | NERSC                    |  Charles Lively          | Murat Keceli, Subil Abraham           |
+| [Power Outages and Inequities in Energy Access for Medically Vulnerable Populations](https://shinstitute.org/power-outages-and-inequities-in-energy-access-for-medically-vulnerable-populations/)                                                                            | OLCF                     | Subil Abraham            | Charles Lively, Lois McInnes          |
+| [Socioeconomics of Power Outages and Heatwaves](https://shinstitute.org/socioeconomics-of-power-outages-and-heatwaves/)                                                                                                                                                      | OLCF                     | Suzanne Parete-Koon      | Alvaro Vazquez-Mayagoitia, Lipi Gupta |
 
-These models project climatic conditions at frequent intervals over long
-periods of time (e.g., every 3 hours for the next 50—100 years), often with the
-purpose of evaluating how one or more GHG scenarios will impact future climate.
+:::
 
-Most GCMs project patterns at relatively coarse spatial resolutions, using grid
-cells ranging from 100km to 200km.
 
-The climate data presented in this portal has been downscaled to a higher
-spatial resolution (12km) to fill a growing need for risk analysis and
-resilience planning at the local level.
+[^climrr]: ClimRR was developed by the Center for Climate Resilience and Decision
+Science (CCRDS) at Argonne National Laboratory in collaboration with AT&T and
+the United States Department of Homeland Security’s Federal Emergency
+Management Agency (FEMA). Climate change is increasing the complexity,
+intensity, and frequency of disasters. Understanding future climate conditions
+in cities and towns across the United States is necessary to prepare for future
+climate realities.  
 
-We use _dynamical downscaling_, which applies the outputs of a GCM as inputs to
-a separate, high-resolution regional climate model.
-
-Dynamical downscaling accounts for the physical processes and natural features
-of a region, as well as the complex interaction between these elements and
-global dynamics under a climate scenario.
-
-Argonne's dynamical downscaling uses the Weather Research and Forecasting (WRF)
-model, which is a regional weather model for North America developed by the
-National Center for Atmospheric Research.
-
-Scientists at Argonne dynamically downscaled three different GCMs, including:
-
-- **CCSM**: The Community Climate System Model (Version 4) is a coupled global
-climate model developed by the University Corporation for Atmospheric Research
-with funding from the National Science Foundation, the Department of Energy,
-and the National Aeronautics and Space Administration. It is comprised of
-atmospheric, land surface, and sea ice submodels that run simultaneously
-with a central coupler component.
-
-- **GFDL**: The Geophysical Fluid Dynamics Laboratory at the National Oceanic
-and Atmospheric Administration developed the Earth System Model Version 2G
-(note: the general convention, which we use, is to use the Laboratory's
-abbreviation to identify this model). It includes an atmospheric circulation
-model and an oceanic circulation model, and takes into account land, sea ice,
-and iceberg dynamics.
-
-- **HadGEM**: The United Kingdom’s Met Office developed the Hadley Global
-Environment Model 2—Earth System. It is used for both operational weather
-forecasting and climate research, and includes coupled atmosphere‐ocean
-analysis and an earth system component that includes dynamic vegetation, ocean
-biology, and atmospheric chemistry.
-
-## Ensemble Means
-
-**All** data layers in ClimRR represent a climate variable along with its
-associated time period and climate scenario (e.g. mid-century RCP4.5). Each
-time period comprises one decade's worth of information:
-
-- **historical**: (1995 — 2004)
-- **mid-century**: (2045 — 2054)
-- **end-of-century**: (2085 — 2094)
-
-For each scenario, the WRF model is run with each of the three GCM outputs,
-producing three individual decades of weather data for each scenario.
-
-In other words, 30 years of downscaled climate data is produced for each
-decadal scenario.
-
-By using the outputs from three different GCMs, rather than a single model,
-Argonne's climate projections better account for the internal uncertainty
-associated with any single model.
+<!-- :::: {} -->
+<!---->
+<!-- ::: {style="float:left; position:relative; top:0px; padding:30px;"} -->
+<!---->
+<!-- ![[ClimRR](https://www.anl.gov/ccrds/ClimRR)](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg) -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ::: {style="float:right!important; position:relative; top:0px; padding:30px;"} -->
+<!---->
+<!-- Climate change is increasing the complexity, intensity, and frequency of -->
+<!-- disasters. Understanding future climate conditions in cities and towns across -->
+<!-- the United States is necessary to prepare for future climate realities. To -->
+<!-- address this requirement, ClimRR — the Climate Risk and Resilience Portal — -->
+<!-- empowers individuals, governments, and organizations to examine simulated -->
+<!-- future climate conditions at mid- and end-of-century for a range of climate -->
+<!-- perils.   -->
+<!---->
+<!-- ClimRR was developed by the Center for Climate Resilience and Decision -->
+<!-- Science (CCRDS) at Argonne National Laboratory in collaboration with AT&T and -->
+<!-- the United States Department of Homeland Security’s Federal Emergency -->
+<!-- Management Agency (FEMA). -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- :::: -->
