@@ -1,0 +1,63 @@
+---
+jupyter: climrr
+callout-appearance: simple
+editor:
+    render-on-save: true
+execute:
+    freeze: true
+---
+
+# Getting Started
+
+To install / setup your environment to run the code for this project we need to
+
+1. Download the data
+2. Install the `CLimRR` python package
+
+which we describe below.
+
+## Download the Data
+
+The data is available as a `*.zip` file with everything you will need to get started.
+
+::: {.callout-important title="Download Data" collapse="true" style="width:100%; place-self: end;"}
+
+- [ClimRR Data Download (ANL)](https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8)
+- [Counties - United States of America](https://public.opendatasoft.com/explore/dataset/georef-united-states-of-america-county/export/?disjunctive.ste_code&disjunctive.ste_name&disjunctive.coty_code&disjunctive.coty_name&sort=year&dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6Imdlb3JlZi11bml0ZWQtc3RhdGVzLW9mLWFtZXJpY2EtY291bnR5Iiwib3B0aW9ucyI6eyJkaXNqdW5jdGl2ZS5zdGVfY29kZSI6dHJ1ZSwiZGlzanVuY3RpdmUuc3RlX25hbWUiOnRydWUsImRpc2p1bmN0aXZlLmNvdHlfY29kZSI6dHJ1ZSwiZGlzanVuY3RpdmUuY290eV9uYW1lIjp0cnVlLCJzb3J0IjoieWVhciJ9fSwiY2hhcnRzIjpbeyJhbGlnbk1vbnRoIjp0cnVlLCJ0eXBlIjoibGluZSIsImZ1bmMiOiJDT1VOVCIsInNjaWVudGlmaWNEaXNwbGF5Ijp0cnVlLCJjb2xvciI6IiNGRjUxNUEifV0sInhBeGlzIjoieWVhciIsIm1heHBvaW50cyI6IiIsInRpbWVzY2FsZSI6InllYXIiLCJzb3J0IjoiIn1dLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D)
+
+:::
+
+1. Clone the {{< fa brands github >}} [Github
+   repo](https://github.com/saforem2/climate-analysis)
+   ```bash
+   git clone https://github.com/saforem2/climate-analysis
+   cd ./climate-analysis/
+   ```
+
+2. Create a virtual environment (`venv`)[^1] and install `ClimRR` into it[^2]:
+   ```bash
+   # ------------------------------------------------------------
+   # 1. Make a directory where the venv will live
+   mkdir -p ./venvs/ClimRR
+   # 2. Create a virtual environment with `python3 -m venv`
+   python3 -m venv ./venvs/ClimRR --system-site-packages
+   # 3. Install the python package as an editable install (`-e`)
+   # ------------------------------------------------------------
+   python3 -m pip install -e ".[dev]"
+   # 4. Verify the package was installed correctly
+   python3 -c 'import ClimRR ; print(ClimRR.__file__)'
+   # should print something like:
+   # /Users/samforeman/projects/saforem2/climate-analysis/src/ClimRR/__init__.py
+   ```
+
+[^1]: The `--system-site-packages` flag tells python to include the libraries
+from our system-wide install in this `venv`
+
+[^2]: 
+      Installation options:
+
+      - the `-e` flag tells python to perform an _editable_ install (i.e. install
+      package from its path, `.`, in this case)
+      - the `.[dev]` option says to install the package located here (`.`),
+      including the development extensions specified in the
+      [`pyproject.toml`](https://github.com/saforem2/climate-analysis/blob/main/pyproject.toml)
