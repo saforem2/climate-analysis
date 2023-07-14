@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
-<meta name="dcterms.date" content="2023-07-13">
+<meta name="dcterms.date" content="2023-07-14">
 
 <title>Intro to HPC Bootcamp</title>
 <style>
@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./qmd/intro.html" rel="next">
+<link href="./qmd/GettingStarted/setup.html" rel="next">
 <link href="././assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -78,16 +78,14 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="css/default.css">
-<link rel="stylesheet" href="css/code.css">
 <link rel="stylesheet" href="css/callouts.css">
-<link rel="stylesheet" href="css/code-callout.css">
 <meta property="og:title" content="">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://saforem2.github.io/climate-analysis/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site-name" content="Intro to HPC Bootcamp">
 </head>
 
-<body class="nav-sidebar floating nav-fixed slimcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -139,7 +137,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -158,7 +156,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">ClimRR</span></a>
+ <span class="menu-text">Getting Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -166,76 +164,91 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
+  <a href="./qmd/GettingStarted/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup and Installation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/ClimRR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro to Geospatial Data</span></a>
+  <a href="./qmd/GettingStarted/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with GeoSpatial Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/chicago.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Analysis</span></a>
+  <a href="./qmd/GettingStarted/example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Example: Groceries in Chicago</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">ClimRR</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qmd/ClimRR/ClimRR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of ClimRR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/iris.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Extras</span></a>
+  <a href="./qmd/GettingStarted/chicago.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Example: ClimRR in Chicago</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qmd/ClimRR/analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Analysis with ClimRR</span></a>
   </div>
 </li>
       </ul>
   </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#additional-projects" id="toc-additional-projects" class="nav-link active" data-scroll-target="#additional-projects">Additional Projects</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#climate-risk-resilience-portal-climrr" id="toc-climate-risk-resilience-portal-climrr" class="nav-link active" data-scroll-target="#climate-risk-resilience-portal-climrr">Climate Risk &amp; Resilience Portal (<code>ClimRR</code>)</a></li>
+  <li><a href="#additional-projects" id="toc-additional-projects" class="nav-link" data-scroll-target="#additional-projects">Additional Projects</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full column-body" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Climate Analysis with ClimRR</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/climate-analysis/blob/main/index.qmd"><i class="bi"></i></button></div></div>
+<h1 class="title">Intro to HPC: ClimRR</h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading"></div>
-  <div class="quarto-title-meta-heading"></div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://samforeman.me">Sam Foreman</a> <a href="https://orcid.org/0000-0002-9981-0876" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-    <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            <a href="https://alcf.anl.gov">
-            Argonne National Laboratory
-            </a>
-          </p>
-      </div>
-    </div>
 
 <div class="quarto-title-meta">
 
-      
     <div>
     <div class="quarto-title-meta-heading"></div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 13, 2023</p>
+             <p><a href="https://samforeman.me">Sam Foreman</a> <a href="https://orcid.org/0000-0002-9981-0876" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading"></div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 14, 2023</p>
     </div>
   </div>
   
@@ -245,21 +258,21 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 </header>
 
-<blockquote class="blockquote">
-<p>Empowering individuals, governments, and organizations to examine simulated future climate conditions at mid- and end-of-century for a range of climate perils.</p>
-</blockquote>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<div id="fig-climrr" class="quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<!-- > Empowering individuals, governments, and organizations to examine simulated -->
+<!-- > future climate conditions at mid- and end-of-century for a range of climate -->
+<!-- > perils[^img] -->
+<div id="fig-climrr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg" width="100%" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: <a href="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg">Image Source</a></figcaption>
+<p><img src="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: <a href="https://disgeoportal.egs.anl.gov/ClimRR/">ClimRR</a>: Empowering individuals, governments, and organizations to examine simulated future climate conditions at mid- and end-of-century for a range of climate perils<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></figcaption>
 </figure>
 </div>
-</div></div><p>The <a href="https://www.anl.gov/ccrds/ClimRR">ClimRR Portal</a> can be viewed online, and is a great resource for interactive exploration.</p>
+<section id="climate-risk-resilience-portal-climrr" class="level2">
+<h2 class="anchored" data-anchor-id="climate-risk-resilience-portal-climrr">Climate Risk &amp; Resilience Portal (<code>ClimRR</code>)</h2>
+<p>The <a href="https://www.anl.gov/ccrds/ClimRR">ClimRR Portal</a> can be viewed online, and is a great resource for interactive exploration.</p>
 <p>Climate change is increasing the complexity, intensity, and frequency of disasters.</p>
 <p>Understanding future climate conditions in cities and towns across the United States is necessary to prepare for future climate realities.</p>
-<p>To address this requirement, ClimRR<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> — the Climate Risk and Resilience Portal — empowers individuals, governments, and organizations to examine simulated future climate conditions at mid- and end-of-century for a range of climate perils.</p>
+<p>To address this requirement, ClimRR<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> — the Climate Risk and Resilience Portal — empowers individuals, governments, and organizations to examine simulated future climate conditions at mid- and end-of-century for a range of climate perils.</p>
 <!-- ::: {.grid style="justify-items: start; align-items: center;"}
 
 ::: {.g-col-6 style="text-align:left; place-self: center;"}
@@ -314,6 +327,7 @@ Download Data
 <p>This work may involve analyzing energy access in low-income neighborhoods, evaluating the impact of energy policies on marginalized communities, or examining the correlation between energy affordability and socioeconomic factors.</p>
 <p>The findings of the analysis will be interpreted to gain insights into the disparities in energy justice and its impact on vulnerable populations. The project aims to identify areas where energy inequalities exist and provide a data-driven foundation for advocating for equitable energy policies and programs.</p>
 </blockquote>
+</section>
 <section id="additional-projects" class="level2 column-page">
 <h2 class="anchored" data-anchor-id="additional-projects">Additional Projects</h2>
 <table class="table">
@@ -404,11 +418,12 @@ Download Data
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>ClimRR was developed by the Center for Climate Resilience and Decision Science (CCRDS) at Argonne National Laboratory in collaboration with AT&amp;T and the United States Department of Homeland Security’s Federal Emergency Management Agency (FEMA). Climate change is increasing the complexity, intensity, and frequency of disasters. Understanding future climate conditions in cities and towns across the United States is necessary to prepare for future climate realities.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg">Image Source</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>ClimRR was developed by the Center for Climate Resilience and Decision Science (CCRDS) at Argonne National Laboratory in collaboration with AT&amp;T and the United States Department of Homeland Security’s Federal Emergency Management Agency (FEMA). Climate change is increasing the complexity, intensity, and frequency of disasters. Understanding future climate conditions in cities and towns across the United States is necessary to prepare for future climate realities.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{foreman2023,
   author = {Foreman, Sam},
-  date = {2023-07-13},
+  date = {2023-07-14},
   url = {https://saforem2.github.io/climate-analysis},
   langid = {en}
 }
@@ -610,57 +625,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -815,12 +779,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-body">
+<nav class="page-navigation">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./qmd/intro.html" class="pagination-link">
-        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./qmd/GettingStarted/setup.html" class="pagination-link">
+        <span class="nav-page-text">Setup and Installation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

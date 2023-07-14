@@ -1,0 +1,47 @@
+---
+jupyter: climrr
+callout-appearance: simple
+editor:
+    render-on-save: true
+execute:
+    freeze: true
+---
+
+# Getting Started
+
+To install / setup your environment to run the code for this project we need to
+
+1. Clone the {{< fa brands github >}} [Github
+   repo](https://github.com/saforem2/climate-analysis)
+   ```bash
+   git clone https://github.com/saforem2/climate-analysis
+   cd ./climate-analysis/
+   ```
+
+2. Create a virtual environment (`venv`)[^1] and install `ClimRR` into it[^2]:
+   ```bash
+   # ------------------------------------------------------------
+   # 1. Make a directory where the venv will live
+   mkdir -p ./venvs/ClimRR
+   # 2. Create a virtual environment with `python3 -m venv`
+   python3 -m venv ./venvs/ClimRR --system-site-packages
+   # 3. Install the python package as an editable install (`-e`)
+   # ------------------------------------------------------------
+   python3 -m pip install -e ".[dev]"
+   # 4. Verify the package was installed correctly
+   python3 -c 'import ClimRR ; print(ClimRR.__file__)'
+   # should print something like:
+   # /Users/samforeman/projects/saforem2/climate-analysis/src/ClimRR/__init__.py
+   ```
+
+[^1]: The `--system-site-packages` flag tells python to include the libraries
+from our system-wide install in this `venv`
+
+[^2]: 
+      Installation options:
+
+      - the `-e` flag tells python to perform an _editable_ install (i.e. install
+      package from its path, `.`, in this case)
+      - the `.[dev]` option says to install the package located here (`.`),
+      including the development extensions specified in the
+      [`pyproject.toml`](https://github.com/saforem2/climate-analysis/blob/main/pyproject.toml)
