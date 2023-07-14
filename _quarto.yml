@@ -1,8 +1,28 @@
-author: "Sam Foreman"
-affiliation: "Argonne National Laboratory"
+citation:
+   type: article
+   container-title: "Intro to HPC: Climate Analysis with ClimRR"
+   url: https://saforem2.github.io/climate-analysis
+author:
+  - name: Sam Foreman
+    # id: sf
+    url: https://samforeman.me
+    orcid: 0000-0002-9981-0876
+    email: foremans@anl.gov
+    affiliation: 
+      - name: Argonne National Laboratory
+        city: Chicago
+        state: IL
+        url: https://alcf.anl.gov
 date: today
 # toc: true
-number-sections: true
+author-title: ""
+affiliation-title: ""
+published-title: ""
+title-block-categories: false
+  # - author: true
+  # - date: true
+  # - affiliation: false
+number-sections: false
 bibliography: references.bib
 # filters:
 #   - lua/callouts.lua
@@ -12,9 +32,11 @@ execute:
 project:
   render:
     - index.qmd
+    - qmd/intro.qmd
     - qmd/ClimRR.qmd
     - qmd/iris.qmd
     - qmd/chicago.qmd
+    # - qmd/illinois.qmd
   type: website
   output-dir: "docs"
   preview:
@@ -27,6 +49,7 @@ website:
   # back-to-top-navigation: true
   reader-mode: true
   navbar:
+    logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
     background: "#222222"
     foregound: "#f8f8f8"
     # - light:
@@ -36,7 +59,6 @@ website:
       - icon: github
         href: https://github.com/saforem2/climate-analysis
         aria-label: GitHub
-
     # left: auto
       # - href: index.qmd
       #   text: Analysis
@@ -51,16 +73,20 @@ website:
   sidebar:
     style: "floating"
     search: true
-    collapse-level: 1
+    collapse-level: 2
     contents:
+      - href: index.qmd
+        text: Home
       - section: "ClimRR"
         contents:
-          - href: index.qmd
-            text: Home
+          - href: qmd/intro.qmd
+            text: Overview
           - href: qmd/ClimRR.qmd
             text: Intro to Geospatial Data
           - href: qmd/chicago.qmd
-            text: Chicago Analysis
+            text: Analysis
+          # - href: qmd/illinois.md
+          #   text: Illinois
           - href: qmd/iris.qmd
             text: Extras
   page-footer: 
@@ -88,12 +114,18 @@ format:
     #     light: arrow-light
     highlight-style: atom-one
     code-overflow: scroll
-    code-fold: show
+    code-fold: false
     code-copy: hover
+    code-summary: " "
+    code-line-numbers: true
     code-tools:
       source: repo
       toggle: true
       caption: none
+    # code-tools:
+    #   source: repo
+    #   toggle: true
+    #   caption: none
     html-math-method: katex
     css:
       - css/default.css
@@ -105,7 +137,7 @@ format:
     theme: 
       dark: [css/common.scss, css/custom.scss]
       light: [css/common.scss, css/light.scss]
-    smooth-scroll: true
+    # smooth-scroll: true
     citations-hover: true
     footnotes-hover: true
     header-includes: |
