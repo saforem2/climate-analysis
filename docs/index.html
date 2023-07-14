@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
-<meta name="dcterms.date" content="2023-07-11">
+<meta name="dcterms.date" content="2023-07-13">
 
 <title>Intro to HPC Bootcamp</title>
 <style>
@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./qmd/ClimRR.html" rel="next">
+<link href="./qmd/intro.html" rel="next">
 <link href="././assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -74,7 +74,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 <link href="https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css" rel="stylesheet">
 
 
@@ -84,16 +83,20 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <link rel="stylesheet" href="css/code-callout.css">
 <meta property="og:title" content="">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://saforem2.github.io/climate-analysis/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site-name" content="Intro to HPC Bootcamp">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Intro to HPC Bootcamp</span>
     </a>
@@ -126,7 +129,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">ClimRR</a></li><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -146,6 +149,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -157,8 +166,8 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Home</span></a>
+  <a href="./qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -170,7 +179,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qmd/chicago.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chicago Analysis</span></a>
+ <span class="menu-text">Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -187,40 +196,107 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#climate-risk-resilience-portal-climrr" id="toc-climate-risk-resilience-portal-climrr" class="nav-link active" data-scroll-target="#climate-risk-resilience-portal-climrr"><span class="header-section-number">1</span> Climate Risk &amp; Resilience Portal: ClimRR</a>
-  <ul class="collapse">
-  <li><a href="#climate-scenarios" id="toc-climate-scenarios" class="nav-link" data-scroll-target="#climate-scenarios"><span class="header-section-number">1.1</span> Climate Scenarios</a></li>
-  <li><a href="#downscaled-climate-models" id="toc-downscaled-climate-models" class="nav-link" data-scroll-target="#downscaled-climate-models"><span class="header-section-number">1.2</span> Downscaled Climate Models</a></li>
-  <li><a href="#ensemble-means" id="toc-ensemble-means" class="nav-link" data-scroll-target="#ensemble-means"><span class="header-section-number">1.3</span> Ensemble Means</a></li>
-  </ul></li>
+  <li><a href="#additional-projects" id="toc-additional-projects" class="nav-link active" data-scroll-target="#additional-projects">Additional Projects</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><div class="quarto-title-block"><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/climate-analysis/blob/main/index.qmd"><i class="bi"></i></button></div></div>
+<main class="content page-columns page-full column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Climate Analysis with ClimRR</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/climate-analysis/blob/main/index.qmd"><i class="bi"></i></button></div></div>
+</div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading"></div>
+  <div class="quarto-title-meta-heading"></div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://samforeman.me">Sam Foreman</a> <a href="https://orcid.org/0000-0002-9981-0876" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://alcf.anl.gov">
+            Argonne National Laboratory
+            </a>
+          </p>
+      </div>
+    </div>
 
-<section id="climate-risk-resilience-portal-climrr" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Climate Risk &amp; Resilience Portal: ClimRR</h1>
-<p>The <a href="https://www.anl.gov/ccrds/ClimRR">ClimRR Portal</a> can be viewed online, and is a great resource for interactive exploration.</p>
-<div class="callout callout-style-simple callout-important callout-titled" title="Accessing Data">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading"></div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 13, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<blockquote class="blockquote">
+<p>Empowering individuals, governments, and organizations to examine simulated future climate conditions at mid- and end-of-century for a range of climate perils.</p>
+</blockquote>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div id="fig-climrr" class="quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<figure class="figure">
+<p><img src="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg" width="100%" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: <a href="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg">Image Source</a></figcaption>
+</figure>
+</div>
+</div></div><p>The <a href="https://www.anl.gov/ccrds/ClimRR">ClimRR Portal</a> can be viewed online, and is a great resource for interactive exploration.</p>
+<p>Climate change is increasing the complexity, intensity, and frequency of disasters.</p>
+<p>Understanding future climate conditions in cities and towns across the United States is necessary to prepare for future climate realities.</p>
+<p>To address this requirement, ClimRR<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> — the Climate Risk and Resilience Portal — empowers individuals, governments, and organizations to examine simulated future climate conditions at mid- and end-of-century for a range of climate perils.</p>
+<!-- ::: {.grid style="justify-items: start; align-items: center;"}
+
+::: {.g-col-6 style="text-align:left; place-self: center;"}
+
+_Empowering individuals, governments, and organizations to examine simulated
+future climate conditions at mid- and end-of-century for a range of climate
+perils._
+
+::: {.g-col-6 style="text-align:left; place-self: end;"}
+
+:::
+
+:::
+  
+::: {.g-col-6 style="align-self: center;"}
+
+::: {#fig-climrr style="text-align:center;"}
+![[](https://www.anl.gov/ccrds/ClimRR)](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
+
+[Image Source](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
+:::
+
+:::
+
+::: -->
+<div class="callout callout-style-simple callout-important callout-titled" title="Download Data" style="width:100%; place-self: end;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Accessing Data
+Download Data
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The data needed for running this notebook can be downloaded from the web at:</p>
 <ul>
 <li><a href="https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8">ClimRR Data Download (ANL)</a></li>
 <li><a href="https://public.opendatasoft.com/explore/dataset/georef-united-states-of-america-county/export/?disjunctive.ste_code&amp;disjunctive.ste_name&amp;disjunctive.coty_code&amp;disjunctive.coty_name&amp;sort=year&amp;dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6Imdlb3JlZi11bml0ZWQtc3RhdGVzLW9mLWFtZXJpY2EtY291bnR5Iiwib3B0aW9ucyI6eyJkaXNqdW5jdGl2ZS5zdGVfY29kZSI6dHJ1ZSwiZGlzanVuY3RpdmUuc3RlX25hbWUiOnRydWUsImRpc2p1bmN0aXZlLmNvdHlfY29kZSI6dHJ1ZSwiZGlzanVuY3RpdmUuY290eV9uYW1lIjp0cnVlLCJzb3J0IjoieWVhciJ9fSwiY2hhcnRzIjpbeyJhbGlnbk1vbnRoIjp0cnVlLCJ0eXBlIjoibGluZSIsImZ1bmMiOiJDT1VOVCIsInNjaWVudGlmaWNEaXNwbGF5Ijp0cnVlLCJjb2xvciI6IiNGRjUxNUEifV0sInhBeGlzIjoieWVhciIsIm1heHBvaW50cyI6IiIsInRpbWVzY2FsZSI6InllYXIiLCJzb3J0IjoiIn1dLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D">Counties - United States of America</a></li>
@@ -228,56 +304,118 @@ Accessing Data
 </div>
 </div>
 </div>
-<p>For completeness, we include text below from<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<section id="climate-scenarios" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="climate-scenarios"><span class="header-section-number">1.1</span> Climate Scenarios</h2>
-<p>Climate scenarios are the set of conditions used to represent estimates of future greenhouse gas (GHG) concentrations in the atmosphere. Climate models then evaluate how these GHG concentrations affect future (projected) climate.</p>
-<p>The data in ClimRR include model results from two future climate scenarios, called Representative Concentration Pathways (RCPs):</p>
-<ol type="1">
-<li><strong>RCP4.5</strong>: in this scenario, human GHG emissions peak around 2040, then decline</li>
-<li><strong>RCP8.5</strong>: in this scenario, human GHG emissions continue to rise throughout the 21-st century</li>
-</ol>
-<p>Each RCP is modeled over a <strong>mid-century period</strong> (2045—2054) and <strong>end-of-century-period</strong> (2081 to 2094). A <strong>historical period</strong> (1995—2004) is also modeled using GHG concentrations during this period.</p>
+<blockquote class="blockquote">
+<div style="font-size:1.5em; padding-top: -1em!important; margin:auto;">
+<p><strong>Project Description</strong></p>
+</div>
+<p>Are different populations unequally affected by climate change? This project will explore the intersection of climate data and energy justice, providing an introductory understanding of data science techniques in assessing disparate outcomes on vulnerable or underserved populations in the United States. By shedding light on energy disparities, the project aims to contribute to the ongoing discussions surrounding energy equity and inform policymakers and stakeholders for more inclusive energy initiatives. Energy justice refers to the equitable distribution of clean, affordable, and reliable energy resources among all communities, regardless of their socioeconomic status or demographic characteristics.</p>
+<p>This project will focus on the analysis of climate data and low-income energy affordability data across the United States. The analysis will focus on examining energy consumption patterns, renewable energy adoption rates, and energy affordability across different geographical regions and demographic groups.</p>
+<p>To assess disparate outcomes, the project will employ various statistical techniques to compare energy-related indicators among vulnerable populations.</p>
+<p>This work may involve analyzing energy access in low-income neighborhoods, evaluating the impact of energy policies on marginalized communities, or examining the correlation between energy affordability and socioeconomic factors.</p>
+<p>The findings of the analysis will be interpreted to gain insights into the disparities in energy justice and its impact on vulnerable populations. The project aims to identify areas where energy inequalities exist and provide a data-driven foundation for advocating for equitable energy policies and programs.</p>
+</blockquote>
+<section id="additional-projects" class="level2 column-page">
+<h2 class="anchored" data-anchor-id="additional-projects">Additional Projects</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Project (and link project description)</strong></th>
+<th style="text-align: center;">Institution</th>
+<th style="text-align: center;"><strong>Lead</strong></th>
+<th style="text-align: center;"><strong>Reviewers</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://shinstitute.org/ai-powered-equity-analysis-of-renewable-energy-laws/">AI-Powered Equity Analysis of Renewable Energy Laws</a></td>
+<td style="text-align: center;">ANL</td>
+<td style="text-align: center;">Murat Keceli</td>
+<td style="text-align: center;">Scott Feister, Kellen Leland</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://shinstitute.org/solar-power-for-affordable-housing-through-computational-design-of-low-cost-high-efficiency-solar-cells/">Solar Power for Affordable Housing through Computational Design of Low-Cost/High-Efficiency Solar Cells</a></td>
+<td style="text-align: center;">ANL</td>
+<td style="text-align: center;">Alvaro Vazquez-Mayagoita</td>
+<td style="text-align: center;">Dan Fulton, Helen He</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://shinstitute.org/energy-justice-analysis-of-climate-data/">Energy Justice Analysis of Climate Data</a></td>
+<td style="text-align: center;">ANL</td>
+<td style="text-align: center;">Sam Foreman</td>
+<td style="text-align: center;">Suzanne Parete-Koon, Scott Feister</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://shinstitute.org/energy-cost-for-disadvantaged-populations-and-methods-of-energy-efficiency-and-energy-optimization-in-computing-systems/">Energy Cost for Disadvantaged Populations and Methods of Energy Efficiency and Energy Optimization in Computing Systems</a></td>
+<td style="text-align: center;">NERSC</td>
+<td style="text-align: center;">Charles Lively</td>
+<td style="text-align: center;">Sam Foreman, Wilbur Ouma</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://shinstitute.org/understanding-the-impact-of-hpc-center-energy-usage-on-low-income-and-minority-populations/">Understanding the Impact of HPC Center Energy Usage on Low-income and Minority Populations</a></td>
+<td style="text-align: center;">NERSC</td>
+<td style="text-align: center;">Charles Lively</td>
+<td style="text-align: center;">Murat Keceli, Subil Abraham</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://shinstitute.org/power-outages-and-inequities-in-energy-access-for-medically-vulnerable-populations/">Power Outages and Inequities in Energy Access for Medically Vulnerable Populations</a></td>
+<td style="text-align: center;">OLCF</td>
+<td style="text-align: center;">Subil Abraham</td>
+<td style="text-align: center;">Charles Lively, Lois McInnes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://shinstitute.org/socioeconomics-of-power-outages-and-heatwaves/">Socioeconomics of Power Outages and Heatwaves</a></td>
+<td style="text-align: center;">OLCF</td>
+<td style="text-align: center;">Suzanne Parete-Koon</td>
+<td style="text-align: center;">Alvaro Vazquez-Mayagoitia, Lipi Gupta</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="downscaled-climate-models" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="downscaled-climate-models"><span class="header-section-number">1.2</span> Downscaled Climate Models</h2>
-<p>A global climate model (GCM) is a complex mathematical representation of the major climate system components (atmosphere, land surface, ocean, and sea ice) and their interactions.</p>
-<p>These models project climatic conditions at frequent intervals over long periods of time (e.g., every 3 hours for the next 50—100 years), often with the purpose of evaluating how one or more GHG scenarios will impact future climate.</p>
-<p>Most GCMs project patterns at relatively coarse spatial resolutions, using grid cells ranging from 100km to 200km.</p>
-<p>The climate data presented in this portal has been downscaled to a higher spatial resolution (12km) to fill a growing need for risk analysis and resilience planning at the local level.</p>
-<p>We use <em>dynamical downscaling</em>, which applies the outputs of a GCM as inputs to a separate, high-resolution regional climate model.</p>
-<p>Dynamical downscaling accounts for the physical processes and natural features of a region, as well as the complex interaction between these elements and global dynamics under a climate scenario.</p>
-<p>Argonne’s dynamical downscaling uses the Weather Research and Forecasting (WRF) model, which is a regional weather model for North America developed by the National Center for Atmospheric Research.</p>
-<p>Scientists at Argonne dynamically downscaled three different GCMs, including:</p>
-<ul>
-<li><p><strong>CCSM</strong>: The Community Climate System Model (Version 4) is a coupled global climate model developed by the University Corporation for Atmospheric Research with funding from the National Science Foundation, the Department of Energy, and the National Aeronautics and Space Administration. It is comprised of atmospheric, land surface, and sea ice submodels that run simultaneously with a central coupler component.</p></li>
-<li><p><strong>GFDL</strong>: The Geophysical Fluid Dynamics Laboratory at the National Oceanic and Atmospheric Administration developed the Earth System Model Version 2G (note: the general convention, which we use, is to use the Laboratory’s abbreviation to identify this model). It includes an atmospheric circulation model and an oceanic circulation model, and takes into account land, sea ice, and iceberg dynamics.</p></li>
-<li><p><strong>HadGEM</strong>: The United Kingdom’s Met Office developed the Hadley Global Environment Model 2—Earth System. It is used for both operational weather forecasting and climate research, and includes coupled atmosphere‐ocean analysis and an earth system component that includes dynamic vegetation, ocean biology, and atmospheric chemistry.</p></li>
-</ul>
-</section>
-<section id="ensemble-means" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="ensemble-means"><span class="header-section-number">1.3</span> Ensemble Means</h2>
-<p><strong>All</strong> data layers in ClimRR represent a climate variable along with its associated time period and climate scenario (e.g.&nbsp;mid-century RCP4.5). Each time period comprises one decade’s worth of information:</p>
-<ul>
-<li><strong>historical</strong>: (1995 — 2004)</li>
-<li><strong>mid-century</strong>: (2045 — 2054)</li>
-<li><strong>end-of-century</strong>: (2085 — 2094)</li>
-</ul>
-<p>For each scenario, the WRF model is run with each of the three GCM outputs, producing three individual decades of weather data for each scenario.</p>
-<p>In other words, 30 years of downscaled climate data is produced for each decadal scenario.</p>
-<p>By using the outputs from three different GCMs, rather than a single model, Argonne’s climate projections better account for the internal uncertainty associated with any single model.</p>
+<!-- :::: {} -->
+<!---->
+<!-- ::: {style="float:left; position:relative; top:0px; padding:30px;"} -->
+<!---->
+<!-- ![[ClimRR](https://www.anl.gov/ccrds/ClimRR)](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg) -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ::: {style="float:right!important; position:relative; top:0px; padding:30px;"} -->
+<!---->
+<!-- Climate change is increasing the complexity, intensity, and frequency of -->
+<!-- disasters. Understanding future climate conditions in cities and towns across -->
+<!-- the United States is necessary to prepare for future climate realities. To -->
+<!-- address this requirement, ClimRR — the Climate Risk and Resilience Portal — -->
+<!-- empowers individuals, governments, and organizations to examine simulated -->
+<!-- future climate conditions at mid- and end-of-century for a range of climate -->
+<!-- perils.   -->
+<!---->
+<!-- ClimRR was developed by the Center for Climate Resilience and Decision -->
+<!-- Science (CCRDS) at Argonne National Laboratory in collaboration with AT&T and -->
+<!-- the United States Department of Homeland Security’s Federal Emergency -->
+<!-- Management Agency (FEMA). -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- :::: -->
 
 
-</section>
-</section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p><a href="https://anl.app.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8/file/1055145398460">ClimRR Metadata and Data Dictionary</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>ClimRR was developed by the Center for Climate Resilience and Decision Science (CCRDS) at Argonne National Laboratory in collaboration with AT&amp;T and the United States Department of Homeland Security’s Federal Emergency Management Agency (FEMA). Climate change is increasing the complexity, intensity, and frequency of disasters. Understanding future climate conditions in cities and towns across the United States is necessary to prepare for future climate realities.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section></div></main> <!-- /main -->
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{foreman2023,
+  author = {Foreman, Sam},
+  date = {2023-07-13},
+  url = {https://saforem2.github.io/climate-analysis},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Foreman, Sam. 2023. <em>Intro to HPC: Climate Analysis with ClimRR</em>.
+<a href="https://saforem2.github.io/climate-analysis">https://saforem2.github.io/climate-analysis</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -677,12 +815,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./qmd/ClimRR.html" class="pagination-link">
-        <span class="nav-page-text">Intro to Geospatial Data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./qmd/intro.html" class="pagination-link">
+        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -714,5 +852,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

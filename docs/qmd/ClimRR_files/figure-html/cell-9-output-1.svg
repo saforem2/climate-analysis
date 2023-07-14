@@ -6,11 +6,11 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2023-07-11T21:16:57.339841</dc:date>
+    <dc:date>2023-07-13T12:48:29.110717</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.6.3, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.7.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -36,7 +36,7 @@ L 203.448989 286.918125
 L 19.799996 218.800204 
 L 87.900363 34.918125 
 L 271.799923 103.251831 
-" clip-path="url(#pa61a593e07)" style="fill: none; stroke: #1f77b4; stroke-width: 1.5"/>
+" clip-path="url(#p4e4bbfeaf6)" style="fill: none; stroke: #1f77b4; stroke-width: 1.5"/>
    </g>
    <g id="text_1">
     <!-- Grid from shapefile: 12 x 12 km -->
@@ -454,7 +454,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pa61a593e07">
+  <clipPath id="p4e4bbfeaf6">
    <rect x="7.2" y="22.318125" width="277.19992" height="277.2"/>
   </clipPath>
  </defs>
