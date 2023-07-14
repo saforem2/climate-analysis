@@ -1,19 +1,25 @@
 ---
 jupyter: climrr
 callout-appearance: simple
-# reference-location: margin
-# citation-location: margin
-# title: "Intro to HPC: Climate Analysis"
-# title-block-banner: false
-# title-block-banner: "#2196F3"
 title-block-banner: false
 # https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg
 editor:
    render-on-save: true
 execute:
    freeze: true
+# format:
+  # html:
+  #   # page-layout: full
+  #   grid:
+  #     sidebar-width: 200px
+  #     body-width: 850px
+  #     margin-width: 450px
 # published-title: ""
-
+# reference-location: margin
+# citation-location: margin
+# title: "Intro to HPC: Climate Analysis"
+# title-block-banner: false
+# title-block-banner: "#2196F3"
 # jolla trestles solana marquee broadside
 # author:
 #   - name: Sam Foreman
@@ -38,22 +44,23 @@ execute:
 #    image-shape: rounded
 ---
 
-# Climate Analysis with ClimRR
+# Intro to HPC: ClimRR
 
-> Empowering individuals, governments, and organizations to examine simulated
-> future climate conditions at mid- and end-of-century for a range of climate
-> perils.
+<!-- > Empowering individuals, governments, and organizations to examine simulated -->
+<!-- > future climate conditions at mid- and end-of-century for a range of climate -->
+<!-- > perils[^img] -->
 
-::: {.column-margin}
+::: {#fig-climrr}
 
-::: {#fig-climrr style="text-align:center;"}
+![](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
 
-<img src="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg" width="100%" />
-
-[Image Source](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
+[ClimRR](https://disgeoportal.egs.anl.gov/ClimRR/): Empowering individuals,
+governments, and organizations to examine simulated future climate conditions
+at mid- and end-of-century for a range of climate perils[^img]
 :::
 
-:::
+
+## Climate Risk \& Resilience Portal (`ClimRR`)
 
 The [ClimRR Portal](https://www.anl.gov/ccrds/ClimRR) can be viewed online, and
 is a great resource for interactive exploration.
@@ -172,6 +179,9 @@ Management Agency (FEMA). Climate change is increasing the complexity,
 intensity, and frequency of disasters. Understanding future climate conditions
 in cities and towns across the United States is necessary to prepare for future
 climate realities.  
+
+
+[^img]: [Image Source](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
 
 <!-- :::: {} -->
 <!---->
