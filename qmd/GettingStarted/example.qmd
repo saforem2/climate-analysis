@@ -7,7 +7,7 @@ execute:
     freeze: true
 ---
 
-# Example: Clipping Vector Data with `GeoPandas`
+# Example: Groceries in Chicago
 
 We will walk through an example that demonstrates how to clip geometries to the
 boundary of a polygon geometry using GeoPandas.
@@ -163,8 +163,8 @@ chicago.boundary.plot(ax=ax1, color=COLORS['grey060'], linewidth=0.6, zorder=-1)
 near_west_side.boundary.plot(ax=ax2, color=COLORS['red'])
 near_west_side.plot(ax=ax2, color=COLORS['green'], alpha=0.3)
 
-lincoln_park.boundary.plot(ax=ax2, color=COLORS['red'])
-lincoln_park.plot(ax=ax2, color=COLORS['green'], alpha=0.3)
+logan_square.boundary.plot(ax=ax2, color=COLORS['red'])
+logan_square.plot(ax=ax2, color=COLORS['green'], alpha=0.3)
 # west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)
 chicago.plot(ax=ax1, alpha=0.4)
 chicago.boundary.plot(ax=ax2, color=COLORS['grey060'], linewidth=0.6, zorder=-1)
@@ -182,9 +182,11 @@ plt.tight_layout()
 ```{python}
 groceries_west_side = groceries.clip(near_west_side)
 fig, ax = plt.subplots(figsize=(14,6))
-groceries_west_side.plot(ax=ax, color='C2')
+groceries_west_side.plot(ax=ax, color='C2', marker='.', alpha=0.6)
 chicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)
 near_west_side.boundary.plot(ax=ax, color='#444444')
+near_west_side.boundary.plot(ax=ax, color=COLORS['red'])
+near_west_side.plot(ax=ax, color=COLORS['green'], alpha=0.3)
 ax.set_title("Groceries in the Near West Side")
 ax.set_axis_off()
 ```
@@ -195,9 +197,11 @@ ax.set_axis_off()
 ```{python}
 groceries_logan_square = groceries.clip(logan_square)
 fig, ax = plt.subplots(figsize=(14,6))
-groceries_logan_square.plot(ax=ax, color='C2')
+groceries_logan_square.plot(ax=ax, color='C2', marker='.', alpha=0.6)
 chicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)
 logan_square.boundary.plot(ax=ax, color='#444444')
+logan_square.boundary.plot(ax=ax, color=COLORS['red'])
+logan_square.plot(ax=ax, color=COLORS['green'], alpha=0.3)
 ax.set_title("Groceries in Logan Square")
 ax.set_axis_off()
 ```
@@ -211,10 +215,17 @@ fig, ax = plt.subplots(figsize=(14,6))
 groceries_lp.plot(ax=ax, color='C2')
 chicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)
 lincoln_park.boundary.plot(ax=ax, color='#444444')
+lincoln_park.boundary.plot(ax=ax, color=COLORS['red'])
+lincoln_park.plot(ax=ax, color=COLORS['green'], alpha=0.3)
 ax.set_title("Groceries in Lincoln Park")
 ax.set_axis_off()
 ```
 
+## Additional Questions
 
+- Can you identify which neighborhoods have the most grocery stores? How many?
+    - Which have the least? How many?
 
-- Reference: [GeoPandas: Clip Vector Data](https://geopandas.org/en/stable/gallery/plot_clip.html)
+## Reference
+
+[GeoPandas: Clip Vector Data](https://geopandas.org/en/stable/gallery/plot_clip.html)

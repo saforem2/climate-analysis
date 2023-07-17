@@ -65,7 +65,7 @@ Scientists at Argonne dynamically downscaled three different GCMs, including:
 climate model developed by the University Corporation for Atmospheric Research
 with funding from the National Science Foundation, the Department of Energy,
 and the National Aeronautics and Space Administration. It is comprised of
-atmospheric, land surface, and sea ice submodels that run simultaneously
+atmospheric, land surface, and sea ice sub-models that run simultaneously
 with a central coupler component.
 
 - **GFDL**: The Geophysical Fluid Dynamics Laboratory at the National Oceanic
@@ -128,7 +128,7 @@ This result is what we term the **ensemble mean**.
 
 ## Metadata
 
-The links below direc to the REST service of the gridded data. Metadata,
+The links below direct to the REST service of the gridded data. Metadata,
 descriptions, and field names were last updated on 11/7/2022.
 
 1. [Temperature Minimum – Annual](https://disgeoportal.egs.anl.gov/arcgis/rest/services/CCRDS/Precipitation_Annual_Total_Inches/MapServer)
@@ -143,18 +143,132 @@ descriptions, and field names were last updated on 11/7/2022.
 
 ## Temperature (Annual)
 
-Each climate model generates temperature readings every 3 hours, or 8 temperature readings per day.
+Each climate model generates temperature readings every 3 hours, or 8
+temperature readings per day.
 
 The maximum daily temperature refers to the highest of these 8 readings, which
 often occurs in the middle of the daytime and is comparable to the 'high
 temperature' in a daily weather forecast.
 
-Similarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the 'low temperature' in a daily weather forecast.
+Similarly, the minimum daily temperature refers to the lowest of these 8
+readings, which often occurs overnight and is comparable to the 'low
+temperature' in a daily weather forecast.
 
-Argonne calculated the annual average of both the maximum and minimum daily temperatures. 
+Argonne calculated the annual average of both the maximum and minimum daily
+temperatures. 
 
-These daily high / low readings were then used to calculate the annual average maximum or minimum daily temperature for that scenario's model year (e.g. the average max daily temperature for 2045 using the CCSM model under RCP4.5).
+These daily high / low readings were then used to calculate the annual average
+maximum or minimum daily temperature for that scenario's model year (e.g. the
+average max daily temperature for 2045 using the CCSM model under RCP4.5).
 
-This process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).
+This process was repeated for each year within a given time period / scenario
+(e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL,
+and HadGEM).
 
-Finally, the 30 individual annual averatges for a given tim period/scenario were themselves averaged, producing a multi-model ensemble mean that represents the annual average of the maximum or minimum daily temperature for a given time period / scenario.
+Finally, the 30 individual annual averages for a given time period/scenario
+were themselves averaged, producing a multi-model ensemble mean that represents
+the annual average of the maximum or minimum daily temperature for a given time
+period / scenario.
+
+## Temperature (Seasonal)
+
+Each climate model generates temperature readings every 3 hours, or 8
+temperature readings per day.
+
+The maximum daily temperature refers to the highest of these 8 readings, which
+often occurs in the middle of the daytime and is comparable to the 'high
+temperature' in a daily weather forecast.
+
+Similarly, the minimum daily temperature refers to the lowest of these 8
+readings, which often occurs overnight and is comparable to the 'low
+temperature' in a daily weather forecast.
+
+Argonne calculated the seasonal average of both the maximum and minimum daily
+temperatures; the seasons are segmented as 
+
+- Winter (Dec, Jan, Feb)
+- Spring (March, April, May)
+- Summer (June, July, Aug)
+- Autumn (Sep, Oct, Nov)
+
+These calculations involved extracting the highest temperature reading and
+lowest temperature reading for each individual day of a year (e.g. 2045) within
+a given time period / scenario (e.g. mid-century RCP4.5) and for a given
+climate model (e.g. CCSM).
+
+These daily high / low readings were then classified by season and used to
+calculate the seasonal average maximum or minimum daily temperature for that
+scenario's model year (e.g. the average daily max temperature for summer of
+2045 using the CCSM model under RCP4.5).
+
+This process was repeated for each year within a given time period / scenario
+(e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL,
+and HadGEM).
+
+Finally, the 30 individual seasonal averages for a given time period / scenario
+were themselves averaged, producing a multi-modal ensemble mean that represents
+the seasonal average of the maximum or minimum daily temperature for a given
+time period / scenario.
+
+## Precipitation
+
+Each climate model estimates an amount of precipitation (whether rain, snow,
+sleet, or ice) that occurs every 3 hours across the entire modeled time period
+(i.e. every 3 hours, of every day, for all modeled years).
+
+These 3-hour precipitation estimates can be used to calculate the total
+precipitation over a designated period of time, ranging from daily to annually.
+
+Argonne calculated total annual precipitation by adding all 3-hour
+precipitation estimates for a given year (e.g. 2045) within a given time period
+/ scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM),
+which produced the total annual precipitation for that scenario's model year,
+such as CCSM's estimate of annual precipitation in 2045 under climate scenario
+RCP4.5.
+
+This process was repeated for each year within a given time period / scenario
+(e.g. 2046, 2047, and so forth) and across all three climate models (CCSM,
+GFDL, and HadGEM), producing a total of 30 estimates of total annual
+precipitation for a given time period / scenario.
+
+The average of these values was taken to produce the ensemble mean of the total
+annual precipitation (in inches) for each time period / scenario.
+
+## Wind Speed
+
+Each climate model generates estimated wind speed readings (in miles per hour,
+or `mph`) every 3 hours, or 8 wind speed readings per day.
+
+These values are irrespective of wind direction and only represent the
+magnitude of wind speed.
+
+Using these readings, Argonne calculated the average daily wind speed (the
+average of each day's 8 wind speed readings) for every day within a given time
+period / scenario (e.g. mid-century RCP4.5) and for each climate model (CCSM,
+GFDL, and HadGEM).
+
+Argonne then took the average of each daily average wind speed for a given year
+(e.g. 2045) and within a given time period / scenario (e.g. mid-century RCP4.5)
+and for a given climate model (e.g. CCSM), which produced the annual average
+wind speed for that scenario's model year, such as CCSM's estimate of annual
+average wind speeds in 2045 under climate scenario RCP4.5.
+
+This process was repeated for each year within a given time period / scenario.
+
+The average of these values was taken to produce the ensemble mean of the
+annual average wind speed (in `mph`) for each time period / scenario.
+
+## Consecutive Days With No Precipitation
+
+Each climate model estimates an amount of precipitation (whether rain, snow,
+sleet, or ice) that occurs every 3 hours across the entire modeled time period
+(i.e. every 3 hours, of every day, for all modeled years).
+
+These 3-hour precipitation estimates were used to calculate the daily
+precipitation quantities by adding all 8 precipitation readings for each day of
+a given year (e.g. 2045) within a given time period / scenario (e.g.
+mid-century RCP4.5) and for a given climate model (e.g. CCSM).
+
+This process produced the total daily precipitation for every day in a
+scenario's model year, such as CCSM's daily estimates of total precipitation
+for the year 2045 under climate scenario RCP4.5.
