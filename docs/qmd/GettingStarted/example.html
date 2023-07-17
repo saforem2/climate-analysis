@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
-<meta name="dcterms.date" content="2023-07-14">
+<meta name="dcterms.date" content="2023-07-17">
 
 <title>Intro to HPC Bootcamp – example</title>
 <style>
@@ -264,6 +264,8 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   <li><a href="#groceries-in-near-west-side" id="toc-groceries-in-near-west-side" class="nav-link" data-scroll-target="#groceries-in-near-west-side">Groceries in Near West Side</a></li>
   <li><a href="#groceries-in-logan-square" id="toc-groceries-in-logan-square" class="nav-link" data-scroll-target="#groceries-in-logan-square">Groceries in Logan Square</a></li>
   <li><a href="#groceries-in-lincoln-park" id="toc-groceries-in-lincoln-park" class="nav-link" data-scroll-target="#groceries-in-lincoln-park">Groceries in Lincoln Park</a></li>
+  <li><a href="#additional-questions" id="toc-additional-questions" class="nav-link" data-scroll-target="#additional-questions">Additional Questions</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/qmd/GettingStarted/example.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -272,7 +274,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Example: Clipping Vector Data with <code>GeoPandas</code></h1>
+<h1 class="title">Example: Groceries in Chicago</h1>
 </div>
 
 
@@ -289,7 +291,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading"></div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2023</p>
+      <p class="date">July 17, 2023</p>
     </div>
   </div>
   
@@ -465,8 +467,8 @@ Coordinate Reference System
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>near_west_side.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>lincoln_park.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>lincoln_park.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>logan_square.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>chicago.plot(ax<span class="op">=</span>ax1, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
@@ -486,11 +488,13 @@ Coordinate Reference System
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>groceries_west_side <span class="op">=</span> groceries.clip(near_west_side)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>groceries_west_side.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>groceries_west_side.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in the Near West Side"</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>near_west_side.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in the Near West Side"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="example_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
 </div>
@@ -501,11 +505,13 @@ Coordinate Reference System
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>groceries_logan_square <span class="op">=</span> groceries.clip(logan_square)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>groceries_logan_square.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>groceries_logan_square.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in Logan Square"</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>logan_square.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in Logan Square"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="example_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
 </div>
@@ -519,22 +525,34 @@ Coordinate Reference System
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>groceries_lp.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>lincoln_park.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in Lincoln Park"</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>lincoln_park.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>lincoln_park.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in Lincoln Park"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="example_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
+</section>
+<section id="additional-questions" class="level2">
+<h2 class="anchored" data-anchor-id="additional-questions">Additional Questions</h2>
 <ul>
-<li>Reference: <a href="https://geopandas.org/en/stable/gallery/plot_clip.html">GeoPandas: Clip Vector Data</a></li>
+<li>Can you identify which neighborhoods have the most grocery stores? How many?
+<ul>
+<li>Which have the least? How many?</li>
+</ul></li>
 </ul>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p><a href="https://geopandas.org/en/stable/gallery/plot_clip.html">GeoPandas: Clip Vector Data</a></p>
 
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{foreman2023,
   author = {Foreman, Sam},
-  date = {2023-07-14},
+  date = {2023-07-17},
   url = {https://saforem2.github.io/climate-analysis},
   langid = {en}
 }

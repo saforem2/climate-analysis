@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
-<meta name="dcterms.date" content="2023-07-14">
+<meta name="dcterms.date" content="2023-07-17">
 
 <title>Intro to HPC Bootcamp – climrr</title>
 <style>
@@ -242,6 +242,10 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   <li><a href="#ensemble-means" id="toc-ensemble-means" class="nav-link" data-scroll-target="#ensemble-means">Ensemble Means</a></li>
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#temperature-annual" id="toc-temperature-annual" class="nav-link" data-scroll-target="#temperature-annual">Temperature (Annual)</a></li>
+  <li><a href="#temperature-seasonal" id="toc-temperature-seasonal" class="nav-link" data-scroll-target="#temperature-seasonal">Temperature (Seasonal)</a></li>
+  <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation">Precipitation</a></li>
+  <li><a href="#wind-speed" id="toc-wind-speed" class="nav-link" data-scroll-target="#wind-speed">Wind Speed</a></li>
+  <li><a href="#consecutive-days-with-no-precipitation" id="toc-consecutive-days-with-no-precipitation" class="nav-link" data-scroll-target="#consecutive-days-with-no-precipitation">Consecutive Days With No Precipitation</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/qmd/ClimRR/ClimRR.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -267,7 +271,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading"></div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2023</p>
+      <p class="date">July 17, 2023</p>
     </div>
   </div>
   
@@ -299,7 +303,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <p>Argonne’s dynamical downscaling uses the Weather Research and Forecasting (WRF) model, which is a regional weather model for North America developed by the National Center for Atmospheric Research.</p>
 <p>Scientists at Argonne dynamically downscaled three different GCMs, including:</p>
 <ul>
-<li><p><strong>CCSM</strong>: The Community Climate System Model (Version 4) is a coupled global climate model developed by the University Corporation for Atmospheric Research with funding from the National Science Foundation, the Department of Energy, and the National Aeronautics and Space Administration. It is comprised of atmospheric, land surface, and sea ice submodels that run simultaneously with a central coupler component.</p></li>
+<li><p><strong>CCSM</strong>: The Community Climate System Model (Version 4) is a coupled global climate model developed by the University Corporation for Atmospheric Research with funding from the National Science Foundation, the Department of Energy, and the National Aeronautics and Space Administration. It is comprised of atmospheric, land surface, and sea ice sub-models that run simultaneously with a central coupler component.</p></li>
 <li><p><strong>GFDL</strong>: The Geophysical Fluid Dynamics Laboratory at the National Oceanic and Atmospheric Administration developed the Earth System Model Version 2G (note: the general convention, which we use, is to use the Laboratory’s abbreviation to identify this model). It includes an atmospheric circulation model and an oceanic circulation model, and takes into account land, sea ice, and iceberg dynamics.</p></li>
 <li><p><strong>HadGEM</strong>: The United Kingdom’s Met Office developed the Hadley Global Environment Model 2—Earth System. It is used for both operational weather forecasting and climate research, and includes coupled atmosphere‐ocean analysis and an earth system component that includes dynamic vegetation, ocean biology, and atmospheric chemistry.</p></li>
 </ul>
@@ -338,7 +342,7 @@ Ensemble Mean
 </section>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<p>The links below direc to the REST service of the gridded data. Metadata, descriptions, and field names were last updated on 11/7/2022.</p>
+<p>The links below direct to the REST service of the gridded data. Metadata, descriptions, and field names were last updated on 11/7/2022.</p>
 <ol type="1">
 <li><a href="https://disgeoportal.egs.anl.gov/arcgis/rest/services/CCRDS/Precipitation_Annual_Total_Inches/MapServer">Temperature Minimum – Annual</a></li>
 <li><a href="https://disgeoportal.egs.anl.gov/arcgis/rest/services/CCRDS/Precipitation_Annual_Total_Inches/MapServer">Temperature Minimum – Seasonal</a></li>
@@ -359,7 +363,47 @@ Ensemble Mean
 <p>Argonne calculated the annual average of both the maximum and minimum daily temperatures.</p>
 <p>These daily high / low readings were then used to calculate the annual average maximum or minimum daily temperature for that scenario’s model year (e.g.&nbsp;the average max daily temperature for 2045 using the CCSM model under RCP4.5).</p>
 <p>This process was repeated for each year within a given time period / scenario (e.g.&nbsp;2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).</p>
-<p>Finally, the 30 individual annual averatges for a given tim period/scenario were themselves averaged, producing a multi-model ensemble mean that represents the annual average of the maximum or minimum daily temperature for a given time period / scenario.</p>
+<p>Finally, the 30 individual annual averages for a given time period/scenario were themselves averaged, producing a multi-model ensemble mean that represents the annual average of the maximum or minimum daily temperature for a given time period / scenario.</p>
+</section>
+<section id="temperature-seasonal" class="level2">
+<h2 class="anchored" data-anchor-id="temperature-seasonal">Temperature (Seasonal)</h2>
+<p>Each climate model generates temperature readings every 3 hours, or 8 temperature readings per day.</p>
+<p>The maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.</p>
+<p>Similarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.</p>
+<p>Argonne calculated the seasonal average of both the maximum and minimum daily temperatures; the seasons are segmented as</p>
+<ul>
+<li>Winter (Dec, Jan, Feb)</li>
+<li>Spring (March, April, May)</li>
+<li>Summer (June, July, Aug)</li>
+<li>Autumn (Sep, Oct, Nov)</li>
+</ul>
+<p>These calculations involved extracting the highest temperature reading and lowest temperature reading for each individual day of a year (e.g.&nbsp;2045) within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM).</p>
+<p>These daily high / low readings were then classified by season and used to calculate the seasonal average maximum or minimum daily temperature for that scenario’s model year (e.g.&nbsp;the average daily max temperature for summer of 2045 using the CCSM model under RCP4.5).</p>
+<p>This process was repeated for each year within a given time period / scenario (e.g.&nbsp;2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).</p>
+<p>Finally, the 30 individual seasonal averages for a given time period / scenario were themselves averaged, producing a multi-modal ensemble mean that represents the seasonal average of the maximum or minimum daily temperature for a given time period / scenario.</p>
+</section>
+<section id="precipitation" class="level2">
+<h2 class="anchored" data-anchor-id="precipitation">Precipitation</h2>
+<p>Each climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e.&nbsp;every 3 hours, of every day, for all modeled years).</p>
+<p>These 3-hour precipitation estimates can be used to calculate the total precipitation over a designated period of time, ranging from daily to annually.</p>
+<p>Argonne calculated total annual precipitation by adding all 3-hour precipitation estimates for a given year (e.g.&nbsp;2045) within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM), which produced the total annual precipitation for that scenario’s model year, such as CCSM’s estimate of annual precipitation in 2045 under climate scenario RCP4.5.</p>
+<p>This process was repeated for each year within a given time period / scenario (e.g.&nbsp;2046, 2047, and so forth) and across all three climate models (CCSM, GFDL, and HadGEM), producing a total of 30 estimates of total annual precipitation for a given time period / scenario.</p>
+<p>The average of these values was taken to produce the ensemble mean of the total annual precipitation (in inches) for each time period / scenario.</p>
+</section>
+<section id="wind-speed" class="level2">
+<h2 class="anchored" data-anchor-id="wind-speed">Wind Speed</h2>
+<p>Each climate model generates estimated wind speed readings (in miles per hour, or <code>mph</code>) every 3 hours, or 8 wind speed readings per day.</p>
+<p>These values are irrespective of wind direction and only represent the magnitude of wind speed.</p>
+<p>Using these readings, Argonne calculated the average daily wind speed (the average of each day’s 8 wind speed readings) for every day within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for each climate model (CCSM, GFDL, and HadGEM).</p>
+<p>Argonne then took the average of each daily average wind speed for a given year (e.g.&nbsp;2045) and within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM), which produced the annual average wind speed for that scenario’s model year, such as CCSM’s estimate of annual average wind speeds in 2045 under climate scenario RCP4.5.</p>
+<p>This process was repeated for each year within a given time period / scenario.</p>
+<p>The average of these values was taken to produce the ensemble mean of the annual average wind speed (in <code>mph</code>) for each time period / scenario.</p>
+</section>
+<section id="consecutive-days-with-no-precipitation" class="level2">
+<h2 class="anchored" data-anchor-id="consecutive-days-with-no-precipitation">Consecutive Days With No Precipitation</h2>
+<p>Each climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e.&nbsp;every 3 hours, of every day, for all modeled years).</p>
+<p>These 3-hour precipitation estimates were used to calculate the daily precipitation quantities by adding all 8 precipitation readings for each day of a given year (e.g.&nbsp;2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM).</p>
+<p>This process produced the total daily precipitation for every day in a scenario’s model year, such as CCSM’s daily estimates of total precipitation for the year 2045 under climate scenario RCP4.5.</p>
 
 
 
@@ -371,7 +415,7 @@ Burdi, C., and Wall. T Branham J. 2023. <span>“The Climate Risk &amp; Resilien
 </div>
 </div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{foreman2023,
   author = {Foreman, Sam},
-  date = {2023-07-14},
+  date = {2023-07-17},
   url = {https://saforem2.github.io/climate-analysis},
   langid = {en}
 }

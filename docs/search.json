@@ -107,42 +107,42 @@
   {
     "objectID": "qmd/GettingStarted/example.html",
     "href": "qmd/GettingStarted/example.html",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "",
     "text": "We will walk through an example that demonstrates how to clip geometries to the boundary of a polygon geometry using GeoPandas.\nThis example shows how to clip a set of vector geometries to the spatial extent / shape of another object.\nBoth sets of geometries must be opened with GeoPandas as GeoDataFrames and be in the same Coordinate Reference System (CRS) for the clip function from GeoPandas to work.\nThis example uses data from geodatasets, namely:\nalongside a custom rectangle geometry made with shapely and then turned into a GeoDataFrame."
   },
   {
     "objectID": "qmd/GettingStarted/example.html#imports",
     "href": "qmd/GettingStarted/example.html#imports",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Imports",
     "text": "Imports\n\nimport matplotlib.pyplot as plt\nimport geopandas as gpd\nfrom shapely.geometry import box\nimport geodatasets\n\n\n%load_ext autoreload\n%autoreload 2\n%matplotlib inline\nimport matplotlib_inline\nimport matplotlib.pyplot as plt\nimport geopandas as gpd\nimport warnings\n\nimport matplotlib.pyplot as plt\n\nmatplotlib_inline.backend_inline.set_matplotlib_formats('svg')\n\nfrom ClimRR import set_plot_style, COLORS\nset_plot_style()\nfrom rich.console import Console as Console\nfrom enrich.style import STYLES\nfrom rich.theme import Theme\n\nconsole = Console(theme=Theme(STYLES), log_path=False, markup=True)\n\nThe autoreload extension is already loaded. To reload it, use:\n  %reload_ext autoreload\n\n\nUsing updated plot style for matplotlib"
   },
   {
     "objectID": "qmd/GettingStarted/example.html#get-or-create-example-data",
     "href": "qmd/GettingStarted/example.html#get-or-create-example-data",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Get or Create Example Data",
     "text": "Get or Create Example Data\nBelow, the example GeoPandas data is imported and opened as a GeoDataFrame.\nAdditionally, a polygon is created with shapely and then converted into a GeoDataFrame with the same CRS as the GeoPandas dataset\n\nimport geodatasets\nchicago = gpd.read_file(geodatasets.get_path(\"geoda.chicago_commpop\"))\ngroceries = gpd.read_file(geodatasets.get_path(\"geoda.groceries\")).to_crs(chicago.crs)\n\nCreate a subset of the chicago data that is just the near west side\n\nnear_west_side = chicago[chicago[\"community\"] == \"NEAR WEST SIDE\"]\nlincoln_park = chicago[chicago[\"community\"] == \"LINCOLN PARK\"]\nlogan_square = chicago[chicago[\"community\"] == \"LOGAN SQUARE\"]\n\nCreate a custom polygon\n\npolygon = box(-87.8, 41.9, -87.5, 42)\npoly_gdf = gpd.GeoDataFrame([1], geometry=[polygon], crs=chicago.crs)"
   },
   {
     "objectID": "qmd/GettingStarted/example.html#plot-the-unclipped-data",
     "href": "qmd/GettingStarted/example.html#plot-the-unclipped-data",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Plot the Unclipped Data",
     "text": "Plot the Unclipped Data\n\nfig, (ax1, ax2) = plt.subplots(figsize=(14, 6), ncols=2, sharey='col')\npoly_gdf.boundary.plot(ax=ax1, color=COLORS['red'])\nchicago.boundary.plot(ax=ax1, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\n# near_west_side.boundary.plot(ax=ax2, color=COLORS['red'])\n# near_west_side.plot(ax=ax2, color=COLORS['green'], alpha=0.3)\n# west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)\nchicago.plot(ax=ax1, alpha=0.4)\npoly_gdf.boundary.plot(ax=ax2, color=COLORS['red'])\nchicago.boundary.plot(ax=ax2, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\ngroceries.plot(ax=ax2, color=COLORS['blue'], zorder=1, marker='.', alpha=0.66)\nax1.set_title(\"All Unclipped Chicago Communities\", fontsize=20)\nax2.set_title(\"All Unclipped Groceries\", fontsize=20)\nax1.set_axis_off()\nax2.set_axis_off()\nplt.tight_layout()"
   },
   {
     "objectID": "qmd/GettingStarted/example.html#clip-the-data",
     "href": "qmd/GettingStarted/example.html#clip-the-data",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Clip the Data",
     "text": "Clip the Data\nThe object on which you call clip is the object that will be clipped.\nThe object you pass is the clip extent.\nThe returned output will be a new clipped GeoDataFrame. All of the attributes for each returned geometry will be retained when you clip.\n\n\n\n\n\n\nCoordinate Reference System\n\n\n\n\n\nRecall that the data must be in the same CRS in order to use the clip method.\nIf the data is not in the same CRS, be sure to use the GeoDataFrame.to_crs method to ensure both datasets are in the same CRS."
   },
   {
     "objectID": "qmd/GettingStarted/example.html#clip-the-chicago-data",
     "href": "qmd/GettingStarted/example.html#clip-the-chicago-data",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Clip the Chicago Data",
     "text": "Clip the Chicago Data\n\nchicago_clipped = chicago.clip(polygon)\ngroceries_clipped = groceries.clip(polygon)\n# plot the clipped data\nfig, ax = plt.subplots(figsize=(14, 6), ncols=2)\nax0 = chicago_clipped.plot(ax=ax[0], color='C0', alpha=0.66)\nax0 = chicago.boundary.plot(ax=ax[0], color=COLORS['grey060'], zorder=-1, linewidth=0.6)\nax0 = poly_gdf.boundary.plot(ax=ax[0], color=COLORS['red'])\n\nax1 = groceries_clipped.plot(ax=ax[1], color='C1', alpha=0.66, zorder=10, marker='.')\n# chicago.boundary.plot(ax=ax[1], color='#444444')\nax1 = chicago.boundary.plot(ax=ax[1], color=COLORS['grey060'], zorder=-1, linewidth=0.6)\nax1 = poly_gdf.boundary.plot(ax=ax[1], color=COLORS['red'])\n\nax0.set_title(\"Chicago Clipped\", fontsize=20)\nax0.set_axis_off()\nax1.set_title(\"Groceries Clipped\", fontsize=20)\nax1.set_axis_off()\nplt.tight_layout()"
   },
@@ -165,7 +165,7 @@
     "href": "qmd/ClimRR/ClimRR.html#downscaled-climate-models",
     "title": "Climate Risk & Resilience Portal",
     "section": "Downscaled Climate Models",
-    "text": "Downscaled Climate Models\nA global climate model (GCM) is a complex mathematical representation of the major climate system components (atmosphere, land surface, ocean, and sea ice) and their interactions.\nThese models project climatic conditions at frequent intervals over long periods of time (e.g., every 3 hours for the next 50—100 years), often with the purpose of evaluating how one or more GHG scenarios will impact future climate.\nMost GCMs project patterns at relatively coarse spatial resolutions, using grid cells ranging from 100km to 200km.\nThe climate data presented in this portal has been downscaled to a higher spatial resolution (12km) to fill a growing need for risk analysis and resilience planning at the local level.\nWe use dynamical downscaling, which applies the outputs of a GCM as inputs to a separate, high-resolution regional climate model.\nDynamical downscaling accounts for the physical processes and natural features of a region, as well as the complex interaction between these elements and global dynamics under a climate scenario.\nArgonne’s dynamical downscaling uses the Weather Research and Forecasting (WRF) model, which is a regional weather model for North America developed by the National Center for Atmospheric Research.\nScientists at Argonne dynamically downscaled three different GCMs, including:\n\nCCSM: The Community Climate System Model (Version 4) is a coupled global climate model developed by the University Corporation for Atmospheric Research with funding from the National Science Foundation, the Department of Energy, and the National Aeronautics and Space Administration. It is comprised of atmospheric, land surface, and sea ice submodels that run simultaneously with a central coupler component.\nGFDL: The Geophysical Fluid Dynamics Laboratory at the National Oceanic and Atmospheric Administration developed the Earth System Model Version 2G (note: the general convention, which we use, is to use the Laboratory’s abbreviation to identify this model). It includes an atmospheric circulation model and an oceanic circulation model, and takes into account land, sea ice, and iceberg dynamics.\nHadGEM: The United Kingdom’s Met Office developed the Hadley Global Environment Model 2—Earth System. It is used for both operational weather forecasting and climate research, and includes coupled atmosphere‐ocean analysis and an earth system component that includes dynamic vegetation, ocean biology, and atmospheric chemistry."
+    "text": "Downscaled Climate Models\nA global climate model (GCM) is a complex mathematical representation of the major climate system components (atmosphere, land surface, ocean, and sea ice) and their interactions.\nThese models project climatic conditions at frequent intervals over long periods of time (e.g., every 3 hours for the next 50—100 years), often with the purpose of evaluating how one or more GHG scenarios will impact future climate.\nMost GCMs project patterns at relatively coarse spatial resolutions, using grid cells ranging from 100km to 200km.\nThe climate data presented in this portal has been downscaled to a higher spatial resolution (12km) to fill a growing need for risk analysis and resilience planning at the local level.\nWe use dynamical downscaling, which applies the outputs of a GCM as inputs to a separate, high-resolution regional climate model.\nDynamical downscaling accounts for the physical processes and natural features of a region, as well as the complex interaction between these elements and global dynamics under a climate scenario.\nArgonne’s dynamical downscaling uses the Weather Research and Forecasting (WRF) model, which is a regional weather model for North America developed by the National Center for Atmospheric Research.\nScientists at Argonne dynamically downscaled three different GCMs, including:\n\nCCSM: The Community Climate System Model (Version 4) is a coupled global climate model developed by the University Corporation for Atmospheric Research with funding from the National Science Foundation, the Department of Energy, and the National Aeronautics and Space Administration. It is comprised of atmospheric, land surface, and sea ice sub-models that run simultaneously with a central coupler component.\nGFDL: The Geophysical Fluid Dynamics Laboratory at the National Oceanic and Atmospheric Administration developed the Earth System Model Version 2G (note: the general convention, which we use, is to use the Laboratory’s abbreviation to identify this model). It includes an atmospheric circulation model and an oceanic circulation model, and takes into account land, sea ice, and iceberg dynamics.\nHadGEM: The United Kingdom’s Met Office developed the Hadley Global Environment Model 2—Earth System. It is used for both operational weather forecasting and climate research, and includes coupled atmosphere‐ocean analysis and an earth system component that includes dynamic vegetation, ocean biology, and atmospheric chemistry."
   },
   {
     "objectID": "qmd/ClimRR/ClimRR.html#ensemble-means",
@@ -179,14 +179,14 @@
     "href": "qmd/ClimRR/ClimRR.html#metadata",
     "title": "Climate Risk & Resilience Portal",
     "section": "Metadata",
-    "text": "Metadata\nThe links below direc to the REST service of the gridded data. Metadata, descriptions, and field names were last updated on 11/7/2022.\n\nTemperature Minimum – Annual\nTemperature Minimum – Seasonal\nTemperature Maximum – Annual\nTemperature Maximum – Seasonal\nPrecipitation – Annual Total\nPrecipitation None – Annual Average\nWind Speed – Annual Average\nCooling Degree Days – Annual Total\nHeating Degree Days – Annual Total"
+    "text": "Metadata\nThe links below direct to the REST service of the gridded data. Metadata, descriptions, and field names were last updated on 11/7/2022.\n\nTemperature Minimum – Annual\nTemperature Minimum – Seasonal\nTemperature Maximum – Annual\nTemperature Maximum – Seasonal\nPrecipitation – Annual Total\nPrecipitation None – Annual Average\nWind Speed – Annual Average\nCooling Degree Days – Annual Total\nHeating Degree Days – Annual Total"
   },
   {
     "objectID": "qmd/ClimRR/ClimRR.html#temperature-annual",
     "href": "qmd/ClimRR/ClimRR.html#temperature-annual",
     "title": "Climate Risk & Resilience Portal",
     "section": "Temperature (Annual)",
-    "text": "Temperature (Annual)\nEach climate model generates temperature readings every 3 hours, or 8 temperature readings per day.\nThe maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.\nSimilarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.\nArgonne calculated the annual average of both the maximum and minimum daily temperatures.\nThese daily high / low readings were then used to calculate the annual average maximum or minimum daily temperature for that scenario’s model year (e.g. the average max daily temperature for 2045 using the CCSM model under RCP4.5).\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).\nFinally, the 30 individual annual averatges for a given tim period/scenario were themselves averaged, producing a multi-model ensemble mean that represents the annual average of the maximum or minimum daily temperature for a given time period / scenario."
+    "text": "Temperature (Annual)\nEach climate model generates temperature readings every 3 hours, or 8 temperature readings per day.\nThe maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.\nSimilarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.\nArgonne calculated the annual average of both the maximum and minimum daily temperatures.\nThese daily high / low readings were then used to calculate the annual average maximum or minimum daily temperature for that scenario’s model year (e.g. the average max daily temperature for 2045 using the CCSM model under RCP4.5).\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).\nFinally, the 30 individual annual averages for a given time period/scenario were themselves averaged, producing a multi-model ensemble mean that represents the annual average of the maximum or minimum daily temperature for a given time period / scenario."
   },
   {
     "objectID": "qmd/GettingStarted/setup.html#download-the-data",
@@ -212,9 +212,9 @@
   {
     "objectID": "qmd/GettingStarted/example.html#clip-the-groceries-data",
     "href": "qmd/GettingStarted/example.html#clip-the-groceries-data",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Clip the Groceries Data",
-    "text": "Clip the Groceries Data\nNext we’ll look at the distribution of grocery stores in two different communities.\n\nfig, (ax1, ax2) = plt.subplots(figsize=(14, 6), ncols=2, sharey='col')\nchicago.boundary.plot(ax=ax1, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\nnear_west_side.boundary.plot(ax=ax2, color=COLORS['red'])\nnear_west_side.plot(ax=ax2, color=COLORS['green'], alpha=0.3)\n\nlincoln_park.boundary.plot(ax=ax2, color=COLORS['red'])\nlincoln_park.plot(ax=ax2, color=COLORS['green'], alpha=0.3)\n# west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)\nchicago.plot(ax=ax1, alpha=0.4)\nchicago.boundary.plot(ax=ax2, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\ngroceries.plot(ax=ax2, color=COLORS['blue'], zorder=1, marker='.', alpha=0.66)\nax1.set_title(\"All Unclipped Chicago Communities\", fontsize=20)\nax2.set_title(\"All Unclipped Groceries\", fontsize=20)\nax1.set_axis_off()\nax2.set_axis_off()\nplt.tight_layout()"
+    "text": "Clip the Groceries Data\nNext we’ll look at the distribution of grocery stores in two different communities.\n\nfig, (ax1, ax2) = plt.subplots(figsize=(14, 6), ncols=2, sharey='col')\nchicago.boundary.plot(ax=ax1, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\nnear_west_side.boundary.plot(ax=ax2, color=COLORS['red'])\nnear_west_side.plot(ax=ax2, color=COLORS['green'], alpha=0.3)\n\nlogan_square.boundary.plot(ax=ax2, color=COLORS['red'])\nlogan_square.plot(ax=ax2, color=COLORS['green'], alpha=0.3)\n# west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)\nchicago.plot(ax=ax1, alpha=0.4)\nchicago.boundary.plot(ax=ax2, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\ngroceries.plot(ax=ax2, color=COLORS['blue'], zorder=1, marker='.', alpha=0.66)\nax1.set_title(\"All Unclipped Chicago Communities\", fontsize=20)\nax2.set_title(\"All Unclipped Groceries\", fontsize=20)\nax1.set_axis_off()\nax2.set_axis_off()\nplt.tight_layout()"
   },
   {
     "objectID": "qmd/GettingStarted/intro.html#visualizing-our-data",
@@ -226,22 +226,64 @@
   {
     "objectID": "qmd/GettingStarted/example.html#groceries-in-near-west-side",
     "href": "qmd/GettingStarted/example.html#groceries-in-near-west-side",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Groceries in Near West Side",
-    "text": "Groceries in Near West Side\n\ngroceries_west_side = groceries.clip(near_west_side)\nfig, ax = plt.subplots(figsize=(14,6))\ngroceries_west_side.plot(ax=ax, color='C2')\nchicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\nnear_west_side.boundary.plot(ax=ax, color='#444444')\nax.set_title(\"Groceries in the Near West Side\")\nax.set_axis_off()"
+    "text": "Groceries in Near West Side\n\ngroceries_west_side = groceries.clip(near_west_side)\nfig, ax = plt.subplots(figsize=(14,6))\ngroceries_west_side.plot(ax=ax, color='C2', marker='.', alpha=0.6)\nchicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\nnear_west_side.boundary.plot(ax=ax, color='#444444')\nnear_west_side.boundary.plot(ax=ax, color=COLORS['red'])\nnear_west_side.plot(ax=ax, color=COLORS['green'], alpha=0.3)\nax.set_title(\"Groceries in the Near West Side\")\nax.set_axis_off()"
   },
   {
     "objectID": "qmd/GettingStarted/example.html#groceries-in-logan-square",
     "href": "qmd/GettingStarted/example.html#groceries-in-logan-square",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Groceries in Logan Square",
-    "text": "Groceries in Logan Square\n\ngroceries_logan_square = groceries.clip(logan_square)\nfig, ax = plt.subplots(figsize=(14,6))\ngroceries_logan_square.plot(ax=ax, color='C2')\nchicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\nlogan_square.boundary.plot(ax=ax, color='#444444')\nax.set_title(\"Groceries in Logan Square\")\nax.set_axis_off()"
+    "text": "Groceries in Logan Square\n\ngroceries_logan_square = groceries.clip(logan_square)\nfig, ax = plt.subplots(figsize=(14,6))\ngroceries_logan_square.plot(ax=ax, color='C2', marker='.', alpha=0.6)\nchicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\nlogan_square.boundary.plot(ax=ax, color='#444444')\nlogan_square.boundary.plot(ax=ax, color=COLORS['red'])\nlogan_square.plot(ax=ax, color=COLORS['green'], alpha=0.3)\nax.set_title(\"Groceries in Logan Square\")\nax.set_axis_off()"
   },
   {
     "objectID": "qmd/GettingStarted/example.html#groceries-in-lincoln-park",
     "href": "qmd/GettingStarted/example.html#groceries-in-lincoln-park",
-    "title": "Example: Clipping Vector Data with GeoPandas",
+    "title": "Example: Groceries in Chicago",
     "section": "Groceries in Lincoln Park",
-    "text": "Groceries in Lincoln Park\n\ngroceries_lp = groceries.clip(lincoln_park)\nfig, ax = plt.subplots(figsize=(14,6))\ngroceries_lp.plot(ax=ax, color='C2')\nchicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\nlincoln_park.boundary.plot(ax=ax, color='#444444')\nax.set_title(\"Groceries in Lincoln Park\")\nax.set_axis_off()\n\n\n\n\n\nReference: GeoPandas: Clip Vector Data"
+    "text": "Groceries in Lincoln Park\n\ngroceries_lp = groceries.clip(lincoln_park)\nfig, ax = plt.subplots(figsize=(14,6))\ngroceries_lp.plot(ax=ax, color='C2')\nchicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)\nlincoln_park.boundary.plot(ax=ax, color='#444444')\nlincoln_park.boundary.plot(ax=ax, color=COLORS['red'])\nlincoln_park.plot(ax=ax, color=COLORS['green'], alpha=0.3)\nax.set_title(\"Groceries in Lincoln Park\")\nax.set_axis_off()"
+  },
+  {
+    "objectID": "qmd/GettingStarted/example.html#additional-questions",
+    "href": "qmd/GettingStarted/example.html#additional-questions",
+    "title": "Example: Groceries in Chicago",
+    "section": "Additional Questions",
+    "text": "Additional Questions\n\nCan you identify which neighborhoods have the most grocery stores? How many?\n\nWhich have the least? How many?"
+  },
+  {
+    "objectID": "qmd/GettingStarted/example.html#reference",
+    "href": "qmd/GettingStarted/example.html#reference",
+    "title": "Example: Groceries in Chicago",
+    "section": "Reference",
+    "text": "Reference\nGeoPandas: Clip Vector Data"
+  },
+  {
+    "objectID": "qmd/ClimRR/ClimRR.html#temperature-seasonal",
+    "href": "qmd/ClimRR/ClimRR.html#temperature-seasonal",
+    "title": "Climate Risk & Resilience Portal",
+    "section": "Temperature (Seasonal)",
+    "text": "Temperature (Seasonal)\nEach climate model generates temperature readings every 3 hours, or 8 temperature readings per day.\nThe maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.\nSimilarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.\nArgonne calculated the seasonal average of both the maximum and minimum daily temperatures; the seasons are segmented as\n\nWinter (Dec, Jan, Feb)\nSpring (March, April, May)\nSummer (June, July, Aug)\nAutumn (Sep, Oct, Nov)\n\nThese calculations involved extracting the highest temperature reading and lowest temperature reading for each individual day of a year (e.g. 2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM).\nThese daily high / low readings were then classified by season and used to calculate the seasonal average maximum or minimum daily temperature for that scenario’s model year (e.g. the average daily max temperature for summer of 2045 using the CCSM model under RCP4.5).\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).\nFinally, the 30 individual seasonal averages for a given time period / scenario were themselves averaged, producing a multi-modal ensemble mean that represents the seasonal average of the maximum or minimum daily temperature for a given time period / scenario."
+  },
+  {
+    "objectID": "qmd/ClimRR/ClimRR.html#precipitation",
+    "href": "qmd/ClimRR/ClimRR.html#precipitation",
+    "title": "Climate Risk & Resilience Portal",
+    "section": "Precipitation",
+    "text": "Precipitation\nEach climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e. every 3 hours, of every day, for all modeled years).\nThese 3-hour precipitation estimates can be used to calculate the total precipitation over a designated period of time, ranging from daily to annually.\nArgonne calculated total annual precipitation by adding all 3-hour precipitation estimates for a given year (e.g. 2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM), which produced the total annual precipitation for that scenario’s model year, such as CCSM’s estimate of annual precipitation in 2045 under climate scenario RCP4.5.\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) and across all three climate models (CCSM, GFDL, and HadGEM), producing a total of 30 estimates of total annual precipitation for a given time period / scenario.\nThe average of these values was taken to produce the ensemble mean of the total annual precipitation (in inches) for each time period / scenario."
+  },
+  {
+    "objectID": "qmd/ClimRR/ClimRR.html#wind-speed",
+    "href": "qmd/ClimRR/ClimRR.html#wind-speed",
+    "title": "Climate Risk & Resilience Portal",
+    "section": "Wind Speed",
+    "text": "Wind Speed\nEach climate model generates estimated wind speed readings (in miles per hour, or mph) every 3 hours, or 8 wind speed readings per day.\nThese values are irrespective of wind direction and only represent the magnitude of wind speed.\nUsing these readings, Argonne calculated the average daily wind speed (the average of each day’s 8 wind speed readings) for every day within a given time period / scenario (e.g. mid-century RCP4.5) and for each climate model (CCSM, GFDL, and HadGEM).\nArgonne then took the average of each daily average wind speed for a given year (e.g. 2045) and within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM), which produced the annual average wind speed for that scenario’s model year, such as CCSM’s estimate of annual average wind speeds in 2045 under climate scenario RCP4.5.\nThis process was repeated for each year within a given time period / scenario.\nThe average of these values was taken to produce the ensemble mean of the annual average wind speed (in mph) for each time period / scenario."
+  },
+  {
+    "objectID": "qmd/ClimRR/ClimRR.html#consecutive-days-with-no-precipitation",
+    "href": "qmd/ClimRR/ClimRR.html#consecutive-days-with-no-precipitation",
+    "title": "Climate Risk & Resilience Portal",
+    "section": "Consecutive Days With No Precipitation",
+    "text": "Consecutive Days With No Precipitation\nEach climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e. every 3 hours, of every day, for all modeled years).\nThese 3-hour precipitation estimates were used to calculate the daily precipitation quantities by adding all 8 precipitation readings for each day of a given year (e.g. 2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM).\nThis process produced the total daily precipitation for every day in a scenario’s model year, such as CCSM’s daily estimates of total precipitation for the year 2045 under climate scenario RCP4.5."
   }
 ]
