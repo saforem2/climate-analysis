@@ -231,18 +231,6 @@ h2 {
 // #title-block-header.quarto-title-block.default .quarto-title-meta-author {
 //     display: block!important;
 // }
-#title-block-header.quarto-title-block.default .quarto-title-meta-contents {
-    color: $dim-text;
-}
-
-#title-block-header.quarto-title-block.default .quarto-title-meta-contents a {
-    color: $dim-text!important;
-}
-
-#title-block-header.quarto-title-block.default .quarto-title-meta-contents a:hover {
-    color: $link-color-hover!important;
-    border-bottom: 1px solid $link-color;
-}
 
 //
 // #title-block-header.quarto-title-block.default .quarto-title-meta-heading {
@@ -461,7 +449,7 @@ pre>code.sourceCode {
     padding-left: 0.75rem;
     // padding-right: 0.75rem;
     margin-block-start: -0.5rem;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     // border-left: 1px solid $code-block-bg-color;
     // border-radius:
     // border-radius: 0.25rem;
@@ -502,4 +490,24 @@ thead, tbody, tfoot, tr, td, th {
     font-size: .9em;
     color: $dim-text;
     grid-template-columns: auto;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents {
+    color: $dim-text;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents a {
+    color: $dim-text;
+    border-bottom: 1 px solid $link-color!important;
+    // color: $link-color;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents a:hover {
+    color: $link-color-hover!important;
+    border-bottom: 1px solid $link-color;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr)!important;
 }
