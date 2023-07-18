@@ -38,6 +38,7 @@ project:
     - index.qmd
     - qmd/GettingStarted/*.qmd
     - qmd/ClimRR/*.qmd
+    - qmd/ClimRR/definitions.qmd
     # - qmd/setup.qmd
     # - qmd/intro.qmd
     # - qmd/ClimRR.qmd
@@ -96,6 +97,8 @@ website:
         contents:
           - href: qmd/ClimRR/ClimRR.qmd
             text: Overview of ClimRR
+          - href: qmd/ClimRR/definitions.qmd
+            text: Variable Definitions
           - href: qmd/GettingStarted/chicago.qmd
             text: "Example: ClimRR in Chicago"
           - href: qmd/ClimRR/analysis.qmd
