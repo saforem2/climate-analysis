@@ -32,7 +32,7 @@
     "href": "qmd/GettingStarted/setup.html#footnotes",
     "title": "Getting Started",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe --system-site-packages flag tells python to include the libraries from our system-wide install in this venv↩︎\nInstallation options:\n\nthe -e flag tells python to perform an editable install (i.e. install package from its path, ., in this case)\nthe .[dev] option says to install the package located here (.), including the development extensions specified in the pyproject.toml\n\n↩︎"
+    "text": "Footnotes\n\n\nThe --system-site-packages flag tells python to include the libraries from our system-wide install in this venv↩︎\nInstallation options:\n\nthe -e flag tells python to perform an editable install (i.e. install package from its path, ., in this case)\nthe .[dev] option says to install the package located here (.), including the development extensions specified in the pyproject.toml file\n\n↩︎"
   },
   {
     "objectID": "qmd/GettingStarted/intro.html",
@@ -179,7 +179,7 @@
     "href": "qmd/ClimRR/ClimRR.html#metadata",
     "title": "Climate Risk & Resilience Portal",
     "section": "Metadata",
-    "text": "Metadata\nThe links below direct to the REST service of the gridded data. Metadata, descriptions, and field names were last updated on 11/7/2022.\n\nTemperature Minimum – Annual\nTemperature Minimum – Seasonal\nTemperature Maximum – Annual\nTemperature Maximum – Seasonal\nPrecipitation – Annual Total\nPrecipitation None – Annual Average\nWind Speed – Annual Average\nCooling Degree Days – Annual Total\nHeating Degree Days – Annual Total"
+    "text": "Metadata\nThe links below direct to the REST service of the gridded data. Metadata, descriptions, and field names were last updated on 11/7/2022.\n\nTemperature Minimum – Annual\nTemperature Minimum – Seasonal\nTemperature Maximum – Annual\nTemperature Maximum – Seasonal\nPrecipitation – Annual Total\nPrecipitation None – Annual Average\nWind Speed – Annual Average\nCooling Degree Days – Annual Total\nHeating Degree Days – Annual Total\n\nThe definitions for each of these terms can be found here."
   },
   {
     "objectID": "qmd/ClimRR/ClimRR.html#temperature-annual",
@@ -284,6 +284,55 @@
     "href": "qmd/ClimRR/ClimRR.html#consecutive-days-with-no-precipitation",
     "title": "Climate Risk & Resilience Portal",
     "section": "Consecutive Days With No Precipitation",
-    "text": "Consecutive Days With No Precipitation\nEach climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e. every 3 hours, of every day, for all modeled years).\nThese 3-hour precipitation estimates were used to calculate the daily precipitation quantities by adding all 8 precipitation readings for each day of a given year (e.g. 2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM).\nThis process produced the total daily precipitation for every day in a scenario’s model year, such as CCSM’s daily estimates of total precipitation for the year 2045 under climate scenario RCP4.5."
+    "text": "Consecutive Days With No Precipitation\nEach climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e. every 3 hours, of every day, for all modeled years).\nThese 3-hour precipitation estimates were used to calculate the daily precipitation quantities by adding all 8 precipitation readings for each day of a given year (e.g. 2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM).\nThis process produced the total daily precipitation for every day in a scenario’s model year, such as CCSM’s daily estimates of total precipitation for the year 2045 under climate scenario RCP4.5.\nUsing this information, Argonne identified the greatest number of consecutive days in which no precipitation occurred (i.e. the total daily precipitation quantity equaled zero) for that scenario’s model year (e.g. for the year 2045 under scenario RCP4.5, the highest number of consecutive days without any precipitation was X).\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047 and so forth) across all three climate models (CCSM, GFDL, and HadGEM) producing 10 yearly values for each model, with each value representing the longest consecutive span with no precipitation for that year.\nOf the 10 yearly values for each climate model, the maximum value was selected (e.g. the decadal maximum). This resulted in 3 values for each climate model’s 10 years of data.\nThe average of these maximum of the maxima was then taken to produce the ensemble mean of the decade’s highest number of consecutive days without precipitation in a single year."
+  },
+  {
+    "objectID": "qmd/ClimRR/definitions.html",
+    "href": "qmd/ClimRR/definitions.html",
+    "title": "Climate Variables",
+    "section": "",
+    "text": "Each climate model generates temperature readings every 3 hours, or 8 temperature readings per day.\nThe maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.\nSimilarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.\nArgonne calculated the annual average of both the maximum and minimum daily temperatures.\nThese daily high / low readings were then used to calculate the annual average maximum or minimum daily temperature for that scenario’s model year (e.g. the average max daily temperature for 2045 using the CCSM model under RCP4.5).\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).\nFinally, the 30 individual annual averages for a given time period/scenario were themselves averaged, producing a multi-model ensemble mean that represents the annual average of the maximum or minimum daily temperature for a given time period / scenario."
+  },
+  {
+    "objectID": "qmd/ClimRR/definitions.html#temperature-seasonal",
+    "href": "qmd/ClimRR/definitions.html#temperature-seasonal",
+    "title": "Climate Variables",
+    "section": "Temperature (Seasonal)",
+    "text": "Temperature (Seasonal)\nEach climate model generates temperature readings every 3 hours, or 8 temperature readings per day.\nThe maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.\nSimilarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.\nArgonne calculated the seasonal average of both the maximum and minimum daily temperatures; the seasons are segmented as\n\nWinter (Dec, Jan, Feb)\nSpring (March, April, May)\nSummer (June, July, Aug)\nAutumn (Sep, Oct, Nov)\n\nThese calculations involved extracting the highest temperature reading and lowest temperature reading for each individual day of a year (e.g. 2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM).\nThese daily high / low readings were then classified by season and used to calculate the seasonal average maximum or minimum daily temperature for that scenario’s model year (e.g. the average daily max temperature for summer of 2045 using the CCSM model under RCP4.5).\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).\nFinally, the 30 individual seasonal averages for a given time period / scenario were themselves averaged, producing a multi-modal ensemble mean that represents the seasonal average of the maximum or minimum daily temperature for a given time period / scenario."
+  },
+  {
+    "objectID": "qmd/ClimRR/definitions.html#precipitation",
+    "href": "qmd/ClimRR/definitions.html#precipitation",
+    "title": "Climate Variables",
+    "section": "Precipitation",
+    "text": "Precipitation\nEach climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e. every 3 hours, of every day, for all modeled years).\nThese 3-hour precipitation estimates can be used to calculate the total precipitation over a designated period of time, ranging from daily to annually.\nArgonne calculated total annual precipitation by adding all 3-hour precipitation estimates for a given year (e.g. 2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM), which produced the total annual precipitation for that scenario’s model year, such as CCSM’s estimate of annual precipitation in 2045 under climate scenario RCP4.5.\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) and across all three climate models (CCSM, GFDL, and HadGEM), producing a total of 30 estimates of total annual precipitation for a given time period / scenario.\nThe average of these values was taken to produce the ensemble mean of the total annual precipitation (in inches) for each time period / scenario."
+  },
+  {
+    "objectID": "qmd/ClimRR/definitions.html#wind-speed",
+    "href": "qmd/ClimRR/definitions.html#wind-speed",
+    "title": "Climate Variables",
+    "section": "Wind Speed",
+    "text": "Wind Speed\nEach climate model generates estimated wind speed readings (in miles per hour, or mph) every 3 hours, or 8 wind speed readings per day.\nThese values are irrespective of wind direction and only represent the magnitude of wind speed.\nUsing these readings, Argonne calculated the average daily wind speed (the average of each day’s 8 wind speed readings) for every day within a given time period / scenario (e.g. mid-century RCP4.5) and for each climate model (CCSM, GFDL, and HadGEM).\nArgonne then took the average of each daily average wind speed for a given year (e.g. 2045) and within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM), which produced the annual average wind speed for that scenario’s model year, such as CCSM’s estimate of annual average wind speeds in 2045 under climate scenario RCP4.5.\nThis process was repeated for each year within a given time period / scenario.\nThe average of these values was taken to produce the ensemble mean of the annual average wind speed (in mph) for each time period / scenario."
+  },
+  {
+    "objectID": "qmd/ClimRR/definitions.html#consecutive-days-with-no-precipitation",
+    "href": "qmd/ClimRR/definitions.html#consecutive-days-with-no-precipitation",
+    "title": "Climate Variables",
+    "section": "Consecutive Days With No Precipitation",
+    "text": "Consecutive Days With No Precipitation\nEach climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e. every 3 hours, of every day, for all modeled years).\nThese 3-hour precipitation estimates were used to calculate the daily precipitation quantities by adding all 8 precipitation readings for each day of a given year (e.g. 2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g. CCSM).\nThis process produced the total daily precipitation for every day in a scenario’s model year, such as CCSM’s daily estimates of total precipitation for the year 2045 under climate scenario RCP4.5.\nUsing this information, Argonne identified the greatest number of consecutive days in which no precipitation occurred (i.e. the total daily precipitation quantity equaled zero) for that scenario’s model year (e.g. for the year 2045 under scenario RCP4.5, the highest number of consecutive days without any precipitation was X).\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047 and so forth) across all three climate models (CCSM, GFDL, and HadGEM) producing 10 yearly values for each model, with each value representing the longest consecutive span with no precipitation for that year.\nOf the 10 yearly values for each climate model, the maximum value was selected (e.g. the decadal maximum). This resulted in 3 values for each climate model’s 10 years of data.\nThe average of these maximum of the maxima was then taken to produce the ensemble mean of the decade’s highest number of consecutive days without precipitation in a single year."
+  },
+  {
+    "objectID": "qmd/ClimRR/definitions.html#degree-days",
+    "href": "qmd/ClimRR/definitions.html#degree-days",
+    "title": "Climate Variables",
+    "section": "Degree Days",
+    "text": "Degree Days"
+  },
+  {
+    "objectID": "qmd/ClimRR/definitions.html#temperature-annual",
+    "href": "qmd/ClimRR/definitions.html#temperature-annual",
+    "title": "Climate Variables",
+    "section": "",
+    "text": "Each climate model generates temperature readings every 3 hours, or 8 temperature readings per day.\nThe maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.\nSimilarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.\nArgonne calculated the annual average of both the maximum and minimum daily temperatures.\nThese daily high / low readings were then used to calculate the annual average maximum or minimum daily temperature for that scenario’s model year (e.g. the average max daily temperature for 2045 using the CCSM model under RCP4.5).\nThis process was repeated for each year within a given time period / scenario (e.g. 2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).\nFinally, the 30 individual annual averages for a given time period/scenario were themselves averaged, producing a multi-model ensemble mean that represents the annual average of the maximum or minimum daily temperature for a given time period / scenario."
   }
 ]
