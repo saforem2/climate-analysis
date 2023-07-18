@@ -52,11 +52,11 @@ The data is available as a `*.zip` file with everything you will need to get sta
 [^1]: The `--system-site-packages` flag tells python to include the libraries
 from our system-wide install in this `venv`
 
-[^2]: 
+[^2]:
       Installation options:
 
       - the `-e` flag tells python to perform an _editable_ install (i.e. install
-      package from its path, `.`, in this case)
+        package from its path, `.`, in this case)
       - the `.[dev]` option says to install the package located here (`.`),
-      including the development extensions specified in the
-      [`pyproject.toml`](https://github.com/saforem2/climate-analysis/blob/main/pyproject.toml)
+        including the development extensions specified in the
+        [`pyproject.toml`](https://github.com/saforem2/climate-analysis/blob/main/pyproject.toml) file
