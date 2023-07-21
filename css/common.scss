@@ -446,16 +446,30 @@ pre>code.sourceCode {
     // border: 1px solid red;
     display: block;
     // margin-left: 0.5em;
-    padding-left: 0.75rem;
+    // padding-left: 0.75rem;
+    background-color: none;
     // padding-right: 0.75rem;
-    margin-block-start: -0.5rem;
-    font-size: 1.0rem;
+    // margin-block-start: -0.5rem;
+    // -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+    // box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+    border-radius: 2px;
+    // height: 24em;
+    overflow: auto;
+    // font-size: 1.0rem;
+    // line-height: 1.0em;
     // border-left: 1px solid $code-block-bg-color;
     // border-radius:
     // border-radius: 0.25rem;
     // line-height: 0.95em;
     // border-left: 1px solid $dim-color;
 }
+// div.output_scroll {
+//     height: 24em;
+//     width: 100%;
+//     overflow: auto;
+//     border-radius: 2px;
+//     display: block;
+// }
 
 .sourceCode {
     // margin-top: 1rem;
