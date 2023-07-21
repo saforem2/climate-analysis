@@ -75,12 +75,10 @@ def download_counties_data(
 
 
 def load_counties(crs: str = DEFAULT_CRS):
-    return gpd.read_file(
-        DATA_DIR.joinpath(
-            'us-counties',
-            'georef-united-states-of-america-county-millesime.shp',
-        )
-    ).to_crs(crs)
+    counties_fpath = DATA_DIR.joinpath("us-counties.shp")
+    if not counties_fpath.is_file():
+        return download_counties_data(crs=crs, save=True)
+    return gpd.read_file(counties_fpath).to_crs(crs)
 
 
 def load_chicago_data(crs: str = DEFAULT_CRS) -> dict[str, gpd.GeoDataFrame]:
