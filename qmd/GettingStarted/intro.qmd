@@ -13,6 +13,10 @@ execute:
 
 ### Reading and Writing Files
 
+- Useful links:
+    - [Geopandas: An Introduction](https://autogis-site.readthedocs.io/en/latest/lessons/lesson-2/geopandas-an-introduction.html)
+    - [Hands-On: Aggregating the Data](https://climateestimate.net/content/example-step3.html)
+
 We use [`GeoPandas`](https://geopandas.org/en/stable/index.html), an open
 source project to make working with geospatial data in python easier.
 
@@ -27,9 +31,11 @@ GeoPandas further depends on [`fiona`](https://fiona.readthedocs.io/) and
 GeoPandas can read almost any vector-based spatial data format including ESRI
 shapefile, GeoJSON files and more using the command
 
-```python
+```{python}
 import geopandas as gpd
-gpd.read_file()
+import geodatasets
+gdf = gpd.read_file(geodatasets.get_path("geoda.chicago_commpop"))
+gdf.head(n=2)
 ```
 
 which returns a GeoDataFrame object.
@@ -93,7 +99,8 @@ console = Console(
 # Data Organization
 
 The [ClimRR Data](https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8) can
-be downloaded as a `*.zip` file, and contains:
+be downloaded as a `*.zip` file, and contains:  
+
 - **Shapefile** (as an additional `*.zip` _inside_ the original)
 - Individual `*.csv`'s for each of the climate variables
     - `{AnnualTemperatureMaximum,AnnualTemperatureMinimum,...,HeatingDegreeDays}.csv`

@@ -1,0 +1,205 @@
+---
+jupyter: climrr
+callout-appearance: simple
+editor:
+    render-on-save: true
+execute:
+    freeze: true
+---
+
+# Chicago Temperature Analysis
+
+```{python}
+#| code-fold: true
+#| code-summary: Imports
+%matplotlib inline
+import matplotlib_inline
+import matplotlib.pyplot as plt
+import geopandas as gpd
+import warnings
+
+import matplotlib.pyplot as plt
+
+# from enrich.console import Console, get_theme
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+from ClimRR import get_logger, DATA_DIR, set_plot_style
+set_plot_style()
+log = get_logger('ClimRR')
+from rich.console import Console as rConsole
+from enrich.style import STYLES
+from rich.theme import Theme
+
+theme = Theme(STYLES)
+log = get_logger('ClimRR')
+console = rConsole(theme=theme, log_path=False, markup=True)
+```
+
+```{python}
+from ClimRR import load_shapefile, load_csvs
+
+shape = load_shapefile()
+data = load_csvs(shape)
+```
+
+```{python}
+console.print("Data: \n" + f"\n".join(list(data.keys())))
+```
+
+```{python}
+# counties = gpd.read_file(
+#     'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-united-states-of-america-county/exports/shp?lang=en&timezone=America%2FChicago'
+# )
+from ClimRR import load_counties
+counties = load_counties(crs=shape.crs)
+```
+
+```{python}
+counties.head(n=5)
+```
+
+```{python}
+illinois = counties[counties['ste_name'] == "['Illinois']"]
+console.log(f"illinois.shape={illinois.shape}")
+illinois.head(n=5)
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(10, 7))
+ax = illinois.boundary.plot(ax=ax, color='#666666', linewidth=0.8)
+ax.set_axis_off()
+```
+
+```{python}
+illinois_hdd = data["HeatingDegreeDays"].clip(illinois)
+illinois_hdd.head(n=2)
+```
+
+```{python}
+_, ax = plt.subplots(figsize=(10, 7))
+ax = illinois_hdd.boundary.plot(color='#666666', linewidth=0.8, ax=ax, alpha=0.2)
+ax = illinois_hdd.plot(column='hist', ax=ax, legend=True)
+ax.set_axis_off()
+ax.set_title('Historical Heating Degree Days across Illinois')
+plt.tight_layout()
+```
+
+```{python}
+fig, ax = plt.subplots(ncols=3, figsize=(16, 7), sharey='row')
+ax0 = illinois_hdd.plot('hist', ax=ax[0], legend=True)
+ax1 = illinois_hdd.plot('rcp85_midc', ax=ax[1], legend=True)
+ax2 = illinois_hdd.plot('mid85_hist', ax=ax[2], legend=True)
+ax0.set_title("HDD: Historical")
+ax1.set_title("HDD: Mid-Century RCP8.5")
+ax2.set_title("HDD: (Mid-Century - Historical) RCP8.5")
+ax0.set_axis_off()
+ax1.set_axis_off()
+ax2.set_axis_off()
+plt.tight_layout()
+```
+
+```{python}
+_, ax = plt.subplots(figsize=(10, 7))
+ax = illinois_hdd.boundary.plot(color='#666666', linewidth=0.8, ax=ax, alpha=0.2)
+ax = illinois_hdd.plot(column='rcp85_midc', ax=ax, legend=True)
+ax.set_axis_off()
+ax.set_title('RCP8.5 Mid-Century Heating Degree Days across Illinois')
+plt.tight_layout()
+```
+
+```{python}
+_, ax = plt.subplots(figsize=(10, 7))
+ax = illinois_hdd.boundary.plot(color='#666666', linewidth=0.8, ax=ax, alpha=0.2)
+ax = illinois_hdd.plot(column='mid85_hist', ax=ax, legend=True)
+ax.set_axis_off()
+ax.set_title('RCP8.5 End-Century Heating Degree Days across Illinois')
+plt.tight_layout()
+```
+
+
+```{python}
+fig, ax = plt.subplots(figsize=(10, 7))
+wind_il = data['WindSpeed'].clip(
+    illinois,
+    # how='intersection'
+)
+# ax = wind_il.boundary.plot(ax=ax, color='#666666', linewidth=0.8)
+ax = wind_il.plot(column='hist', ax=ax, linewidth=0.8, legend=True)
+ax.set_axis_off()
+```
+
+```{python}
+_, ax = plt.subplots(figsize=(10, 7))
+ax = wind_il.boundary.plot(color='#666666', linewidth=0.8, ax=ax, alpha=0.2)
+ax = wind_il.plot(column='hist', ax=ax, legend=True)
+ax.set_axis_off()
+ax.set_title('Historical Wind Data across Illinois')
+plt.tight_layout()
+```
+
+```{python}
+# wind_il.explore(column='hist')
+wind_il.head(n=2)
+```
+
+```{python}
+_, ax = plt.subplots()
+ax = wind_il.plot(column='hist', ax=ax, legend=True)
+_ = ax.set_title('WindSpeed, historical')
+ax.set_axis_off()
+```
+
+```{python}
+fig, ax = plt.subplots()
+ax = wind_il.plot(column='rcp45_midc', ax=ax, legend=True)
+ax.set_axis_off()
+_ = ax.set_title('WindSpeed, Mid-Century [RCP45]')
+```
+
+```{python}
+fig, ax = plt.subplots()
+_ = ax.set_title('WindSpeed, End-Century [RCP45]')
+# _ = ax.legend(loc='best')
+ax = wind_il.plot(column='rcp45_endc', ax=ax, legend=True)
+ax.set_axis_off()
+```
+
+```{python}
+fig, ax = plt.subplots(ncols=3, figsize=(16, 7))
+ax0 = wind_il.plot('hist', ax=ax[0], legend=True)
+ax1 = wind_il.plot('rcp45_midc', ax=ax[1], legend=True)
+ax2 = wind_il.plot('rcp45_endc', ax=ax[2], legend=True)
+ax0.set_title("Wind Speed: Historical")
+ax1.set_title("Wind Speed: Mid-Century RCP4.5")
+ax2.set_title("Wind Speed: End-Century RCP4.5")
+ax0.set_axis_off()
+ax1.set_axis_off()
+ax2.set_axis_off()
+plt.tight_layout()
+```
+
+```{python}
+fig, ax = plt.subplots(ncols=3, figsize=(16, 7))
+ax0 = wind_il.plot('hist', ax=ax[0], legend=True)
+ax1 = wind_il.plot('rcp85_midc', ax=ax[1], legend=True)
+ax2 = wind_il.plot('rcp85_endc', ax=ax[2], legend=True)
+ax0.set_title("Wind Speed: Historical")
+ax1.set_title("Wind Speed: Mid-Century RCP8.5")
+ax2.set_title("Wind Speed: End-Century RCP8.5")
+ax0.set_axis_off()
+ax1.set_axis_off()
+ax2.set_axis_off()
+plt.tight_layout()
+```
+
+```{python}
+data['WindSpeed'].shape
+```
+
+```{python}
+selection = shape[0:5]
+
+for index, row in selection.iterrows():
+    # get the area of the polygon
+    poly_area = row['geometry'].area
+    console.print(f"Polygon area at {index} is {poly_area:.3f}")
+```
