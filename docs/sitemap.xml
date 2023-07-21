@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://saforem2.github.io/climate-analysis/index.html</loc>
-    <lastmod>2023-07-18T14:21:54.204Z</lastmod>
+    <lastmod>2023-07-21T15:21:47.855Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/GettingStarted/setup.html</loc>
-    <lastmod>2023-07-18T14:26:41.829Z</lastmod>
+    <lastmod>2023-07-21T13:10:38.191Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/GettingStarted/intro.html</loc>
-    <lastmod>2023-07-18T14:30:39.051Z</lastmod>
+    <lastmod>2023-07-21T05:18:04.819Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/ClimRR/analysis.html</loc>
-    <lastmod>2023-07-14T21:51:19.351Z</lastmod>
+    <lastmod>2023-07-21T02:30:19.332Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/GettingStarted/tree.html</loc>
@@ -22,18 +22,22 @@
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/GettingStarted/chicago.html</loc>
-    <lastmod>2023-07-14T21:37:36.559Z</lastmod>
+    <lastmod>2023-07-21T02:29:47.997Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/GettingStarted/example.html</loc>
-    <lastmod>2023-07-18T14:48:10.900Z</lastmod>
+    <lastmod>2023-07-20T03:25:54.114Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/ClimRR/ClimRR.html</loc>
-    <lastmod>2023-07-18T12:21:12.650Z</lastmod>
+    <lastmod>2023-07-21T02:29:26.702Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/ClimRR/definitions.html</loc>
-    <lastmod>2023-07-18T12:22:21.512Z</lastmod>
+    <lastmod>2023-07-21T02:29:40.683Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/ClimRR/chicago-temp.html</loc>
+    <lastmod>2023-07-21T02:30:06.457Z</lastmod>
   </url>
 </urlset>

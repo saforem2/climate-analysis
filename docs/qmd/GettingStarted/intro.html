@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
-<meta name="dcterms.date" content="2023-07-18">
+<meta name="dcterms.date" content="2023-07-21">
 
 <title>Intro to HPC Bootcamp – intro</title>
 <style>
@@ -161,7 +161,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/setup.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/intro.html">Working with GeoSpatial Data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/setup.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/intro.html">Intro: Working with GeoSpatial Data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -205,7 +205,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/GettingStarted/intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Working with GeoSpatial Data</span></a>
+ <span class="menu-text">Intro: Working with GeoSpatial Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -241,6 +241,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../../qmd/GettingStarted/chicago.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Example: ClimRR in Chicago</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/ClimRR/chicago-temp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Example: ClimRR Temperature Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -299,7 +305,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading"></div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 18, 2023</p>
+      <p class="date">July 21, 2023</p>
     </div>
   </div>
   
@@ -313,13 +319,72 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <section id="reading-and-writing-files" class="level3">
 <h3 class="anchored" data-anchor-id="reading-and-writing-files">Reading and Writing Files</h3>
+<ul>
+<li>Useful links:
+<ul>
+<li><a href="https://autogis-site.readthedocs.io/en/latest/lessons/lesson-2/geopandas-an-introduction.html">Geopandas: An Introduction</a></li>
+</ul></li>
+</ul>
 <p>We use <a href="https://geopandas.org/en/stable/index.html"><code>GeoPandas</code></a>, an open source project to make working with geospatial data in python easier.</p>
 <p>GeoPandas extends the datatypes used by <a href="http://pandas.pydata.org/">pandas</a> to allow spatial operations on geometric types.</p>
 <p>Geometric operations are performed by <a href="https://shapely.readthedocs.io/"><code>shapely</code></a>.</p>
 <p>GeoPandas further depends on <a href="https://fiona.readthedocs.io/"><code>fiona</code></a> and <a href="http://matplotlib.org/"><code>matplotlib</code></a> for plotting.</p>
 <p>GeoPandas can read almost any vector-based spatial data format including ESRI shapefile, GeoJSON files and more using the command</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gpd.read_file()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.read_file(geodatasets.get_path(<span class="st">"geoda.chicago_commpop"</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>gdf.head(n<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">community</th>
+<th data-quarto-table-cell-role="th">NID</th>
+<th data-quarto-table-cell-role="th">POP2010</th>
+<th data-quarto-table-cell-role="th">POP2000</th>
+<th data-quarto-table-cell-role="th">POPCH</th>
+<th data-quarto-table-cell-role="th">POPPERCH</th>
+<th data-quarto-table-cell-role="th">popplus</th>
+<th data-quarto-table-cell-role="th">popneg</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>DOUGLAS</td>
+<td>35</td>
+<td>18238</td>
+<td>26470</td>
+<td>-8232</td>
+<td>-31.099358</td>
+<td>0</td>
+<td>1</td>
+<td>MULTIPOLYGON (((-87.60914 41.84469, -87.60915 ...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>OAKLAND</td>
+<td>36</td>
+<td>5918</td>
+<td>6110</td>
+<td>-192</td>
+<td>-3.142390</td>
+<td>0</td>
+<td>1</td>
+<td>MULTIPOLYGON (((-87.59215 41.81693, -87.59231 ...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 <p>which returns a GeoDataFrame object.</p>
 <p>A <code>GeoDataFrame</code> is a tabular data structure that contains a <code>GeoSeries</code>.</p>
 <p>The most important property of a <code>GeoDataFrame</code> is that it always has one <code>GeoSeries</code> column that holds a special status.</p>
@@ -344,7 +409,7 @@ Warning
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Imports</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
@@ -380,7 +445,14 @@ Warning
 </section>
 <section id="data-organization" class="level1">
 <h1>Data Organization</h1>
-<p>The <a href="https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8">ClimRR Data</a> can be downloaded as a <code>*.zip</code> file, and contains: - <strong>Shapefile</strong> (as an additional <code>*.zip</code> <em>inside</em> the original) - Individual <code>*.csv</code>’s for each of the climate variables - <code>{AnnualTemperatureMaximum,AnnualTemperatureMinimum,...,HeatingDegreeDays}.csv</code></p>
+<p>The <a href="https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8">ClimRR Data</a> can be downloaded as a <code>*.zip</code> file, and contains:</p>
+<ul>
+<li><strong>Shapefile</strong> (as an additional <code>*.zip</code> <em>inside</em> the original)</li>
+<li>Individual <code>*.csv</code>’s for each of the climate variables
+<ul>
+<li><code>{AnnualTemperatureMaximum,AnnualTemperatureMinimum,...,HeatingDegreeDays}.csv</code></li>
+</ul></li>
+</ul>
 <div class="callout callout-style-simple callout-tip callout-titled" title="`*.zip` contents:">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -431,7 +503,7 @@ Warning
 <section id="load-shapefile-and-inspect" class="level2">
 <h2 class="anchored" data-anchor-id="load-shapefile-and-inspect">Load Shapefile and inspect</h2>
 <p>A <code>shapefile</code> is provided in the <a href="https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8">ClimRR Data Download (ANL)</a> and can be loaded using <code>geopandas.read_file(...)</code> which will return a <code>geopandas.GeoDataFrame</code>:</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>shpfile <span class="op">=</span> DATA_DIR.joinpath(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"GridCells2Shapefile/GridCellsShapefile/GridCells.shp"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -439,9 +511,9 @@ Warning
 </div>
 <p>Each entry in this table defines a single <strong>grid cell</strong> (12km x 12 km) which collectively tile the United States.</p>
 <p>We can get a better understanding of whats going on by looking at the first few entries:</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shape.head(n<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -487,10 +559,10 @@ Warning
 <h2 class="anchored" data-anchor-id="dealing-with-geometry">Dealing with Geometry</h2>
 <p>Our shapefile contains a grid of <em>cells</em> (12km x 12km) which tile the continental US.</p>
 <p>We can inspect a single cell:</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cell <span class="op">=</span> shape[shape[<span class="st">"Crossmodel"</span>] <span class="op">==</span> <span class="st">'R146C497'</span>]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cell.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -520,18 +592,18 @@ Warning
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> cell.boundary.plot()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_title(<span class="st">'Grid from shapefile: 12 x 12 km'</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="intro_files/figure-html/cell-6-output-1.svg" class="img-fluid"></p>
+<p><img src="intro_files/figure-html/cell-7-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cell.explore()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="7">
 
 <div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
 <html>
@@ -560,7 +632,7 @@ Warning
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_0297416ffbd9802ee479170af94a309c {
+                #map_416e1a16b1b8c4cebb70941588ce1433 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -590,14 +662,14 @@ Warning
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_0297416ffbd9802ee479170af94a309c&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_416e1a16b1b8c4cebb70941588ce1433&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_0297416ffbd9802ee479170af94a309c = L.map(
-                &quot;map_0297416ffbd9802ee479170af94a309c&quot;,
+            var map_416e1a16b1b8c4cebb70941588ce1433 = L.map(
+                &quot;map_416e1a16b1b8c4cebb70941588ce1433&quot;,
                 {
                     center: [35.41360412198978, -78.53675982344929],
                     crs: L.CRS.EPSG3857,
@@ -606,77 +678,77 @@ Warning
                     preferCanvas: false,
                 }
             );
-            L.control.scale().addTo(map_0297416ffbd9802ee479170af94a309c);
+            L.control.scale().addTo(map_416e1a16b1b8c4cebb70941588ce1433);
 
             
 
         
     
-            var tile_layer_5a84537aba366ed4ef67f03e84b7ca57 = L.tileLayer(
+            var tile_layer_501a94d77a5b40710e06cd23705dd2fc = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_0297416ffbd9802ee479170af94a309c);
+            ).addTo(map_416e1a16b1b8c4cebb70941588ce1433);
         
     
-            map_0297416ffbd9802ee479170af94a309c.fitBounds(
+            map_416e1a16b1b8c4cebb70941588ce1433.fitBounds(
                 [[35.34284968968893, -78.62357613774547], [35.484358554290615, -78.4499435091531]],
                 {}
             );
         
     
-        function geo_json_d910481c7b87245af21599c1f921dc36_styler(feature) {
+        function geo_json_f52340fec46c7c78726bbbbf18d0ba2a_styler(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
             }
         }
-        function geo_json_d910481c7b87245af21599c1f921dc36_highlighter(feature) {
+        function geo_json_f52340fec46c7c78726bbbbf18d0ba2a_highlighter(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;fillOpacity&quot;: 0.75};
             }
         }
-        function geo_json_d910481c7b87245af21599c1f921dc36_pointToLayer(feature, latlng) {
+        function geo_json_f52340fec46c7c78726bbbbf18d0ba2a_pointToLayer(feature, latlng) {
             var opts = {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 2, &quot;stroke&quot;: true, &quot;weight&quot;: 3};
             
-            let style = geo_json_d910481c7b87245af21599c1f921dc36_styler(feature)
+            let style = geo_json_f52340fec46c7c78726bbbbf18d0ba2a_styler(feature)
             Object.assign(opts, style)
             
             return new L.CircleMarker(latlng, opts)
         }
 
-        function geo_json_d910481c7b87245af21599c1f921dc36_onEachFeature(feature, layer) {
+        function geo_json_f52340fec46c7c78726bbbbf18d0ba2a_onEachFeature(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if(typeof e.target.setStyle === &quot;function&quot;){
-                        geo_json_d910481c7b87245af21599c1f921dc36.resetStyle(e.target);
+                        geo_json_f52340fec46c7c78726bbbbf18d0ba2a.resetStyle(e.target);
                     }
                 },
                 mouseover: function(e) {
                     if(typeof e.target.setStyle === &quot;function&quot;){
-                        const highlightStyle = geo_json_d910481c7b87245af21599c1f921dc36_highlighter(e.target.feature)
+                        const highlightStyle = geo_json_f52340fec46c7c78726bbbbf18d0ba2a_highlighter(e.target.feature)
                         e.target.setStyle(highlightStyle);
                     }
                 },
             });
         };
-        var geo_json_d910481c7b87245af21599c1f921dc36 = L.geoJson(null, {
-                onEachFeature: geo_json_d910481c7b87245af21599c1f921dc36_onEachFeature,
+        var geo_json_f52340fec46c7c78726bbbbf18d0ba2a = L.geoJson(null, {
+                onEachFeature: geo_json_f52340fec46c7c78726bbbbf18d0ba2a_onEachFeature,
             
-                style: geo_json_d910481c7b87245af21599c1f921dc36_styler,
-                pointToLayer: geo_json_d910481c7b87245af21599c1f921dc36_pointToLayer
+                style: geo_json_f52340fec46c7c78726bbbbf18d0ba2a_styler,
+                pointToLayer: geo_json_f52340fec46c7c78726bbbbf18d0ba2a_pointToLayer
         });
 
-        function geo_json_d910481c7b87245af21599c1f921dc36_add (data) {
-            geo_json_d910481c7b87245af21599c1f921dc36
+        function geo_json_f52340fec46c7c78726bbbbf18d0ba2a_add (data) {
+            geo_json_f52340fec46c7c78726bbbbf18d0ba2a
                 .addData(data)
-                .addTo(map_0297416ffbd9802ee479170af94a309c);
+                .addTo(map_416e1a16b1b8c4cebb70941588ce1433);
         }
-            geo_json_d910481c7b87245af21599c1f921dc36_add({&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;features&quot;: [{&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[-78.4499435091531, 35.44601079149053], [-78.4970385718653, 35.34284968968893], [-78.62357613774547, 35.38112534319517], [-78.57665372045108, 35.484358554290615], [-78.4499435091531, 35.44601079149053]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;4&quot;, &quot;properties&quot;: {&quot;Crossmodel&quot;: &quot;R146C497&quot;, &quot;OBJECTID&quot;: 5, &quot;Shape_Area&quot;: 226073092.218, &quot;Shape_Leng&quot;: 60142.9194675}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+            geo_json_f52340fec46c7c78726bbbbf18d0ba2a_add({&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;features&quot;: [{&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[-78.4499435091531, 35.44601079149053], [-78.4970385718653, 35.34284968968893], [-78.62357613774547, 35.38112534319517], [-78.57665372045108, 35.484358554290615], [-78.4499435091531, 35.44601079149053]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;4&quot;, &quot;properties&quot;: {&quot;Crossmodel&quot;: &quot;R146C497&quot;, &quot;OBJECTID&quot;: 5, &quot;Shape_Area&quot;: 226073092.218, &quot;Shape_Leng&quot;: 60142.9194675}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
 
         
     
-    geo_json_d910481c7b87245af21599c1f921dc36.bindTooltip(
+    geo_json_f52340fec46c7c78726bbbbf18d0ba2a.bindTooltip(
     function(layer){
     let div = L.DomUtil.create('div');
     
@@ -708,7 +780,7 @@ Warning
 <h2 class="anchored" data-anchor-id="load-data-from-.csv-files">Load data from <code>*.csv</code> files</h2>
 <p>Each entry (row) in the <code>.csv</code> has a <code>Crossmodel</code> column (e.g.&nbsp;<code>R146C497</code>) which corresponds to a row in our <code>shapefile</code> that uniquely determines its location on the Earth.</p>
 <p>We can associate with each of the <code>.csv</code>s the <code>geometry</code> used in our <code>shapefile</code> to position our data on the globe.</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>csvs <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> DATA_DIR.joinpath(<span class="st">'csv'</span>).rglob(<span class="st">'*.csv'</span>)]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {}</span>
@@ -721,7 +793,7 @@ Warning
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    data[key] <span class="op">=</span> gdf</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    console.log(<span class="ss">f"data['</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">'].shape=</span><span class="sc">{</span>data[key]<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[16:13:43] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'FireWeatherIndex_Wildfire'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">35</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[00:17:54] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'FireWeatherIndex_Wildfire'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">35</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 </pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -733,11 +805,11 @@ Warning
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'SeasonalTemperatureMaximum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">27</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[00:17:55] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'SeasonalTemperatureMaximum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">27</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[16:13:44] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'ConsecutiveDayswithNoPrecipitation'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">19</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'ConsecutiveDayswithNoPrecipitation'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">19</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -753,7 +825,7 @@ Warning
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'Precipitation_inches_AnnualTotal'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[00:17:56] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'Precipitation_inches_AnnualTotal'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 </pre>
 </div>
 </div>
@@ -761,9 +833,9 @@ Warning
 <section id="look-at-the-windspeed-data" class="level2">
 <h2 class="anchored" data-anchor-id="look-at-the-windspeed-data">Look at the WindSpeed data</h2>
 <p>Lets inspect one of the entries in our <code>data[(...)]</code> dictionary, <code>WindSpeed</code>, for example:</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"WindSpeed"</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -906,15 +978,15 @@ Warning
 <p>We see that each entry has a <code>geometry</code> column, as well as columns for <code>{hist,rcp45_midc, rcp45_endc, rcp85_midc, rcp85_endc, ...}</code> which contains the numerical value of the <code>WindSpeed</code> in each cell under different scenarios at different points in time.</p>
 <!-- We can see this explicitly by plotting this value for a single cell: -->
 <p>Let’s look at the <code>WindSpeed</code> for our individual cell:</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cell_wind <span class="op">=</span> data[<span class="st">"WindSpeed"</span>][data[<span class="st">"WindSpeed"</span>][<span class="st">"Crossmodel"</span>] <span class="op">==</span> <span class="st">'R146C497'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> cell_wind.plot(column<span class="op">=</span><span class="st">'hist'</span>, legend<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_title(<span class="st">"WindSpeed [Hist] for CELL: R146C497"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="intro_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
+<p><img src="intro_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -923,7 +995,7 @@ Warning
 <p>Lets inspect the first few entries from our Shapefile:</p>
 <div id="fig-increasing-cells" class="quarto-figure quarto-figure-center anchored" style="text-align:left!important;">
 <figure class="figure">
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="12">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
@@ -945,7 +1017,7 @@ Warning
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="intro_files/figure-html/cell-12-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="intro_files/figure-html/cell-13-output-1.svg" class="img-fluid figure-img"></p>
 </div>
 </div>
 <figcaption class="figure-caption">Figure&nbsp;1: As we include more cells, we see the outline of the US beginning to take shape.</figcaption>
@@ -965,7 +1037,7 @@ Warning
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{foreman2023,
   author = {Foreman, Sam},
-  date = {2023-07-18},
+  date = {2023-07-21},
   url = {https://saforem2.github.io/climate-analysis},
   langid = {en}
 }
