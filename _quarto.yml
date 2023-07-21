@@ -38,7 +38,8 @@ project:
     - index.qmd
     - qmd/GettingStarted/*.qmd
     - qmd/ClimRR/*.qmd
-    - qmd/ClimRR/definitions.qmd
+    - qmd/ClimRR/chicago-temp.qmd
+    # - qmd/ClimRR/definitions.qmd
     # - qmd/setup.qmd
     # - qmd/intro.qmd
     # - qmd/ClimRR.qmd
@@ -90,7 +91,7 @@ website:
           - href: qmd/GettingStarted/setup.qmd
             text: Setup and Installation
           - href: qmd/GettingStarted/intro.qmd
-            text: Working with GeoSpatial Data
+            text: "Intro: Working with GeoSpatial Data"
           - href: qmd/GettingStarted/example.qmd
             text: "Example: Groceries in Chicago"
       - section: "ClimRR"
@@ -101,6 +102,8 @@ website:
             text: Variable Definitions
           - href: qmd/GettingStarted/chicago.qmd
             text: "Example: ClimRR in Chicago"
+          - href: qmd/ClimRR/chicago-temp.qmd
+            text: "Example: ClimRR Temperature Analysis"
           - href: qmd/ClimRR/analysis.qmd
             text: Data Analysis with ClimRR
       # - section: "ClimRR"
