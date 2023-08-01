@@ -22,10 +22,12 @@ from ClimRR import (
     set_plot_style,
     get_logger,
     DEFAULT_CRS,
+)
+from ClimRR.data import (
     load_shapefile,
     load_csvs,
     load_counties,
-    load_chicago_data,
+    load_chicago_data
 )
 
 set_plot_style()
@@ -101,35 +103,24 @@ cali_temp_max = get_variable_for_state(
 ```{python}
 fig, ax = plt.subplots(figsize=(16, 7), nrows=2, ncols=3, sharey='row', sharex='col')
 ax = ax.flatten()
-ax0 = cali_temp_max.plot(ax=ax[0], column='hist_winter')
+ax0 = cali_temp_max.plot(ax=ax[0], column='hist_winter', legend=True)
 ax0.set_title('Winter [Historical]')
 ax0.set_axis_off()
-ax1 = cali_temp_max.plot(ax=ax[1], column='rcp85_midc_winter')
+ax1 = cali_temp_max.plot(ax=ax[1], column='rcp85_midc_winter', legend=True)
 ax1.set_axis_off()
 ax1.set_title('Winter [RCP85: Mid-Century]')
-ax2 = cali_temp_max.plot(ax=ax[2], column='rcp85_endc_winter')
+ax2 = cali_temp_max.plot(ax=ax[2], column='rcp85_endc_winter', legend=True)
 ax2.set_axis_off()
 ax2.set_title('Winter [RCP85: End-Century]')
 
-ax3 = cali_temp_max.plot(ax=ax[3], column='hist_summer')
+ax3 = cali_temp_max.plot(ax=ax[3], column='hist_summer', legend=True)
 ax3.set_title('Summer [Historical]')
 ax3.set_axis_off()
-ax4 = cali_temp_max.plot(ax=ax[4], column='rcp85_mid_summer')
+ax4 = cali_temp_max.plot(ax=ax[4], column='rcp85_mid_summer', legend=True)
 ax4.set_axis_off()
 ax4.set_title('Summer [RCP85: Mid-Century]')
-ax5 = cali_temp_max.plot(ax=ax[5], column='rcp85_end_summer')
+ax5 = cali_temp_max.plot(ax=ax[5], column='rcp85_end_summer', legend=True)
 ax5.set_axis_off()
 ax5.set_title('Summer [RCP85: End-Century]')
-plt.tight_layout()
-
-ax6 = cali_temp_max.plot(ax=ax[6], column='mid85_hist_summer')
-ax6.set_title('Summer [Historical]')
-ax6.set_axis_off()
-ax7 = cali_temp_max.plot(ax=ax[7], column='rcp85_mid_summer')
-ax7.set_axis_off()
-ax7.set_title('Summer [RCP85: Mid-Century]')
-ax8 = cali_temp_max.plot(ax=ax[8], column='rcp85_end_summer')
-ax8.set_axis_off()
-ax8.set_title('Summer [RCP85: End-Century]')
 plt.tight_layout()
 ```

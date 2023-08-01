@@ -11,11 +11,44 @@ execute:
 
 ## Getting Started
 
-### Reading and Writing Files
+::: {.callout-note title="Learning Goals" collapse="false"}
 
-- Useful links:
+The goal of this project is to teach students to[^goals]:
+
+- Use Unix commands to work with files and navigate directories
+
+- Use JupyterHub + basic familiarity with how to use Jupyter notebooks on HPC systems
+
+- Identify some of the common file types and data formats for geospatial data
+    - (+ common python libraries for geospatial data analysis)
+
+- Perform exploratory data analysis on geospatial data
+    - (+ understand different operations for manipulating and interacting with this data)
+    - tabular vs. gridded data
+
+- Perform simple visualizations in Python to display different types of data (e.g. maps, line charts, interactive visualizations, etc)
+    - using figures to illustrate a point or idea
+    - know what types of plots to use for which situations / data types
+
+- Understand control flow / basic structure of a Python script
+    - using Python in Jupyter[^surprise]
+    - `import`-ing libraries, etc
+
+:::
+
+[^surprise]: Getting Python setup correctly can be **surprisingly** difficult
+
+[^goals]: Building on ideas from [Earth and Environmental Science](https://earth-env-data-science.github.io/intro.html)
+
+- Useful links + References:
     - [Geopandas: An Introduction](https://autogis-site.readthedocs.io/en/latest/lessons/lesson-2/geopandas-an-introduction.html)
     - [Hands-On: Aggregating the Data](https://climateestimate.net/content/example-step3.html)
+    - [An Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/intro.html)
+        - [Final Projects](https://earth-env-data-science.github.io/projects.html) (good examples)
+    - [Using Weather Data and Climate Model Output in Economic Analyses of Climate Change](https://www.journals.uchicago.edu/doi/10.1093/reep/ret016)
+    - [On the use and misuse of climate change projections in international development](https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wcc.579)
+
+### Reading and Writing Files
 
 We use [`GeoPandas`](https://geopandas.org/en/stable/index.html), an open
 source project to make working with geospatial data in python easier.
@@ -104,13 +137,81 @@ be downloaded as a `*.zip` file, and contains:
 
 - **Shapefile** (as an additional `*.zip` _inside_ the original)
 - Individual `*.csv`'s for each of the climate variables
-    - `{AnnualTemperatureMaximum,AnnualTemperatureMinimum,...,HeatingDegreeDays}.csv`
+    - `{AnnualTemperatureMaximum,...,HeatingDegreeDays}.csv`
 
 ::: {.callout-tip title="`*.zip` contents:" collapse="true"}
 
 {{< include tree.qmd >}}
 
 :::
+
+## Types of Data
+
+::: {#fig-data-types}
+
+![](../../assets/vector-data.png)
+
+(Image credit: National Ecological Observatory Network (NEON))
+:::
+
+One of the most common file formats for vector data is the [ESRI
+shapefile](https://en.wikipedia.org/wiki/Shapefile), which is what we will be
+working with in be working with in this project.
+
+### Metadata
+
+Metadata is "data about the data"[^metadata] and is (by design) meant to give
+additional information or provide context about a dataset.
+
+Examples might include:
+
+- When was this data created?
+    - By who? For what? Where at? When? **Why**??
+- How is this data licensed?
+- Is there a reference for this data? (DOI ? URL ? etc.)
+- What variables or fields are contained in this data?
+    - What do they represent? Are there units?
+- If the data is geospatial, what geographical or temporal area is included?
+- Additional (often contextual) information about the data
+    - e.g. "this data was created to inform a population about upcoming weather events" or similar
+
+
+Metadata is often expected to be of a certain form, or to follow specific conventions / guidelines.
+
+This is important to keep in mind and will allow others to understand your data
+without needing an explanation (e.g. "what does this abbreviation mean?", "how
+is this variable defined?", etc.)
+
+Some common metadata conventions for GIS data include:
+
+- [Climate and Forecast (CF) Conventions](https://cfconventions.org/)
+- [Attribute Convention for Data Discovery](https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3)
+
+[Schema.org](https://schema.org) is another useful reference and provides a
+general framework for dealing with metadata.
+
+## FAIR Data
+
+[FAIR](https://www.force11.org/group/fairgroup/fairprinciples) stands for
+"Findable, Accessible, Interoperable, Reusable", and provides a set
+of guidelines for data sharing.
+
+In the age of "big data", its important that we use (and promote!) tools that
+facilitate the effective sharing of data.
+
+Ideally, our data would be completely self-contained and provide, via
+metadata, all of the information required to understand and work with it.
+
+<!-- This is important to keep in mind as it allows others to understand and -->
+<!-- interpret your data in a well-defined manner. -->
+<!---->
+<!-- There are oftentimes well-established conventions and formats that metadata is -->
+<!-- expected to adhere to, so it is important to make -->
+
+
+
+[^metadata]: [Metadata](https://earth-env-data-science.github.io/lectures/data.html#metadata)
+
 
 ## Load Shapefile and inspect
 

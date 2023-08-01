@@ -39,6 +39,7 @@ project:
     - qmd/GettingStarted/*.qmd
     - qmd/ClimRR/*.qmd
     - qmd/ClimRR/chicago-temp.qmd
+    - qmd/extras/*.qmd
     # - qmd/ClimRR/definitions.qmd
     # - qmd/setup.qmd
     # - qmd/intro.qmd
@@ -86,8 +87,12 @@ website:
     contents:
       - href: index.qmd
         text: Home
+      - href: qmd/overview.qmd
+        text: Project Overview
       - section: "Getting Started"
         contents:
+          - href: qmd/GettingStarted/python.qmd
+            text: Working with Python
           - href: qmd/GettingStarted/setup.qmd
             text: Setup and Installation
           - href: qmd/GettingStarted/intro.qmd
@@ -106,6 +111,14 @@ website:
             text: "Example: ClimRR Temperature Analysis"
           - href: qmd/ClimRR/analysis.qmd
             text: Data Analysis with ClimRR
+          - href: ./qmd/extras/illinois.qmd
+            text: Illinois
+      - section: "Extras"
+        contents:
+          - href: qmd/extras/illinois.qmd
+            text: Illinois
+
+
       # - section: "ClimRR"
       #   contents:
       #     - href: qmd/ClimRR.qmd

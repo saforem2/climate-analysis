@@ -161,7 +161,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/setup.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/intro.html">Intro: Working with GeoSpatial Data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/python.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/intro.html">Intro: Working with GeoSpatial Data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -196,6 +196,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/GettingStarted/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Python</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/GettingStarted/setup.html" class="sidebar-item-text sidebar-link">
@@ -274,6 +280,11 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#data-organization" id="toc-data-organization" class="nav-link" data-scroll-target="#data-organization">Data Organization</a>
   <ul class="collapse">
+  <li><a href="#types-of-data" id="toc-types-of-data" class="nav-link" data-scroll-target="#types-of-data">Types of Data</a>
+  <ul class="collapse">
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  </ul></li>
+  <li><a href="#fair-data" id="toc-fair-data" class="nav-link" data-scroll-target="#fair-data">FAIR Data</a></li>
   <li><a href="#load-shapefile-and-inspect" id="toc-load-shapefile-and-inspect" class="nav-link" data-scroll-target="#load-shapefile-and-inspect">Load Shapefile and inspect</a></li>
   <li><a href="#dealing-with-geometry" id="toc-dealing-with-geometry" class="nav-link" data-scroll-target="#dealing-with-geometry">Dealing with Geometry</a></li>
   <li><a href="#load-data-from-.csv-files" id="toc-load-data-from-.csv-files" class="nav-link" data-scroll-target="#load-data-from-.csv-files">Load data from <code>*.csv</code> files</a></li>
@@ -317,15 +328,60 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<section id="reading-and-writing-files" class="level3">
-<h3 class="anchored" data-anchor-id="reading-and-writing-files">Reading and Writing Files</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="Learning Goals">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The goal of this project is to teach students to<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
 <ul>
-<li>Useful links:
+<li><p>Use Unix commands to work with files and navigate directories</p></li>
+<li><p>Use JupyterHub + basic familiarity with how to use Jupyter notebooks on HPC systems</p></li>
+<li><p>Identify some of the common file types and data formats for geospatial data</p>
+<ul>
+<li>(+ common python libraries for geospatial data analysis)</li>
+</ul></li>
+<li><p>Perform exploratory data analysis on geospatial data</p>
+<ul>
+<li>(+ understand different operations for manipulating and interacting with this data)</li>
+<li>tabular vs.&nbsp;gridded data</li>
+</ul></li>
+<li><p>Perform simple visualizations in Python to display different types of data (e.g.&nbsp;maps, line charts, interactive visualizations, etc)</p>
+<ul>
+<li>using figures to illustrate a point or idea</li>
+<li>know what types of plots to use for which situations / data types</li>
+</ul></li>
+<li><p>Understand control flow / basic structure of a Python script</p>
+<ul>
+<li>using Python in Jupyter<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li><code>import</code>-ing libraries, etc</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li>Useful links + References:
 <ul>
 <li><a href="https://autogis-site.readthedocs.io/en/latest/lessons/lesson-2/geopandas-an-introduction.html">Geopandas: An Introduction</a></li>
 <li><a href="https://climateestimate.net/content/example-step3.html">Hands-On: Aggregating the Data</a></li>
+<li><a href="https://earth-env-data-science.github.io/intro.html">An Introduction to Earth and Environmental Data Science</a>
+<ul>
+<li><a href="https://earth-env-data-science.github.io/projects.html">Final Projects</a> (good examples)</li>
+</ul></li>
+<li><a href="https://www.journals.uchicago.edu/doi/10.1093/reep/ret016">Using Weather Data and Climate Model Output in Economic Analyses of Climate Change</a></li>
+<li><a href="https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wcc.579">On the use and misuse of climate change projections in international development</a></li>
 </ul></li>
 </ul>
+<section id="reading-and-writing-files" class="level3">
+<h3 class="anchored" data-anchor-id="reading-and-writing-files">Reading and Writing Files</h3>
 <p>We use <a href="https://geopandas.org/en/stable/index.html"><code>GeoPandas</code></a>, an open source project to make working with geospatial data in python easier.</p>
 <p>GeoPandas extends the datatypes used by <a href="http://pandas.pydata.org/">pandas</a> to allow spatial operations on geometric types.</p>
 <p>Geometric operations are performed by <a href="https://shapely.readthedocs.io/"><code>shapely</code></a>.</p>
@@ -336,7 +392,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.read_file(geodatasets.get_path(<span class="st">"geoda.chicago_commpop"</span>))</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>gdf.head(n<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <div>
 
 
@@ -389,7 +445,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <p>which returns a GeoDataFrame object.</p>
 <p>A <code>GeoDataFrame</code> is a tabular data structure that contains a <code>GeoSeries</code>.</p>
 <p>The most important property of a <code>GeoDataFrame</code> is that it always has one <code>GeoSeries</code> column that holds a special status.</p>
-<p>This <code>GeoSeries</code> is referred to as the <code>GeoDataFrame</code>’s “geometry”. When a spatial method is applied to a <code>GeoDataFrame</code> (or a spatial attribute like area is called), this commands will always act on the “geometry” column<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>This <code>GeoSeries</code> is referred to as the <code>GeoDataFrame</code>’s “geometry”. When a spatial method is applied to a <code>GeoDataFrame</code> (or a spatial attribute like area is called), this commands will always act on the “geometry” column<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 </section>
 <section id="imports-setup" class="level3">
 <h3 class="anchored" data-anchor-id="imports-setup">Imports / setup</h3>
@@ -443,11 +499,11 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <li><strong>Shapefile</strong> (as an additional <code>*.zip</code> <em>inside</em> the original)</li>
 <li>Individual <code>*.csv</code>’s for each of the climate variables
 <ul>
-<li><code>{AnnualTemperatureMaximum,AnnualTemperatureMinimum,...,HeatingDegreeDays}.csv</code></li>
+<li><code>{AnnualTemperatureMaximum,...,HeatingDegreeDays}.csv</code></li>
 </ul></li>
 </ul>
 <div class="callout callout-style-simple callout-tip callout-titled" title="`*.zip` contents:">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -456,7 +512,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">📂</span> ClimRR Data Download/</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">┣━━</span> 📂 GridCells2Shapefile/</span>
@@ -493,6 +549,57 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
+<section id="types-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-data">Types of Data</h2>
+<div id="fig-data-types" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../../assets/vector-data.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: (Image credit: National Ecological Observatory Network (NEON))</figcaption>
+</figure>
+</div>
+<p>One of the most common file formats for vector data is the <a href="https://en.wikipedia.org/wiki/Shapefile">ESRI shapefile</a>, which is what we will be working with in be working with in this project.</p>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<p>Metadata is “data about the data”<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> and is (by design) meant to give additional information or provide context about a dataset.</p>
+<p>Examples might include:</p>
+<ul>
+<li>When was this data created?
+<ul>
+<li>By who? For what? Where at? When? <strong>Why</strong>??</li>
+</ul></li>
+<li>How is this data licensed?</li>
+<li>Is there a reference for this data? (DOI ? URL ? etc.)</li>
+<li>What variables or fields are contained in this data?
+<ul>
+<li>What do they represent? Are there units?</li>
+</ul></li>
+<li>If the data is geospatial, what geographical or temporal area is included?</li>
+<li>Additional (often contextual) information about the data
+<ul>
+<li>e.g.&nbsp;“this data was created to inform a population about upcoming weather events” or similar</li>
+</ul></li>
+</ul>
+<p>Metadata is often expected to be of a certain form, or to follow specific conventions / guidelines.</p>
+<p>This is important to keep in mind and will allow others to understand your data without needing an explanation (e.g.&nbsp;“what does this abbreviation mean?”, “how is this variable defined?”, etc.)</p>
+<p>Some common metadata conventions for GIS data include:</p>
+<ul>
+<li><a href="https://cfconventions.org/">Climate and Forecast (CF) Conventions</a></li>
+<li><a href="https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3">Attribute Convention for Data Discovery</a></li>
+</ul>
+<p><a href="https://schema.org">Schema.org</a> is another useful reference and provides a general framework for dealing with metadata.</p>
+</section>
+</section>
+<section id="fair-data" class="level2">
+<h2 class="anchored" data-anchor-id="fair-data">FAIR Data</h2>
+<p><a href="https://www.force11.org/group/fairgroup/fairprinciples">FAIR</a> stands for “Findable, Accessible, Interoperable, Reusable”, and provides a set of guidelines for data sharing.</p>
+<p>In the age of “big data”, its important that we use (and promote!) tools that facilitate the effective sharing of data.</p>
+<p>Ideally, our data would be completely self-contained and provide, via metadata, all of the information required to understand and work with it.</p>
+<!-- This is important to keep in mind as it allows others to understand and -->
+<!-- interpret your data in a well-defined manner. -->
+<!---->
+<!-- There are oftentimes well-established conventions and formats that metadata is -->
+<!-- expected to adhere to, so it is important to make -->
+</section>
 <section id="load-shapefile-and-inspect" class="level2">
 <h2 class="anchored" data-anchor-id="load-shapefile-and-inspect">Load Shapefile and inspect</h2>
 <p>A <code>shapefile</code> is provided in the <a href="https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8">ClimRR Data Download (ANL)</a> and can be loaded using <code>geopandas.read_file(...)</code> which will return a <code>geopandas.GeoDataFrame</code>:</p>
@@ -506,7 +613,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <p>We can get a better understanding of whats going on by looking at the first few entries:</p>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shape.head(n<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="40">
 <div>
 
 
@@ -545,7 +652,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </div>
 </div>
 <p>We see that each row has the following columns: <code>{OBJECTID, Crossmodel, Shape_Leng, Shape_Area, geometry}</code>.</p>
-<p>In particular, the <code>Crossmodel</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> column is a text ID that uniquely identifies an individual cell.</p>
+<p>In particular, the <code>Crossmodel</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> column is a text ID that uniquely identifies an individual cell.</p>
 <p>To be explicit, let’s look at the <code>WindSpeed.csv</code> file.</p>
 </section>
 <section id="dealing-with-geometry" class="level2">
@@ -555,7 +662,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cell <span class="op">=</span> shape[shape[<span class="st">"Crossmodel"</span>] <span class="op">==</span> <span class="st">'R146C497'</span>]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cell.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
 
@@ -596,7 +703,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </div>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cell.explore()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="43">
 
 <div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
 <html>
@@ -625,7 +732,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_d897fb73f796a66f8dd7b4cf5884b648 {
+                #map_a74142b0c73b627f411e615816428a59 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -655,14 +762,14 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_d897fb73f796a66f8dd7b4cf5884b648&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_a74142b0c73b627f411e615816428a59&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_d897fb73f796a66f8dd7b4cf5884b648 = L.map(
-                &quot;map_d897fb73f796a66f8dd7b4cf5884b648&quot;,
+            var map_a74142b0c73b627f411e615816428a59 = L.map(
+                &quot;map_a74142b0c73b627f411e615816428a59&quot;,
                 {
                     center: [35.41360412198978, -78.53675982344929],
                     crs: L.CRS.EPSG3857,
@@ -671,77 +778,77 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
                     preferCanvas: false,
                 }
             );
-            L.control.scale().addTo(map_d897fb73f796a66f8dd7b4cf5884b648);
+            L.control.scale().addTo(map_a74142b0c73b627f411e615816428a59);
 
             
 
         
     
-            var tile_layer_9b917b703d36db32e7baefd3e36cc058 = L.tileLayer(
+            var tile_layer_025276ca4166ae83a73062f5a007498f = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_d897fb73f796a66f8dd7b4cf5884b648);
+            ).addTo(map_a74142b0c73b627f411e615816428a59);
         
     
-            map_d897fb73f796a66f8dd7b4cf5884b648.fitBounds(
+            map_a74142b0c73b627f411e615816428a59.fitBounds(
                 [[35.34284968968893, -78.62357613774547], [35.484358554290615, -78.4499435091531]],
                 {}
             );
         
     
-        function geo_json_5deb3f20d2630201e94352420b71f6a3_styler(feature) {
+        function geo_json_cf92fb57f50a301a4c864d34b738d4ae_styler(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
             }
         }
-        function geo_json_5deb3f20d2630201e94352420b71f6a3_highlighter(feature) {
+        function geo_json_cf92fb57f50a301a4c864d34b738d4ae_highlighter(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;fillOpacity&quot;: 0.75};
             }
         }
-        function geo_json_5deb3f20d2630201e94352420b71f6a3_pointToLayer(feature, latlng) {
+        function geo_json_cf92fb57f50a301a4c864d34b738d4ae_pointToLayer(feature, latlng) {
             var opts = {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 2, &quot;stroke&quot;: true, &quot;weight&quot;: 3};
             
-            let style = geo_json_5deb3f20d2630201e94352420b71f6a3_styler(feature)
+            let style = geo_json_cf92fb57f50a301a4c864d34b738d4ae_styler(feature)
             Object.assign(opts, style)
             
             return new L.CircleMarker(latlng, opts)
         }
 
-        function geo_json_5deb3f20d2630201e94352420b71f6a3_onEachFeature(feature, layer) {
+        function geo_json_cf92fb57f50a301a4c864d34b738d4ae_onEachFeature(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if(typeof e.target.setStyle === &quot;function&quot;){
-                        geo_json_5deb3f20d2630201e94352420b71f6a3.resetStyle(e.target);
+                        geo_json_cf92fb57f50a301a4c864d34b738d4ae.resetStyle(e.target);
                     }
                 },
                 mouseover: function(e) {
                     if(typeof e.target.setStyle === &quot;function&quot;){
-                        const highlightStyle = geo_json_5deb3f20d2630201e94352420b71f6a3_highlighter(e.target.feature)
+                        const highlightStyle = geo_json_cf92fb57f50a301a4c864d34b738d4ae_highlighter(e.target.feature)
                         e.target.setStyle(highlightStyle);
                     }
                 },
             });
         };
-        var geo_json_5deb3f20d2630201e94352420b71f6a3 = L.geoJson(null, {
-                onEachFeature: geo_json_5deb3f20d2630201e94352420b71f6a3_onEachFeature,
+        var geo_json_cf92fb57f50a301a4c864d34b738d4ae = L.geoJson(null, {
+                onEachFeature: geo_json_cf92fb57f50a301a4c864d34b738d4ae_onEachFeature,
             
-                style: geo_json_5deb3f20d2630201e94352420b71f6a3_styler,
-                pointToLayer: geo_json_5deb3f20d2630201e94352420b71f6a3_pointToLayer
+                style: geo_json_cf92fb57f50a301a4c864d34b738d4ae_styler,
+                pointToLayer: geo_json_cf92fb57f50a301a4c864d34b738d4ae_pointToLayer
         });
 
-        function geo_json_5deb3f20d2630201e94352420b71f6a3_add (data) {
-            geo_json_5deb3f20d2630201e94352420b71f6a3
+        function geo_json_cf92fb57f50a301a4c864d34b738d4ae_add (data) {
+            geo_json_cf92fb57f50a301a4c864d34b738d4ae
                 .addData(data)
-                .addTo(map_d897fb73f796a66f8dd7b4cf5884b648);
+                .addTo(map_a74142b0c73b627f411e615816428a59);
         }
-            geo_json_5deb3f20d2630201e94352420b71f6a3_add({&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;features&quot;: [{&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[-78.4499435091531, 35.44601079149053], [-78.4970385718653, 35.34284968968893], [-78.62357613774547, 35.38112534319517], [-78.57665372045108, 35.484358554290615], [-78.4499435091531, 35.44601079149053]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;4&quot;, &quot;properties&quot;: {&quot;Crossmodel&quot;: &quot;R146C497&quot;, &quot;OBJECTID&quot;: 5, &quot;Shape_Area&quot;: 226073092.218, &quot;Shape_Leng&quot;: 60142.9194675}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+            geo_json_cf92fb57f50a301a4c864d34b738d4ae_add({&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;features&quot;: [{&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[-78.4499435091531, 35.44601079149053], [-78.4970385718653, 35.34284968968893], [-78.62357613774547, 35.38112534319517], [-78.57665372045108, 35.484358554290615], [-78.4499435091531, 35.44601079149053]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;4&quot;, &quot;properties&quot;: {&quot;Crossmodel&quot;: &quot;R146C497&quot;, &quot;OBJECTID&quot;: 5, &quot;Shape_Area&quot;: 226073092.218, &quot;Shape_Leng&quot;: 60142.9194675}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
 
         
     
-    geo_json_5deb3f20d2630201e94352420b71f6a3.bindTooltip(
+    geo_json_cf92fb57f50a301a4c864d34b738d4ae.bindTooltip(
     function(layer){
     let div = L.DomUtil.create('div');
     
@@ -786,7 +893,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    data[key] <span class="op">=</span> gdf</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    console.log(<span class="ss">f"data['</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">'].shape=</span><span class="sc">{</span>data[key]<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[09:36:14] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'FireWeatherIndex_Wildfire'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">35</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[13:11:55] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'FireWeatherIndex_Wildfire'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">35</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 </pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -798,7 +905,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[09:36:15] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'SeasonalTemperatureMaximum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">27</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'SeasonalTemperatureMaximum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">27</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 </pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -806,7 +913,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'SeasonalTemperatureMinimum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">27</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[13:11:56] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'SeasonalTemperatureMinimum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">27</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 </pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -818,7 +925,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[09:36:16] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'Precipitation_inches_AnnualTotal'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'Precipitation_inches_AnnualTotal'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 </pre>
 </div>
 </div>
@@ -828,7 +935,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <p>Lets inspect one of the entries in our <code>data[(...)]</code> dictionary, <code>WindSpeed</code>, for example:</p>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"WindSpeed"</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <div>
 
 
@@ -1013,7 +1120,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <p><img src="intro_files/figure-html/cell-13-output-1.svg" class="img-fluid figure-img"></p>
 </div>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;1: As we include more cells, we see the outline of the US beginning to take shape.</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;2: As we include more cells, we see the outline of the US beginning to take shape.</figcaption>
 </figure>
 </div>
 
@@ -1025,8 +1132,11 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>The “geometry” column – no matter its name – can be accessed through the geometry attribute (<code>gdf.geometry</code>), and the name of the geometry column can be found by typing <code>gdf.geometry.name</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Truncated name for “Crossmodel_CellName”.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Building on ideas from <a href="https://earth-env-data-science.github.io/intro.html">Earth and Environmental Science</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Getting Python setup correctly can be <strong>surprisingly</strong> difficult<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The “geometry” column – no matter its name – can be accessed through the geometry attribute (<code>gdf.geometry</code>), and the name of the geometry column can be found by typing <code>gdf.geometry.name</code>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://earth-env-data-science.github.io/lectures/data.html#metadata">Metadata</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Truncated name for “Crossmodel_CellName”.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{foreman2023,
   author = {Foreman, Sam},
