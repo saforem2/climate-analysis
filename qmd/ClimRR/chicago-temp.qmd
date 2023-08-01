@@ -22,7 +22,8 @@ import matplotlib.pyplot as plt
 
 # from enrich.console import Console, get_theme
 matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
-from ClimRR import get_logger, DATA_DIR, set_plot_style
+from ClimRR.data import DATA_DIR
+from ClimRR import get_logger, set_plot_style
 set_plot_style()
 log = get_logger('ClimRR')
 from rich.console import Console as rConsole
@@ -35,7 +36,7 @@ console = rConsole(theme=theme, log_path=False, markup=True)
 ```
 
 ```{python}
-from ClimRR import load_shapefile, load_csvs
+from ClimRR.data import load_shapefile, load_csvs
 
 shape = load_shapefile()
 data = load_csvs(shape)
@@ -49,7 +50,7 @@ console.print("Data: \n" + f"\n".join(list(data.keys())))
 # counties = gpd.read_file(
 #     'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-united-states-of-america-county/exports/shp?lang=en&timezone=America%2FChicago'
 # )
-from ClimRR import load_counties
+from ClimRR.data import load_counties
 counties = load_counties(crs=shape.crs)
 ```
 

@@ -55,17 +55,17 @@ column can be found by typing `gdf.geometry.name`.
 
 ### Imports / setup
 
-We've prepared some helper functions inside
-[`src/ClimRR/__init__.py`](https://github.com/saforem2/climate-analysis/blob/main/src/ClimRR/__init__.py)
-to simplify some of the data analysis tasks.
+We've prepared some useful functions in
+[`src/ClimRR/data.py`](https://github.com/saforem2/climate-analysis/blob/main/src/ClimRR/data.py)
+to simplify the process of loading and working with our data.
 
-
-::: {.callout-warning title="Warning" collapse="false"}
-Make sure to follow the instructions from [Setup and
-Installation](/qmd/GettingStarted/setup.qmd) for installing the `ClimRR`
-package.
-
-:::
+<!-- ::: {.callout-warning title="Warning" collapse="false"} -->
+<!---->
+<!-- Make sure to follow the instructions from [Setup and -->
+<!-- Installation](/qmd/GettingStarted/setup.qmd) for installing the `ClimRR` -->
+<!-- package. -->
+<!---->
+<!-- ::: -->
 
 
 ```{python}
@@ -81,7 +81,8 @@ import matplotlib.pyplot as plt
 from enrich.style import STYLES
 from rich.theme import Theme
 from rich.console import Console as Console
-from ClimRR import get_logger, DATA_DIR, set_plot_style
+from ClimRR import get_logger, set_plot_style
+from ClimRR.data import DATA_DIR
 
 matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
 
