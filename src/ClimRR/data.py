@@ -76,6 +76,6 @@ def load_csvs(gdf: gpd.GeoDataFrame) -> dict[str, gpd.GeoDataFrame]:
 
 def load_shapefile() -> gpd.GeoDataFrame:
     shpfile = DATA_DIR.joinpath(
-        "GridCells2Shapefile/GridCellsShapefile/GridCells.shp"
+        "GridCellsShapefile/GridCells.shp"
     )
     return gpd.read_file(shpfile)
