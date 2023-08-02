@@ -9,6 +9,18 @@ execute:
 
 # Chicago Temperature Analysis
 
+::: {.callout-note title="Target Goals" collapse="false" style="width:100%;"}
+
+- Repeat this analysis with:
+    - Different climate variables
+    - Another state / geographic area
+    - Another climate scenario
+
+- Any interesting trends or insights to be drawn from the data
+
+:::
+
+
 ```{python}
 #| code-fold: true
 #| code-summary: Imports

@@ -161,7 +161,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/setup.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/example.html">Example: Groceries in Chicago</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/python.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../qmd/GettingStarted/example.html">Example: Groceries in Chicago</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -187,6 +187,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
  <span class="menu-text">Home</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/overview.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Overview</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -196,6 +202,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/GettingStarted/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Python</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/GettingStarted/setup.html" class="sidebar-item-text sidebar-link">
@@ -253,6 +265,29 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../../qmd/ClimRR/analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Analysis with ClimRR</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/extras/illinois.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Illinois</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Extras</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/extras/illinois.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Illinois</span></a>
   </div>
 </li>
       </ul>
@@ -313,7 +348,40 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 </header>
 
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Using updated plot style for matplotlib
+</pre>
+</div>
+</div>
 <p>We will walk through an example that demonstrates how to clip geometries to the boundary of a polygon geometry using GeoPandas.</p>
+<!-- :::: {.columns layout-valign="center"} -->
+<!---->
+<!-- ::: {.column width="50%"} -->
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="callout callout-style-simple callout-note callout-titled" title="Target Goals" style="width:100%;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Target Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Can you identify which neighborhoods have the most grocery stores? How many?
+<ul>
+<li>Which have the least? How many?</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
 <p>This example shows how to clip a set of vector geometries to the spatial extent / shape of another object.</p>
 <p>Both sets of geometries must be opened with <code>GeoPandas</code> as <code>GeoDataFrame</code>s and be in the same <strong>Coordinate Reference System</strong> (<code>CRS</code>) for the <code>clip</code> function from <code>GeoPandas</code> to work.</p>
 <p>This example uses data from <code>geodatasets</code>, namely:</p>
@@ -323,7 +391,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </ul>
 <p>alongside a custom rectangle geometry made with shapely and then turned into a <code>GeoDataFrame</code>.</p>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Warning">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -332,92 +400,79 @@ Warning
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>The object to be clipped will be clipped to the full extent of the clip object.<br>
 If there are multiple polygons in clip object, the input data will be clipped to the total boundary of all polygons in clip object.</p>
 </div>
 </div>
 </div>
+</div>
+<div id="fig-groceries" class="quarto-figure quarto-figure-center anchored" style="flex-basis: 50.0%;justify-content: center;">
+<figure class="figure">
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img src="example_files/figure-html/cell-3-output-1.svg" class="img-fluid figure-img"></p>
+</div>
+</div>
+<figcaption class="figure-caption">Figure&nbsp;1: A map showing the neighborhoods of Chicago as well as the location of various grocery stores.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<!-- ::: -->
+<!---->
+<!-- :::: -->
 <section id="imports" class="level2">
 <h2 class="anchored" data-anchor-id="imports">Imports</h2>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.geometry <span class="im">import</span> box</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">'svg'</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR <span class="im">import</span> set_plot_style, COLORS</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>set_plot_style()</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.console <span class="im">import</span> Console <span class="im">as</span> Console</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> enrich.style <span class="im">import</span> STYLES</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.theme <span class="im">import</span> Theme</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>console <span class="op">=</span> Console(theme<span class="op">=</span>Theme(STYLES), log_path<span class="op">=</span><span class="va">False</span>, markup<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The autoreload extension is already loaded. To reload it, use:
-  %reload_ext autoreload</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Using updated plot style for matplotlib
-</pre>
-</div>
 </div>
 </section>
 <section id="get-or-create-example-data" class="level2">
 <h2 class="anchored" data-anchor-id="get-or-create-example-data">Get or Create Example Data</h2>
 <p>Below, the example GeoPandas data is imported and opened as a <code>GeoDataFrame</code>.</p>
 <p>Additionally, a polygon is created with shapely and then converted into a <code>GeoDataFrame</code> with the same CRS as the <code>GeoPandas</code> dataset</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>chicago <span class="op">=</span> gpd.read_file(geodatasets.get_path(<span class="st">"geoda.chicago_commpop"</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>groceries <span class="op">=</span> gpd.read_file(geodatasets.get_path(<span class="st">"geoda.groceries"</span>)).to_crs(chicago.crs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>chicago <span class="op">=</span> gpd.read_file(geodatasets.get_path(<span class="st">"geoda.chicago_commpop"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>groceries <span class="op">=</span> gpd.read_file(geodatasets.get_path(<span class="st">"geoda.groceries"</span>)).to_crs(chicago.crs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create a subset of the chicago data that is just the near west side</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>near_west_side <span class="op">=</span> chicago[chicago[<span class="st">"community"</span>] <span class="op">==</span> <span class="st">"NEAR WEST SIDE"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lincoln_park <span class="op">=</span> chicago[chicago[<span class="st">"community"</span>] <span class="op">==</span> <span class="st">"LINCOLN PARK"</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>logan_square <span class="op">=</span> chicago[chicago[<span class="st">"community"</span>] <span class="op">==</span> <span class="st">"LOGAN SQUARE"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>near_west_side <span class="op">=</span> chicago[chicago[<span class="st">"community"</span>] <span class="op">==</span> <span class="st">"NEAR WEST SIDE"</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lincoln_park <span class="op">=</span> chicago[chicago[<span class="st">"community"</span>] <span class="op">==</span> <span class="st">"LINCOLN PARK"</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>logan_square <span class="op">=</span> chicago[chicago[<span class="st">"community"</span>] <span class="op">==</span> <span class="st">"LOGAN SQUARE"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create a custom polygon</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>polygon <span class="op">=</span> box(<span class="op">-</span><span class="fl">87.8</span>, <span class="fl">41.9</span>, <span class="op">-</span><span class="fl">87.5</span>, <span class="dv">42</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>poly_gdf <span class="op">=</span> gpd.GeoDataFrame([<span class="dv">1</span>], geometry<span class="op">=</span>[polygon], crs<span class="op">=</span>chicago.crs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>polygon <span class="op">=</span> box(<span class="op">-</span><span class="fl">87.8</span>, <span class="fl">41.9</span>, <span class="op">-</span><span class="fl">87.5</span>, <span class="dv">42</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>poly_gdf <span class="op">=</span> gpd.GeoDataFrame([<span class="dv">1</span>], geometry<span class="op">=</span>[polygon], crs<span class="op">=</span>chicago.crs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="plot-the-unclipped-data" class="level2">
 <h2 class="anchored" data-anchor-id="plot-the-unclipped-data">Plot the Unclipped Data</h2>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>), ncols<span class="op">=</span><span class="dv">2</span>, sharey<span class="op">=</span><span class="st">'col'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>poly_gdf.boundary.plot(ax<span class="op">=</span>ax1, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax1, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># near_west_side.boundary.plot(ax=ax2, color=COLORS['red'])</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># near_west_side.plot(ax=ax2, color=COLORS['green'], alpha=0.3)</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>chicago.plot(ax<span class="op">=</span>ax1, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>poly_gdf.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>groceries.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'blue'</span>], zorder<span class="op">=</span><span class="dv">1</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.66</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"All Unclipped Chicago Communities"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"All Unclipped Groceries"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>ax1.set_axis_off()</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>ax2.set_axis_off()</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>), ncols<span class="op">=</span><span class="dv">2</span>, sharey<span class="op">=</span><span class="st">'col'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>poly_gdf.boundary.plot(ax<span class="op">=</span>ax1, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax1, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># near_west_side.boundary.plot(ax=ax2, color=COLORS['red'])</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># near_west_side.plot(ax=ax2, color=COLORS['green'], alpha=0.3)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>chicago.plot(ax<span class="op">=</span>ax1, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>poly_gdf.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>groceries.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'blue'</span>], zorder<span class="op">=</span><span class="dv">1</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.66</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"All Unclipped Chicago Communities"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"All Unclipped Groceries"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ax1.set_axis_off()</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>ax2.set_axis_off()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="example_files/figure-html/cell-7-output-1.svg" class="img-fluid"></p>
+<p><img src="example_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -427,7 +482,7 @@ If there are multiple polygons in clip object, the input data will be clipped to
 <p>The object you pass is the clip extent.</p>
 <p>The returned output will be a new clipped <code>GeoDataFrame</code>. All of the attributes for each returned geometry will be retained when you clip.</p>
 <div class="callout callout-style-simple callout-tip callout-titled" title="Coordinate Reference System">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -436,7 +491,7 @@ Coordinate Reference System
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Recall that the data must be in the same CRS in order to use the <code>clip</code> method.</p>
 <p>If the data is not in the same CRS, be sure to use the <code>GeoDataFrame.to_crs</code> method to ensure both datasets are in the same CRS.</p>
@@ -446,103 +501,103 @@ Coordinate Reference System
 </section>
 <section id="clip-the-chicago-data" class="level2">
 <h2 class="anchored" data-anchor-id="clip-the-chicago-data">Clip the Chicago Data</h2>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>chicago_clipped <span class="op">=</span> chicago.clip(polygon)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>groceries_clipped <span class="op">=</span> groceries.clip(polygon)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the clipped data</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>), ncols<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ax0 <span class="op">=</span> chicago_clipped.plot(ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span><span class="st">'C0'</span>, alpha<span class="op">=</span><span class="fl">0.66</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ax0 <span class="op">=</span> chicago.boundary.plot(ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], zorder<span class="op">=-</span><span class="dv">1</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>ax0 <span class="op">=</span> poly_gdf.boundary.plot(ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> groceries_clipped.plot(ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'C1'</span>, alpha<span class="op">=</span><span class="fl">0.66</span>, zorder<span class="op">=</span><span class="dv">10</span>, marker<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># chicago.boundary.plot(ax=ax[1], color='#444444')</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> chicago.boundary.plot(ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], zorder<span class="op">=-</span><span class="dv">1</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> poly_gdf.boundary.plot(ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>ax0.set_title(<span class="st">"Chicago Clipped"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>ax0.set_axis_off()</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Groceries Clipped"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>ax1.set_axis_off()</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>chicago_clipped <span class="op">=</span> chicago.clip(polygon)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>groceries_clipped <span class="op">=</span> groceries.clip(polygon)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the clipped data</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>), ncols<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ax0 <span class="op">=</span> chicago_clipped.plot(ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span><span class="st">'C0'</span>, alpha<span class="op">=</span><span class="fl">0.66</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>ax0 <span class="op">=</span> chicago.boundary.plot(ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], zorder<span class="op">=-</span><span class="dv">1</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>ax0 <span class="op">=</span> poly_gdf.boundary.plot(ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> groceries_clipped.plot(ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'C1'</span>, alpha<span class="op">=</span><span class="fl">0.66</span>, zorder<span class="op">=</span><span class="dv">10</span>, marker<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># chicago.boundary.plot(ax=ax[1], color='#444444')</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> chicago.boundary.plot(ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], zorder<span class="op">=-</span><span class="dv">1</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> poly_gdf.boundary.plot(ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>ax0.set_title(<span class="st">"Chicago Clipped"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>ax0.set_axis_off()</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Groceries Clipped"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>ax1.set_axis_off()</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="example_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
+<p><img src="example_files/figure-html/cell-9-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="clip-the-groceries-data" class="level2">
 <h2 class="anchored" data-anchor-id="clip-the-groceries-data">Clip the Groceries Data</h2>
 <p>Next we’ll look at the distribution of grocery stores in two different communities.</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>), ncols<span class="op">=</span><span class="dv">2</span>, sharey<span class="op">=</span><span class="st">'col'</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax1, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>near_west_side.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>logan_square.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>chicago.plot(ax<span class="op">=</span>ax1, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>groceries.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'blue'</span>], zorder<span class="op">=</span><span class="dv">1</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.66</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"All Unclipped Chicago Communities"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"All Unclipped Groceries"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>ax1.set_axis_off()</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>ax2.set_axis_off()</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="example_files/figure-html/cell-9-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="groceries-in-near-west-side" class="level2">
-<h2 class="anchored" data-anchor-id="groceries-in-near-west-side">Groceries in Near West Side</h2>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>groceries_west_side <span class="op">=</span> groceries.clip(near_west_side)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>groceries_west_side.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>near_west_side.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in the Near West Side"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>), ncols<span class="op">=</span><span class="dv">2</span>, sharey<span class="op">=</span><span class="st">'col'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax1, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>near_west_side.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>logan_square.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>chicago.plot(ax<span class="op">=</span>ax1, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>groceries.plot(ax<span class="op">=</span>ax2, color<span class="op">=</span>COLORS[<span class="st">'blue'</span>], zorder<span class="op">=</span><span class="dv">1</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.66</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"All Unclipped Chicago Communities"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"All Unclipped Groceries"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>ax1.set_axis_off()</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>ax2.set_axis_off()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="example_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="groceries-in-logan-square" class="level2">
-<h2 class="anchored" data-anchor-id="groceries-in-logan-square">Groceries in Logan Square</h2>
+<section id="groceries-in-near-west-side" class="level2">
+<h2 class="anchored" data-anchor-id="groceries-in-near-west-side">Groceries in Near West Side</h2>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>groceries_logan_square <span class="op">=</span> groceries.clip(logan_square)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>groceries_logan_square.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>logan_square.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in Logan Square"</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>groceries_west_side <span class="op">=</span> groceries.clip(near_west_side)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>groceries_west_side.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>near_west_side.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>near_west_side.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in the Near West Side"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="example_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="groceries-in-lincoln-park" class="level2">
-<h2 class="anchored" data-anchor-id="groceries-in-lincoln-park">Groceries in Lincoln Park</h2>
+<section id="groceries-in-logan-square" class="level2">
+<h2 class="anchored" data-anchor-id="groceries-in-logan-square">Groceries in Logan Square</h2>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>groceries_lp <span class="op">=</span> groceries.clip(lincoln_park)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>groceries_lp.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>lincoln_park.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>lincoln_park.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>lincoln_park.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in Lincoln Park"</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>groceries_logan_square <span class="op">=</span> groceries.clip(logan_square)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>groceries_logan_square.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>, marker<span class="op">=</span><span class="st">'.'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>logan_square.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>logan_square.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in Logan Square"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="example_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="groceries-in-lincoln-park" class="level2">
+<h2 class="anchored" data-anchor-id="groceries-in-lincoln-park">Groceries in Lincoln Park</h2>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>groceries_lp <span class="op">=</span> groceries.clip(lincoln_park)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>groceries_lp.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'C2'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>chicago.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'grey060'</span>], linewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>lincoln_park.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#444444'</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>lincoln_park.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'red'</span>])</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>lincoln_park.plot(ax<span class="op">=</span>ax, color<span class="op">=</span>COLORS[<span class="st">'green'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Groceries in Lincoln Park"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="example_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>

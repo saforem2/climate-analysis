@@ -525,3 +525,11 @@ thead, tbody, tfoot, tr, td, th {
     display: grid;
     grid-template-columns: repeat(2, 1fr)!important;
 }
+
+details>summary {
+    color: $code-color;
+    font-family: $font-family-monospace;
+    font-size: .95em;
+    display: list-item;
+    text-align: left;
+}

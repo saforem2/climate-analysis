@@ -9,8 +9,52 @@ execute:
 
 # Example: Groceries in Chicago
 
+```{python}
+#| echo: false
+%matplotlib inline
+import matplotlib_inline
+import matplotlib.pyplot as plt
+import geopandas as gpd
+import warnings
+import geodatasets
+
+import matplotlib.pyplot as plt
+
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+
+from ClimRR import set_plot_style, COLORS
+set_plot_style()
+from rich.console import Console as Console
+from enrich.style import STYLES
+from rich.theme import Theme
+
+import matplotlib.pyplot as plt
+import geopandas as gpd
+from shapely.geometry import box
+import geodatasets
+
+console = Console(theme=Theme(STYLES), log_path=False, markup=True)
+chicago = gpd.read_file(geodatasets.get_path("geoda.chicago_commpop"))
+groceries = gpd.read_file(geodatasets.get_path("geoda.groceries")).to_crs(chicago.crs)
+```
+
 We will walk through an example that demonstrates how to clip geometries to the
 boundary of a polygon geometry using GeoPandas.
+
+<!-- :::: {.columns layout-valign="center"} -->
+<!---->
+<!-- ::: {.column width="50%"} -->
+
+::: {layout-ncol=2 layout-valign="center"}
+
+::: {}
+
+::: {.callout-note title="Target Goals" collapse="false" style="width:100%;"}
+
+- Can you identify which neighborhoods have the most grocery stores? How many?
+    - Which have the least? How many?
+
+:::
 
 This example shows how to clip a set of vector geometries to the spatial extent
 / shape of another object.
@@ -34,6 +78,45 @@ If there are multiple polygons in clip object, the input data will be clipped
 to the total boundary of all polygons in clip object.
 :::
 
+:::
+
+::: {#fig-groceries}
+
+```{python}
+#| echo: false
+#| code-fold: true
+import matplotlib.pyplot as plt
+
+# polygon = box(-87.8, 41.9, -87.5, 42)
+# poly_gdf = gpd.GeoDataFrame([1], geometry=[polygon], crs=chicago.crs)
+
+fig, ax = plt.subplots(figsize=(14, 6))
+# poly_gdf.boundary.plot(ax=ax, color=COLORS['red'])
+chicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)
+# near_west_side.boundary.plot(ax=ax2, color=COLORS['red'])
+# near_west_side.plot(ax=ax2, color=COLORS['green'], alpha=0.3)
+# west_town.plot(ax=ax2, color=COLORS['green'], alpha=0.3)
+chicago.plot(ax=ax, alpha=0.0)
+# poly_gdf.boundary.plot(ax=ax, color=COLORS['red'])
+chicago.boundary.plot(ax=ax, color=COLORS['grey060'], linewidth=0.6, zorder=-1)
+groceries.plot(ax=ax, color=COLORS['red'], zorder=1, marker='.', alpha=0.88)
+ax.set_title("Grocery Stores in Chicago", fontsize=20)
+ax.set_axis_off()
+plt.tight_layout()
+```
+
+A map showing the neighborhoods of Chicago as well as the location of various
+grocery stores.
+
+:::
+
+:::
+
+<!-- ::: -->
+<!---->
+<!-- :::: -->
+
+
 ## Imports
 
 ```{python}
@@ -41,28 +124,6 @@ import matplotlib.pyplot as plt
 import geopandas as gpd
 from shapely.geometry import box
 import geodatasets
-```
-
-```{python}
-%load_ext autoreload
-%autoreload 2
-%matplotlib inline
-import matplotlib_inline
-import matplotlib.pyplot as plt
-import geopandas as gpd
-import warnings
-
-import matplotlib.pyplot as plt
-
-matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
-
-from ClimRR import set_plot_style, COLORS
-set_plot_style()
-from rich.console import Console as Console
-from enrich.style import STYLES
-from rich.theme import Theme
-
-console = Console(theme=Theme(STYLES), log_path=False, markup=True)
 ```
 
 ## Get or Create Example Data

@@ -187,6 +187,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
  <span class="menu-text">Home</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/overview.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Overview</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -196,6 +202,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/GettingStarted/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Python</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/GettingStarted/setup.html" class="sidebar-item-text sidebar-link">
@@ -255,6 +267,29 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
  <span class="menu-text">Data Analysis with ClimRR</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/extras/illinois.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Illinois</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Extras</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/extras/illinois.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Illinois</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -297,6 +332,30 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 </header>
 
+<div class="callout callout-style-simple callout-note callout-titled" title="Target Goals" style="width:100%;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Target Goals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Repeat this analysis with:
+<ul>
+<li>Different climate variables</li>
+<li>Another state / geographic area</li>
+<li>Another climate scenario</li>
+</ul></li>
+<li>Any interesting trends or insights to be drawn from the data</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Imports</summary>
@@ -310,16 +369,17 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># from enrich.console import Console, get_theme</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">'svg'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR <span class="im">import</span> get_logger, DATA_DIR, set_plot_style</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>set_plot_style()</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> get_logger(<span class="st">'ClimRR'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.console <span class="im">import</span> Console <span class="im">as</span> rConsole</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> enrich.style <span class="im">import</span> STYLES</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.theme <span class="im">import</span> Theme</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>theme <span class="op">=</span> Theme(STYLES)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> get_logger(<span class="st">'ClimRR'</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>console <span class="op">=</span> rConsole(theme<span class="op">=</span>theme, log_path<span class="op">=</span><span class="va">False</span>, markup<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR.data <span class="im">import</span> DATA_DIR</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR <span class="im">import</span> get_logger, set_plot_style</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>set_plot_style()</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> get_logger(<span class="st">'ClimRR'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.console <span class="im">import</span> Console <span class="im">as</span> rConsole</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> enrich.style <span class="im">import</span> STYLES</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.theme <span class="im">import</span> Theme</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>theme <span class="op">=</span> Theme(STYLES)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> get_logger(<span class="st">'ClimRR'</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>console <span class="op">=</span> rConsole(theme<span class="op">=</span>theme, log_path<span class="op">=</span><span class="va">False</span>, markup<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Using updated plot style for matplotlib
@@ -327,7 +387,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR <span class="im">import</span> load_shapefile, load_csvs</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR.data <span class="im">import</span> load_shapefile, load_csvs</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> load_shapefile()</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> load_csvs(shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -388,12 +448,12 @@ Precipitation_inches_AnnualTotal
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># counties = gpd.read_file(</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-united-states-of-america-county/exports/shp?lang=en&amp;timezone=America%2FChicago'</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR <span class="im">import</span> load_counties</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR.data <span class="im">import</span> load_counties</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>counties <span class="op">=</span> load_counties(crs<span class="op">=</span>shape.crs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>counties.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="318">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -496,10 +556,10 @@ Precipitation_inches_AnnualTotal
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>console.log(<span class="ss">f"illinois.shape=</span><span class="sc">{</span>illinois<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>illinois.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[15:43:21] </span>illinois.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">102</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">11</span><span style="font-weight: bold">)</span>                                                          
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[19:31:26] </span>illinois.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">102</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">11</span><span style="font-weight: bold">)</span>                                                          
 </pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="319">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -608,7 +668,7 @@ Precipitation_inches_AnnualTotal
 <div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>illinois_hdd <span class="op">=</span> data[<span class="st">"HeatingDegreeDays"</span>].clip(illinois)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>illinois_hdd.head(n<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="321">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -737,7 +797,7 @@ Precipitation_inches_AnnualTotal
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wind_il.explore(column='hist')</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>wind_il.head(n<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="328">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
@@ -876,7 +936,7 @@ Precipitation_inches_AnnualTotal
 </div>
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'WindSpeed'</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="334">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>(62834, 18)</code></pre>
 </div>
 </div>

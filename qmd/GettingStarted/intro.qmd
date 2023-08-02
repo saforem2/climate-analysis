@@ -11,25 +11,32 @@ execute:
 
 ## Getting Started
 
-::: {.callout-note title="Learning Goals" collapse="false"}
+::: {.callout-caution title="Useful links + References" collapse="true" width="100%"}
+
+- Useful links + References:
+    - [Geopandas: An Introduction](https://autogis-site.readthedocs.io/en/latest/lessons/lesson-2/geopandas-an-introduction.html)
+    - [An Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/intro.html)
+        - [Final Projects](https://earth-env-data-science.github.io/projects.html) (good examples)
+        - [Hands-On: Aggregating the Data](https://climateestimate.net/content/example-step3.html)
+    - [Using Weather Data and Climate Model Output in Economic Analyses of Climate Change](https://www.journals.uchicago.edu/doi/10.1093/reep/ret016)
+    - [On the use and misuse of climate change projections in international development](https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wcc.579)
+
+:::
+
+::: {.callout-note title="Learning Goals" collapse="false" style="width:100%;"}
 
 The goal of this project is to teach students to[^goals]:
 
 - Use Unix commands to work with files and navigate directories
-
 - Use JupyterHub + basic familiarity with how to use Jupyter notebooks on HPC systems
-
 - Identify some of the common file types and data formats for geospatial data
     - (+ common python libraries for geospatial data analysis)
-
 - Perform exploratory data analysis on geospatial data
     - (+ understand different operations for manipulating and interacting with this data)
     - tabular vs. gridded data
-
 - Perform simple visualizations in Python to display different types of data (e.g. maps, line charts, interactive visualizations, etc)
     - using figures to illustrate a point or idea
     - know what types of plots to use for which situations / data types
-
 - Understand control flow / basic structure of a Python script
     - using Python in Jupyter[^surprise]
     - `import`-ing libraries, etc
@@ -39,14 +46,6 @@ The goal of this project is to teach students to[^goals]:
 [^surprise]: Getting Python setup correctly can be **surprisingly** difficult
 
 [^goals]: Building on ideas from [Earth and Environmental Science](https://earth-env-data-science.github.io/intro.html)
-
-- Useful links + References:
-    - [Geopandas: An Introduction](https://autogis-site.readthedocs.io/en/latest/lessons/lesson-2/geopandas-an-introduction.html)
-    - [Hands-On: Aggregating the Data](https://climateestimate.net/content/example-step3.html)
-    - [An Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/intro.html)
-        - [Final Projects](https://earth-env-data-science.github.io/projects.html) (good examples)
-    - [Using Weather Data and Climate Model Output in Economic Analyses of Climate Change](https://www.journals.uchicago.edu/doi/10.1093/reep/ret016)
-    - [On the use and misuse of climate change projections in international development](https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wcc.579)
 
 ### Reading and Writing Files
 
@@ -280,7 +279,7 @@ We can associate with each of the `.csv`s the `geometry` used in our
 
 ```{python}
 import pandas as pd
-csvs = [i for i in DATA_DIR.joinpath('csv').rglob('*.csv')]
+csvs = [i for i in DATA_DIR.rglob('*.csv')]
 data = {}
 for f in csvs:
     key = f.stem
