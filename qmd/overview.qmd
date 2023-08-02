@@ -1,0 +1,50 @@
+---
+jupyter: climrr
+callout-appearance: simple
+editor:
+    render-on-save: true
+execute:
+    freeze: true
+---
+
+# Project Overview: `ClimRR`
+
+This  project explores the intersection of climate data and energy justice,
+providing an introductory understanding of data science techniques in assessing
+disparate outcomes on vulnerable or underserved populations in the United
+States. By shedding light on energy disparities, the project aims to contribute
+to the ongoing discussions surrounding energy equity and inform policymakers
+and stakeholders for more inclusive energy initiatives. Energy justice refers
+to the equitable distribution of clean, affordable, and reliable energy
+resources among all communities, regardless of their socioeconomic status or
+demographic characteristics.
+
+The project focuses on analyzing climate data to assess disparate outcomes in
+energy access and consumption across different population groups. By leveraging
+introductory data science skills, the study aims to uncover patterns, trends,
+and potential disparities in energy justice.
+
+The project will involve several key steps. Firstly, relevant climate data,
+such as temperature, precipitation, and renewable energy sources, will be
+collected from reliable sources. This data will be preprocessed and cleaned to
+ensure its quality and usability for analysis.
+
+Next, the data will be analyzed using introductory data science techniques.
+This may include exploratory data analysis, descriptive statistics, and data
+visualization to identify patterns and trends within the dataset. The analysis
+will focus on examining energy consumption patterns, renewable energy adoption
+rates, and energy affordability across different geographical regions and
+demographic groups.
+
+To assess disparate outcomes, the project will employ various statistical
+techniques to compare energy-related indicators among vulnerable populations.
+This may involve analyzing energy access in low-income neighborhoods,
+evaluating the impact of energy policies on marginalized communities, or
+examining the correlation between energy affordability and socioeconomic
+factors.
+
+The findings of the analysis will be interpreted to gain insights into the
+disparities in energy justice and its impact on vulnerable populations. The
+project aims to identify areas where energy inequalities exist and provide a
+data-driven foundation for advocating for equitable energy policies and
+programs.

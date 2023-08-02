@@ -36,9 +36,10 @@ execute:
 project:
   render:
     - index.qmd
-    - qmd/GettingStarted/*.qmd
-    - qmd/ClimRR/*.qmd
-    - qmd/ClimRR/chicago-temp.qmd
+    - qmd/*.qmd
+    - qmd/00-GettingStarted/*.qmd
+    - qmd/01-ClimRR/*.qmd
+    - qmd/01-ClimRR/chicago-temp.qmd
     - qmd/extras/*.qmd
     # - qmd/ClimRR/definitions.qmd
     # - qmd/setup.qmd
@@ -91,31 +92,31 @@ website:
         text: Project Overview
       - section: "Getting Started"
         contents:
-          - href: qmd/GettingStarted/python.qmd
+          - href: qmd/00-GettingStarted/0-python.qmd
             text: Working with Python
-          - href: qmd/GettingStarted/setup.qmd
+          - href: qmd/00-GettingStarted/1-setup.qmd
             text: Setup and Installation
-          - href: qmd/GettingStarted/intro.qmd
+          - href: qmd/00-GettingStarted/2-intro.qmd
             text: "Intro: Working with GeoSpatial Data"
-          - href: qmd/GettingStarted/example.qmd
+          - href: qmd/00-GettingStarted/3-example.qmd
             text: "Example: Groceries in Chicago"
       - section: "ClimRR"
         contents:
-          - href: qmd/ClimRR/ClimRR.qmd
+          - href: qmd/01-ClimRR/0-ClimRR.qmd
             text: Overview of ClimRR
-          - href: qmd/ClimRR/definitions.qmd
+          - href: qmd/01-ClimRR/1-definitions.qmd
             text: Variable Definitions
-          - href: qmd/GettingStarted/chicago.qmd
+          - href: qmd/00-GettingStarted/4-chicago.qmd
             text: "Example: ClimRR in Chicago"
-          - href: qmd/ClimRR/chicago-temp.qmd
+          - href: qmd/01-ClimRR/2-chicago-temp.qmd
             text: "Example: ClimRR Temperature Analysis"
-          - href: qmd/ClimRR/analysis.qmd
+          - href: qmd/01-ClimRR/3-analysis.qmd
             text: Data Analysis with ClimRR
-          - href: ./qmd/extras/illinois.qmd
+          - href: ./qmd/extras/0-illinois.qmd
             text: Illinois
       - section: "Extras"
         contents:
-          - href: qmd/extras/illinois.qmd
+          - href: qmd/extras/0-illinois.qmd
             text: Illinois
 
 

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://saforem2.github.io/climate-analysis/index.html</loc>
-    <lastmod>2023-08-01T22:39:23.610Z</lastmod>
+    <lastmod>2023-08-02T13:01:10.787Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/GettingStarted/setup.html</loc>
@@ -47,5 +47,53 @@
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/extras/illinois.html</loc>
     <lastmod>2023-08-02T01:50:24.164Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/extras/iris.html</loc>
+    <lastmod>2023-08-02T11:44:04.030Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/3-analysis.html</loc>
+    <lastmod>2023-08-02T13:01:09.862Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/1-definitions.html</loc>
+    <lastmod>2023-08-02T12:50:14.067Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/4-chicago.html</loc>
+    <lastmod>2023-08-02T12:51:35.377Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/2-intro.html</loc>
+    <lastmod>2023-08-02T12:49:42.747Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/1-setup.html</loc>
+    <lastmod>2023-08-02T12:49:25.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/3-example.html</loc>
+    <lastmod>2023-08-02T12:50:01.390Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/0-ClimRR.html</loc>
+    <lastmod>2023-08-02T12:50:11.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/2-chicago-temp.html</loc>
+    <lastmod>2023-08-02T12:52:59.722Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/0-python.html</loc>
+    <lastmod>2023-08-02T12:48:38.285Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/extras/0-illinois.html</loc>
+    <lastmod>2023-08-02T12:54:43.372Z</lastmod>
+  </url>
+  <url>
+    <loc>https://saforem2.github.io/climate-analysis/qmd/overview.html</loc>
+    <lastmod>2023-08-02T13:04:58.009Z</lastmod>
   </url>
 </urlset>
