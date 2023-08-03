@@ -17,17 +17,21 @@ In this project we will learn to (+ about):
 1. Logging in / accessing systems and resources at NERSC
 2. Working with a terminal + ([Intro to Unix](https://earth-env-data-science.github.io/lectures/environment/intro_to_unix.html))
 3. Remote login (`ssh`), password + MFA setup
-4. How to clone (download) a Gitub repository and run the (python) code inside
+4. Locating things on the filesystem[^project-dir]
+5. How to clone (download) a Gitub repository and run the (python) code inside
 of it
 
 :::
 
+[^project-dir]:
+    Our project directory is at:  
+        `/global/cfs/cdirs/m4388/Project2-ClimRR/`
+
 ::: {.callout title="Python" collapse="false" style="width:100%;"}
 
 1. [Python Overview](./00-GettingStarted/0-python.qmd), working with Python, etc
-2. Using Jupyter @ NERSC
-    - Whats a notebook?
-    - Locating things on the filesystem
+2. [Using Jupyter @ NERSC](https://docs.nersc.gov/services/jupyter/)
+    - [Jupyter: Documentation](https://jupyter.readthedocs.io/en/latest/)
     - How to use Jupyter, execute (run) code in cells
     - General benefits (+ tradeoffs!) of working in notebooks
 3. Understanding basic control flow / structure of Python script
