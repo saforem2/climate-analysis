@@ -7,47 +7,27 @@
 /* .callout-style-simple:hover { */
 /*   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 /* } */
-
 .callout.callout-style-simple {
   border-radius: 8px!important;
   opacity: 100%!important;
   display: -webkit-inline-box;
+  /* padding: .4em .7em; */
+  /* border-left: 5px solid; */
+  /* border-right: 1px solid #dee2e6; */
+  /* border-top: 1px solid #dee2e6; */
+  /* border-bottom: 1px solid #dee2e6; */
 }
-/* .callout.callout-style-simple:hover { */
-/*   /* margin-top: 0.5em; */ */
-/*   /* margin-bottom: 1em; */ */
-/*   border-radius: 8px!important; */
-/*   /* padding-left: 2pt; */ */
-/*   /* padding-right: 2pt; */ */
-/*   background-color: inherit; */
-/*   box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px; */
-/*   /* border: 1px solid var(--callout-border-hover)!important; */ */
-/*   /* max-width: min-content + 20px; */ */
-/*   /* min-width: max-content; */ */
-/*   /* margin-left: auto; */ */
-/*   /* margin-right: auto; */ */
-/*   opacity: 100%!important; */
-/*   display: -webkit-inline-box; */
-/* } */
-/**/
-
-/* .callout.callout-style-simple */
-
-
-/* .callout.callout-style-simple:hover { */
-/*     padding: 0em 1em; */
-/*     opacity: 100%!important; */
-/*     border: 1px solid var(--callout-border-hover)!important; */
-/*     display: -webkit-inline-box; */
-/*     box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px; */
-/* } */
-
 .callout {
+    /* margin-top: 1.25rem; */
+    /* margin-bottom: 1.25rem; */
+    /* border-radius: .25rem; */
   margin-top: auto;
-  border-radius: 8px!important;
-  margin-left: auto!important;
-  margin-right: auto!important;
+  /* border-radius: 8px!important; */
+  border-radius: 0.25rem;
+  /* margin-left: auto!important; */
+  /* margin-right: auto!important; */
   display: -webkit-inline-box;
+
 }
 .callout.callout-style-default,
 .callout.callout-style-simple {
@@ -97,6 +77,13 @@
 }
 .callout.no-icon::before {
   display: none !important;
+}
+.callout.callout-style-simple .callout:not(.no-icon).callout-titled.callout-style-simple .callout-body {
+    padding-top: 0.5rem;
+    padding-left: inherit;
+}
+.callout:not(.no-icon).callout-titled.callout-style-simple .callout-body {
+    padding-left: inherit;
 }
 .callout.callout-titled .callout-body > .callout-content > :last-child {
 }
