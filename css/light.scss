@@ -1,5 +1,9 @@
 /*-- scss:defaults --*/
 
+
+$shadow-color: rgba(0, 0, 0, 0.4);
+$shadow-border: #E599F7;
+
 // colors
 $brighter-text: #000000;
 $bright-text: #111111;
@@ -36,7 +40,6 @@ $body-bg: #ffffff;
 $alt-bg: #b8b8b8;
 // $dim-text: #444444;
 $body-color: #222222;
-
 
 $italic-color: #89DDFF;
 $strong-color: #000000;
@@ -85,7 +88,7 @@ $light-bg-link-color: #1A8FFF !default;
 // code blocks
 // $code-block-border-color: lighten($body-color, 60%) !default;
 // $dark-bg-code-color: #E599F7 !default;
-$code-block-bg-color: #f8f8f8!default;
+$code-block-bg-color: #F7F7F7!default;
 $code-block-bg: $code-block-bg-color !default;
 
 $dark-bg-code-color: #ff67ff !default;
@@ -95,8 +98,10 @@ $code-block-font-size: 0.9em !default;
 // inline code
 // $code-color: var(--quarto-hl-fu-color) !default;
 // color: #F06292;
-$light-bg-code-color: #F06292 !default;
-$light-bg-code-bg: #f8f8f8 !default;
+// $light-bg-code-color: #DD4A68 !default;
+// $light-bg-code-color: #F06292 !default;
+$light-bg-code-color: #AE81FF !default;
+$light-bg-code-bg: #F7F7F7 !default;
 $code-color: $light-bg-code-color !default;
 $code-bg: $light-bg-code-bg !default;
 
@@ -200,15 +205,15 @@ $blockquote-bg: $code-bg;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#{colorToRGB($link-color)}" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>');
 }
 
-.callout.callout-style-default,
-.callout.callout-style-simple {
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-}
+// .callout.callout-style-default,
+// .callout.callout-style-simple {
+//     padding: 0em 0.5em;
+//     border-left: solid #acacac .3rem;
+//     border-right: solid 1px silver;
+//     border-top: solid 1px silver;
+//     border-bottom: solid 1px silver;
+//     display: flex;
+// }
 
 .reveal .rcard{
     text-shadow: 0px 0px 10px RGBA(0, 0, 0.45);
@@ -481,7 +486,8 @@ code span.dv {
 }
 
 code span.kw {
-    color: #F06292;
+    // color: #F06292;
+    color: #f92672;
 }
 
 // code span.bu {

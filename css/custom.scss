@@ -1,6 +1,9 @@
 /*-- scss:defaults --*/
 
 // colors
+
+$shadow-color: rgba(0, 0, 0, 0.5);
+
 // $variable-prefix: dark;
 $brighter-text: #f8f8f8;
 $bright-text: #b8b8b8;
@@ -95,10 +98,10 @@ $dark-bg-link-color: #00B7E5 !default;
 // $dark-bg-code-color: #E599F7 !default;
 $code-fg: #E599F7!default;
 // $code-block-bg-color: #1f1f1f !default;
-$code-block-bg-color: #202020 !default;
+$code-block-bg-color: #222222 !default;
 $code-block-bg: $code-block-bg-color !default;
 
-$code-block-border-color: #1f1f1f !default;
+$code-block-border-color: #222222!default;
 $code-block-font-size: 0.9 em !default;
 
 // inline code
@@ -106,7 +109,7 @@ $code-block-font-size: 0.9 em !default;
 // $code-color: $dark-bg-code-color !default;
 // $dark-bg-code-color: #FF67FF!default;
 $dark-bg-code-color: #E599F7!default;
-$dark-bg-code-bg: #1f1f1f!default;
+$dark-bg-code-bg: #1d1d1d!default;
 $code-color: $dark-bg-code-color;
 $code-bg: $dark-bg-code-bg;
 // $light-bg-code-color: #F06292 !default;

@@ -1,5 +1,6 @@
 /*-- scss:defaults --*/
 
+
 $base-font-size: 17px!default;
 $code-block-font-size: 1rem !default;
 
@@ -8,6 +9,9 @@ $output: "asis";
 $table-striped: true;
 $table-hover: true;
 
+$callout-simple-color: #2a2a2a;
+$callout-title-color: #bdbdbd;
+$callout-border-hover: #838383;
 // The left hand sidebar
 // $grid-sidebar-width: !default;
 
@@ -43,6 +47,9 @@ details>summary {
     color: $dim-text;
     font-size:0.8em;
 }
+
+// ---------------------------------------------------------------------------------------------
+
 //
 // .callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
 //     margin: auto;
@@ -51,16 +58,27 @@ details>summary {
 //     padding-right: 0.4rem!important;
 // }
 
-
 .callout.callout-style-default,
 .callout.callout-style-simple {
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: grid;
-    align-items: center;
+    // padding: 0em 0.5em;
+    // // border-left: solid #acacac .3rem;
+    // // border-right: solid 1px silver;
+    // // border-top: solid 1px silver;
+    // // border-bottom: solid 1px silver;
+    // display: grid;
+    // align-items: center;
+    //
+    padding: 0em 1em;
+    /* border-left: solid #acacac .3rem; */
+    border: 1px solid $callout-simple-color;
+    opacity: 100%!important;
+    /* border-radius: 2px; */
+    /* border-right: none; */
+    /* border-top: none; */
+    /* border-bottom: none; */
+    display: -webkit-inline-flex;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0 1px 2px rgba(0,0,0,0.24); */
 }
 
 .callout.callout-style-simple .callout-body,
@@ -124,6 +142,8 @@ details>summary {
     font-size: 1.1remimportant;
     // padding-top: 0.25rem;
 }
+
+// ---------------------------------------------------------------------------------------------
 
 pre,code,kbd,samp {
     font-family: $font-family-monospace;
@@ -532,4 +552,87 @@ details>summary {
     font-size: .95em;
     display: list-item;
     text-align: left;
+}
+
+#quarto-appendix.default .quarto-appendix-citeas {
+    font-size: .9em;
+    padding: 1em;
+    border: solid 1px var(--dim-color);
+    margin-bottom: 1em;
+    border-radius: 8pt;
+}
+
+.callout {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.callout.callout-style-simple {
+    padding: 0em 1em;
+    border: 1px solid $dim-color;
+    opacity: 100%!important;
+    display: -webkit-inline-box;
+}
+
+.callout-style-simple {
+  /* border-left: unset!important; */
+  border-left: 1px solid $dim-color!important;
+  border-right: 1px solid $dim-color!important;
+  border-top: 1px solid $dim-color!important;
+  border-bottom: 1px solid $dim-color!important;
+}
+
+.callout.callout-style-simple:hover {
+  /* border: 1px solid var(--callout-border-hover-color)!important; */
+  // box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px 15px;
+    // box-shadow: 0px 10px 30px $shadow-color;
+    box-shadow: $shadow-color 0px 5px 15px 0px;
+    border: 2px solid $code-color;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px; */
+}
+
+.callout.callout-style-simple {
+  border-radius: 8px!important;
+  /* background-color: inherit; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  opacity: 100%!important;
+  display: -webkit-inline-box;
+}
+
+.callout.callout-style-simple>div.callout-header {
+    border-bottom: none;
+    font-size: 1.0rem;
+    font-weight: 600;
+    opacity: 100%;
+    // padding-bottom: 0.1rem;
+}
+
+.callout.callout-style-default .callout-body, .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    margin: auto;
+}
+
+
+// p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+//     background-color: $code-block-bg;
+//     color: $code-color;
+//     border-radius: .25rem;
+//     border: 0.1px solid $code-block-border-color;
+// }
+
+p code:not(.sourceCode),li code:not(.sourceCode),td code:not(.sourceCode) {
+    background-color: $code-block-bg;
+    color: $code-color;
+    // border-radius: .15rem;
+    // font-size: 0.5em;
+    border-radius: 3px;
+    // font-family: courier, monospace;
+    padding: 0 3px;
+    border: .075x solid rgba(red($dim-color), green($dim-color), blue($dim-color), 0.3);
+}
+
+code span.kw {
+    // color: #F06292;
+    color: #f92672;
 }
