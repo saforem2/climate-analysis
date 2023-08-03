@@ -1,0 +1,37 @@
+---
+callout-appearance: simple
+editor:
+  render-on-save: true
+execute:
+  freeze: true
+title: Overview of Python
+---
+
+
+
+
+
+
+::: {.callout-caution title="Reference" collapse="true" style="width:100%;"}
+
+**Material below modified from[^modified]**: [Python
+Fundamentals](https://earth-env-data-science.github.io/lectures/core_python/python_fundamentals.html)
+
+:::
+
+[^modified]: Which _itself_ is modified from the [official python
+tutorial](https://docs.python.org/3/tutorial/)
+
+## Invoking Python
+
+There are three main ways to use Python:
+
+1. Running / executing a Python file, e.g. `python filename.py`
+    - this will launch python, execute (line by line) the contents of `filename.py`, and return
+2. Interactively, either through:
+    1. a **console** (e.g. the Python interpreter `python` or an [IPython](https://ipython.org/) shell `ipython`)
+    2. a **notebook** (e.g. Jupyter notebook)*
+
+*we will (mostly) focus on using Jupyter notebooks for this project.
+
+
