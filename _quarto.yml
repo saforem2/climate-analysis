@@ -98,7 +98,7 @@ website:
             text: Setup and Installation
           - href: qmd/00-GettingStarted/2-intro.qmd
             text: "Intro: Working with GeoSpatial Data"
-          - href: qmd/00-GettingStarted/3-example.qmd
+          - href: qmd/00-GettingStarted/3-example-groceries.qmd
             text: "Example: Groceries in Chicago"
       - section: "ClimRR"
         contents:
@@ -193,7 +193,7 @@ format:
       # - css/quarto.css
     theme: 
       # dark: [css/common.scss, css/quarto-syntax-highlighting-dark.scss, css/custom.scss]
-      dark: 
+      dark:
         - css/common.scss
         - css/custom.scss 
       light:
