@@ -91,7 +91,6 @@ def set_plot_style(params: Optional[dict] = None):
     plt.rcParams |= defaults
     if params is not None:
         plt.rcParams |= params
-    console.print("Using updated plot style for matplotlib")
 
 
 def plot_gdf(
