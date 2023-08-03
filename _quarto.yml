@@ -8,17 +8,20 @@ author:
     url: https://samforeman.me
     orcid: 0000-0002-9981-0876
     email: foremans@anl.gov
+    # affiliation: "ANL"
     # affiliation: 
     #   - name: Argonne National Laboratory
     #     city: Chicago
     #     state: IL
     #     url: https://alcf.anl.gov
-date: today
+# affiliation: ""
+# date: ""
 date-modified: last-modified
 # toc: true
 author-title: ""
 affiliation-title: ""
 published-title: ""
+modified-title: ""
 title-block-categories: false
   # - author: true
   # - date: true
@@ -33,6 +36,7 @@ bibliography: references.bib
 
 execute:
   keep-ipynb: true
+  keep-md: true
   freeze: auto
 project:
   render:
@@ -196,7 +200,7 @@ format:
       # dark: [css/common.scss, css/quarto-syntax-highlighting-dark.scss, css/custom.scss]
       dark:
         - css/common.scss
-        - css/custom.scss 
+        - css/dark.scss 
       light:
         - css/common.scss
         - css/light.scss
