@@ -29,7 +29,7 @@ All of the data needed for this project has already been copied to the filesyste
 
 ::: {.callout-important title="Finding the data" collapse="true" style="width:100%; place-self: end;"}
 
-- The data needed for this project has already been copied to the NERSC systems and can be found at:
+The data needed for this project has already been copied to the NERSC systems and can be found at:
 
 ```bash
 $ tree /global/cfs/cdirs/m4388/Project2-ClimRR/data/ClimRR/
