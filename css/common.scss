@@ -766,3 +766,11 @@ code span.kw {
     display: flex;
     justify-content: right
 }
+
+#quarto-appendix.default .quarto-appendix-citeas {
+    font-size: .9em;
+    padding: 1em;
+    border: solid 1px var(--dim-color);
+    margin-bottom: 0;
+    border-radius: 0.25rem;
+}
