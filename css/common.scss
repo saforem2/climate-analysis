@@ -43,9 +43,23 @@ p {
     margin-inline-end: 0px;
 }
 
+// details>summary {
+//     color: $dim-text;
+//     font-size:0.8em;
+// }
 details>summary {
-    color: $dim-text;
-    font-size:0.8em;
+    color: $code-color;
+    font-family: $font-family-monospace;
+    font-size: .95em;
+    display: list-item;
+    cursor: pointer;
+    text-align: left;
+}
+
+details > summary:first-of-type {
+    display: list-item;
+    counter-increment: list-item 0;
+    list-style: inside disclosure-closed;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -517,13 +531,15 @@ thead, tbody, tfoot, tr, td, th {
 #title-block-header {
     font-size: 0.8em;
     color: $dim-text;
-    display: grid;
+    display: inline-grid;
+    width: fit-content;
+    // border: 1px solid red;
     margin-block-end: 1.0rem;
     position: relative;
     line-height: 0.5em;
     font-size: .9em;
     color: $dim-text;
-    grid-template-columns: auto;
+    // grid-template-columns: auto;
 }
 
 #title-block-header.quarto-title-block.default .quarto-title-meta-contents {
@@ -542,24 +558,42 @@ thead, tbody, tfoot, tr, td, th {
 }
 
 #title-block-header.quarto-title-block.default .quarto-title-meta {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr)!important;
+    display: inline-grid;
+    // grid-template-columns: repeat(3, 1fr)!important;
 }
 
-details>summary {
+
+// #quarto-appendix.default .quarto-appendix-citeas {
+//     font-size: .9em;
+//     padding: 1em;
+//     border: solid 1px var(--dim-color);
+//     margin-bottom: 1em;
+//     border-radius: 8pt;
+// }
+
+#quarto-appendix.default > .quarto-appendix-citeas {
     color: $code-color;
     font-family: $font-family-monospace;
     font-size: .95em;
     display: list-item;
+    cursor: pointer;
     text-align: left;
-}
-
-#quarto-appendix.default .quarto-appendix-citeas {
-    font-size: .9em;
     padding: 1em;
     border: solid 1px var(--dim-color);
     margin-bottom: 1em;
-    border-radius: 8pt;
+    border-radius: 0.25rem;
+}
+
+#quarto-appendix.default > .quarto-appendix-citeas:first-of-type {
+    display: list-item;
+    counter-increment: list-item 0;
+    list-style: inside disclosure-closed;
+}
+
+details > summary:first-of-type {
+    display: list-item;
+    counter-increment: list-item 0;
+    list-style: inside disclosure-closed;
 }
 
 .callout {
@@ -592,7 +626,7 @@ details>summary {
 }
 
 .callout.callout-style-simple {
-  border-radius: 8px!important;
+  border-radius: 0.25rem;
   /* background-color: inherit; */
   /* margin-left: auto; */
   /* margin-right: auto; */
@@ -637,3 +671,98 @@ code span.kw {
     color: #f92672;
 }
 
+// #title-block-header {
+//     font-size: .8em;
+//     color: #666;
+//     margin-block-end: 1rem;
+//     position: relative;
+//     line-height: .5em;
+//     font-size: .9em;
+//     color: #666;
+//     display: inline-block;
+// }
+
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-author {
+    display: inline-grid !important;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-author {
+    display: inline-grid
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta {
+    display: inline-grid;
+    // grid-template-columns: repeat(2, 1fr)
+}
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+    margin-bottom: 0
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-author-orcid img {
+    margin-top: -5px
+}
+
+#title-block-header.quarto-title-block.default .quarto-description p:last-of-type {
+    margin-bottom: 0
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents p,#title-block-header.quarto-title-block.default .quarto-title-authors p,#title-block-header.quarto-title-block.default .quarto-title-affiliations p {
+    margin-bottom: .1em
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-heading {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: .8em;
+    opacity: .8;
+    font-weight: 400
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents {
+    font-size: .9em
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents a {
+    color: #bfbfbf
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta-contents p.affiliation:last-of-type {
+    margin-bottom: .7em
+}
+
+#title-block-header.quarto-title-block.default p.affiliation {
+    margin-bottom: .1em
+}
+
+#title-block-header.quarto-title-block.default .description,#title-block-header.quarto-title-block.default .abstract {
+    margin-top: 0
+}
+
+#title-block-header.quarto-title-block.default .description>p,#title-block-header.quarto-title-block.default .abstract>p {
+    font-size: .9em
+}
+
+#title-block-header.quarto-title-block.default .description>p:last-of-type,#title-block-header.quarto-title-block.default .abstract>p:last-of-type {
+    margin-bottom: 0
+}
+
+#title-block-header.quarto-title-block.default .description .abstract-title,#title-block-header.quarto-title-block.default .abstract .abstract-title {
+    margin-top: 1em;
+    text-transform: uppercase;
+    font-size: .8em;
+    opacity: .8;
+    font-weight: 400
+}
+
+// #title-block-header.quarto-title-block.default .quarto-title-meta-author {
+//     /* display:grid; */
+//     /* grid-template-columns:1fr 1fr; */
+// }
+
+.quarto-title-tools-only {
+    display: flex;
+    justify-content: right
+}

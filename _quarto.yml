@@ -1,33 +1,32 @@
-citation:
-   type: article
-   container-title: "Intro to HPC: Climate Analysis with ClimRR"
-   url: https://saforem2.github.io/climate-analysis
-author:
-  - name: Sam Foreman
-    # id: sf
-    url: https://samforeman.me
-    orcid: 0000-0002-9981-0876
-    email: foremans@anl.gov
-    # affiliation: "ANL"
-    # affiliation: 
-    #   - name: Argonne National Laboratory
-    #     city: Chicago
-    #     state: IL
-    #     url: https://alcf.anl.gov
-# affiliation: ""
-# date: ""
-date-modified: last-modified
-# toc: true
+title: "Intro to HPC @ NERSC: ClimRR"
+# date: today
+date: last-modified
 author-title: ""
 affiliation-title: ""
 published-title: ""
 modified-title: ""
 title-block-categories: false
-  # - author: true
-  # - date: true
-  # - affiliation: false
 number-sections: false
 bibliography: references.bib
+# appendix-cite-as: display
+favicon: "./assets/favicon.svg"
+google-scholar: true
+citeproc: true
+author:
+  name: Sam Foreman
+  url: https://samforeman.me
+  orcid: 0000-0002-9981-0876
+  email: foremans@anl.gov
+  affiliation: Argonne National Laboratory
+  affiliation-url: https://alcf.anl.gov/about/people/sam-foreman
+citation:
+   author: Sam Foreman
+   type: webpage
+   title: "Intro to HPC @ NERSC: ClimRR"
+   # container-title: "Intro to HPC: Climate Analysis with ClimRR"
+   url: https://saforem2.github.io/climate-analysis
+   genre: "Intro to HPC Bootcamp @ NERSC"
+
 # filters:
 #   - lua/callouts.lua
 # highlight-style:
@@ -59,7 +58,7 @@ project:
     port: 4200
 website:
   page-navigation: true
-  title: "Intro to HPC Bootcamp"
+  title: "Intro to HPC Bootcamp: ClimRR"
   site-url: "https://saforem2.github.io/climate-analysis"
   favicon: "./assets/favicon.svg"
   # back-to-top-navigation: true
