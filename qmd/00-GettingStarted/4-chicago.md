@@ -1,519 +1,259 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Sam Foreman">
-<meta name="dcterms.date" content="2023-08-01">
-
-<title>Intro to HPC Bootcamp: ClimRR - Intro to HPC @ NERSC: ClimRR</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
+---
+callout-appearance: simple
+editor:
+  render-on-save: true
+execute:
+  freeze: true
+title: Chicago Analysis
+---
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../qmd/01-ClimRR/2-chicago-temp.html" rel="next">
-<link href="../../qmd/01-ClimRR/1-definitions.html" rel="prev">
-<link href="../.././assets/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
-
-<script type="text/javascript">
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<link href="https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../css/default.css">
-<link rel="stylesheet" href="../../css/callouts.css">
-<meta property="og:title" content="Intro to HPC Bootcamp: ClimRR - Intro to HPC @ NERSC: ClimRR">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
-<meta property="og:site-name" content="Intro to HPC Bootcamp: ClimRR">
-<meta name="citation_title" content="Energy Justice Analysis of Climate Data with ClimRR">
-<meta name="citation_author" content="Sam Foreman">
-<meta name="citation_publication_date" content="2023-08-01">
-<meta name="citation_cover_date" content="2023-08-01">
-<meta name="citation_year" content="2023">
-<meta name="citation_online_date" content="2023-08-01">
-<meta name="citation_fulltext_html_url" content="https://saforem2.github.io/climate-analysis">
-<meta name="citation_language" content="en">
-<meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
-<meta name="citation_reference" content="citation_title=Progress on (g-2)_\mu from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
-<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
-<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
-<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
-<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
-<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
-<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
-</head>
-
-<body class="nav-sidebar floating nav-fixed">
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Intro to HPC Bootcamp: ClimRR</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/saforem2/climate-analysis" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-</ul>
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
-          </div> <!-- /navcollapse -->
-      </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/01-ClimRR/0-ClimRR.html">ClimRR</a></li><li class="breadcrumb-item"><a href="../../qmd/00-GettingStarted/4-chicago.html">Example: ClimRR in Chicago</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Home</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project Overview</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/0-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/1-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup and Installation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/2-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro: Working with GeoSpatial Data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/3-example-groceries.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Example: Groceries in Chicago</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">ClimRR</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/0-ClimRR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview of ClimRR</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/1-definitions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Variable Definitions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/4-chicago.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Example: ClimRR in Chicago</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/2-chicago-temp.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Example: ClimRR Temperature Analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/3-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Analysis with ClimRR</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/extras/0-illinois.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Illinois</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Extras</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/extras/0-illinois.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Illinois</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Chicago Analysis</h1>
-</div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading"></div>
-  <div class="quarto-title-meta-heading"></div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://samforeman.me">Sam Foreman</a> <a href="https://orcid.org/0000-0002-9981-0876" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-    <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            <a href="https://alcf.anl.gov/about/people/sam-foreman">
-            Argonne National Laboratory
-            </a>
-          </p>
-      </div>
-    </div>
 
-<div class="quarto-title-meta">
+::: {.cell execution_count=1}
+``` {.python .cell-code code-fold="true" code-summary="Imports"}
+%matplotlib inline
+import matplotlib_inline
+import matplotlib.pyplot as plt
+import geopandas as gpd
+import warnings
 
-      
-    <div>
-    <div class="quarto-title-meta-heading"></div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 1, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
+import matplotlib.pyplot as plt
 
-</header>
+# from enrich.console import Console, get_theme
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+from ClimRR import get_logger, set_plot_style
+from ClimRR.data import DATA_DIR
+set_plot_style()
+log = get_logger('ClimRR')
+from rich.console import Console as rConsole
+from enrich.style import STYLES
+from rich.theme import Theme
 
-<div class="cell" data-execution_count="1">
-<details>
-<summary>Imports</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># from enrich.console import Console, get_theme</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">'svg'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR <span class="im">import</span> get_logger, set_plot_style</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR.data <span class="im">import</span> DATA_DIR</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>set_plot_style()</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> get_logger(<span class="st">'ClimRR'</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.console <span class="im">import</span> Console <span class="im">as</span> rConsole</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> enrich.style <span class="im">import</span> STYLES</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.theme <span class="im">import</span> Theme</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>theme <span class="op">=</span> Theme(STYLES)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> get_logger(<span class="st">'ClimRR'</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>console <span class="op">=</span> rConsole(theme<span class="op">=</span>theme, log_path<span class="op">=</span><span class="va">False</span>, markup<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+theme = Theme(STYLES)
+log = get_logger('ClimRR')
+console = rConsole(theme=theme, log_path=False, markup=True)
+```
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Using updated plot style for matplotlib
 </pre>
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ClimRR.data <span class="im">import</span> load_shapefile, load_csvs</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> load_shapefile()</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> load_csvs(shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+:::
+
+
+::: {.cell execution_count=2}
+``` {.python .cell-code}
+from ClimRR.data import load_shapefile, load_csvs
+
+shape = load_shapefile()
+data = load_csvs(shape)
+```
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'FireWeatherIndex_Wildfire'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">35</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'HeatingDegreeDays'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">10</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'AnnualTemperatureMinimum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'SeasonalTemperatureMaximum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">27</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'ConsecutiveDayswithNoPrecipitation'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">19</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'SeasonalTemperatureMinimum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">27</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'WindSpeed'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'AnnualTemperatureMaximum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'Precipitation_inches_AnnualTotal'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>
 </pre>
-</div>
-</div>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>square <span class="op">=</span> shape[shape[<span class="st">"Crossmodel"</span>] <span class="op">==</span> <span class="st">'R146C497'</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> square.boundary.plot(ax<span class="op">=</span>ax)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-4-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>chipop <span class="op">=</span> gpd.read_file(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    geodatasets.get_path(<span class="st">'geoda.chicago_commpop'</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>).to_crs(square.crs)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>chihealth <span class="op">=</span> gpd.read_file(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    geodatasets.get_path(<span class="st">'geoda.chicago_health'</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>).to_crs(square.crs)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>chigroc <span class="op">=</span> gpd.read_file(</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    geodatasets.get_path(<span class="st">'geoda.groceries'</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>).to_crs(square.crs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We can inspect this data, looking at the <code>chipop.boundary</code> for example</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>chipop[<span class="st">'boundary'</span>] <span class="op">=</span> chipop.boundary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chipop.boundary.plot(linewidth<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">'#838383'</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_title(<span class="st">'Chicago Neighborhoods'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-7-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<p>Which we can use to plot the population (by neighborhood, in this case):</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chipop.to_crs(square.crs).plot(column<span class="op">=</span><span class="st">"POP2010"</span>, legend<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_title(<span class="ss">f"Chicago population by Neighborhood [2010]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wtown <span class="op">=</span> chipop[chipop[<span class="st">"community"</span>] <span class="op">==</span> <span class="st">'WEST TOWN'</span>]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>humboldt <span class="op">=</span> chipop[chipop[<span class="st">"community"</span>] <span class="op">==</span> <span class="st">'HUMBOLDT PARK'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>humboldt.explore()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+```
 
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
-<html>
-<head>
+:::
+:::
+
+
+::: {.cell execution_count=3}
+``` {.python .cell-code}
+square = shape[shape["Crossmodel"] == 'R146C497']
+fig, ax = plt.subplots(figsize=(4, 3))
+ax = square.boundary.plot(ax=ax)
+ax.set_axis_off()
+plt.tight_layout()
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-4-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=4}
+``` {.python .cell-code}
+import geopandas as gpd
+import geodatasets
+chipop = gpd.read_file(
+    geodatasets.get_path('geoda.chicago_commpop')
+).to_crs(square.crs)
+chihealth = gpd.read_file(
+    geodatasets.get_path('geoda.chicago_health')
+).to_crs(square.crs)
+chigroc = gpd.read_file(
+    geodatasets.get_path('geoda.groceries')
+).to_crs(square.crs)
+```
+:::
+
+
+We can inspect this data, looking at the `chipop.boundary` for example
+
+::: {.cell execution_count=5}
+``` {.python .cell-code}
+chipop['boundary'] = chipop.boundary
+```
+:::
+
+
+::: {.cell execution_count=6}
+``` {.python .cell-code}
+fig, ax = plt.subplots(figsize=(10, 7))
+ax = chipop.boundary.plot(linewidth=0.8, color='#838383', ax=ax)
+ax.set_axis_off()
+_ = ax.set_title('Chicago Neighborhoods')
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-7-output-1.svg){}
+:::
+:::
+
+
+Which we can use to plot the population (by neighborhood, in  this case):
+
+::: {.cell execution_count=7}
+``` {.python .cell-code}
+fig, ax = plt.subplots(figsize=(10, 7))
+ax = chipop.to_crs(square.crs).plot(column="POP2010", legend=True, ax=ax)
+ax.set_axis_off()
+_ = ax.set_title(f"Chicago population by Neighborhood [2010]")
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-8-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=8}
+``` {.python .cell-code}
+wtown = chipop[chipop["community"] == 'WEST TOWN']
+humboldt = chipop[chipop["community"] == 'HUMBOLDT PARK']
+```
+:::
+
+
+::: {.cell execution_count=9}
+``` {.python .cell-code}
+humboldt.explore()
+```
+
+::: {.cell-output .cell-output-display execution_count=9}
+
+```{=html}
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
     
-    <meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; />
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
     
-        <script>
+        &lt;script&gt;
             L_NO_TOUCH = false;
             L_DISABLE_3D = false;
-        </script>
+        &lt;/script&gt;
     
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;></script>
-    <script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;></script>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;></script>
-    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;></script>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/>
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
     
-            <meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
-            <style>
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
                 #map_a6aeb5e3309153446cc717acf9c5b267 {
                     position: relative;
                     width: 100.0%;
@@ -522,10 +262,10 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
                     top: 0.0%;
                 }
                 .leaflet-container { font-size: 1rem; }
-            </style>
+            &lt;/style&gt;
         
     
-                    <style>
+                    &lt;style&gt;
                         .foliumtooltip {
                             
                         }
@@ -538,16 +278,16 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
                         .foliumtooltip th{
                             padding: 2px; padding-right: 8px;
                         }
-                    </style>
+                    &lt;/style&gt;
             
-</head>
-<body>
+&lt;/head&gt;
+&lt;body&gt;
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_a6aeb5e3309153446cc717acf9c5b267&quot; ></div>
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_a6aeb5e3309153446cc717acf9c5b267&quot; &gt;&lt;/div&gt;
         
-</body>
-<script>
+&lt;/body&gt;
+&lt;script&gt;
     
     
             var map_a6aeb5e3309153446cc717acf9c5b267 = L.map(
@@ -632,109 +372,132 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     
     geo_json_28838c2b84b3b08dbfb756448f58bfed.bindTooltip(
     function(layer){
-    let div = L.DomUtil.create('div');
+    let div = L.DomUtil.create(&#x27;div&#x27;);
     
-    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let handleObject = feature=&gt;typeof(feature)==&#x27;object&#x27; ? JSON.stringify(feature) : feature;
     let fields = [&quot;community&quot;, &quot;NID&quot;, &quot;POP2010&quot;, &quot;POP2000&quot;, &quot;POPCH&quot;, &quot;POPPERCH&quot;, &quot;popplus&quot;, &quot;popneg&quot;];
     let aliases = [&quot;community&quot;, &quot;NID&quot;, &quot;POP2010&quot;, &quot;POP2000&quot;, &quot;POPCH&quot;, &quot;POPPERCH&quot;, &quot;popplus&quot;, &quot;popneg&quot;];
-    let table = '<table>' +
+    let table = &#x27;&lt;table&gt;&#x27; +
         String(
         fields.map(
-        (v,i)=>
-        `<tr>
-            <th>${aliases[i]}</th>
+        (v,i)=&gt;
+        `&lt;tr&gt;
+            &lt;th&gt;${aliases[i]}&lt;/th&gt;
             
-            <td>${handleObject(layer.feature.properties[v])}</td>
-        </tr>`).join(''))
-    +'</table>';
+            &lt;td&gt;${handleObject(layer.feature.properties[v])}&lt;/td&gt;
+        &lt;/tr&gt;`).join(&#x27;&#x27;))
+    +&#x27;&lt;/table&gt;&#x27;;
     div.innerHTML=table;
     
     return div
     }
     ,{&quot;className&quot;: &quot;foliumtooltip&quot;, &quot;sticky&quot;: true});
                      
-</script>
-</html>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
-</div>
-</div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> humboldt.overlay(shape, how<span class="op">=</span><span class="st">'intersection'</span>).plot(ax<span class="op">=</span>ax, legend<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> (</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    hp <span class="op">:=</span> chipop[chipop[<span class="st">'community'</span>] <span class="op">==</span> <span class="st">'HUMBOLDT PARK'</span>].overlay(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        shape,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        how<span class="op">=</span><span class="st">'intersection'</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>).plot(ax<span class="op">=</span>ax, legend<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> (</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    lp <span class="op">:=</span> chipop[chipop[<span class="st">'community'</span>] <span class="op">==</span> <span class="st">'LINCOLN PARK'</span>].overlay(</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        shape,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        how<span class="op">=</span><span class="st">'intersection'</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>).plot(ax<span class="op">=</span>ax, legend<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chipop.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#666666'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> lp.boundary.plot(color<span class="op">=</span><span class="st">'red'</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> hp.boundary.plot(color<span class="op">=</span><span class="st">'red'</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_title(<span class="st">'Intersection of Humboldt Park &amp; ClimRR data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>chiwind <span class="op">=</span> data[<span class="st">'WindSpeed'</span>].overlay(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    chipop,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    how<span class="op">=</span><span class="st">'intersection'</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>).overlay(chipop, how<span class="op">=</span><span class="st">'union'</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chiwind.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'#666666'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>_, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chipop.boundary.plot(color<span class="op">=</span><span class="st">'#666666'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>, ax<span class="op">=</span>ax, alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chiwind.plot(column<span class="op">=</span><span class="st">'hist'</span>, ax<span class="op">=</span>ax, legend<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Historical Wind Data across Chicago Neighborhoods'</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>chiwind.explore(column<span class="op">=</span><span class="st">'hist'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
+```
 
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
-<html>
-<head>
+:::
+:::
+
+
+::: {.cell execution_count=10}
+``` {.python .cell-code}
+fig, ax = plt.subplots(figsize=(10, 7))
+ax = humboldt.overlay(shape, how='intersection').plot(ax=ax, legend=True)
+ax = (
+    hp := chipop[chipop['community'] == 'HUMBOLDT PARK'].overlay(
+        shape,
+        how='intersection'
+    )
+).plot(ax=ax, legend=True)
+ax = (
+    lp := chipop[chipop['community'] == 'LINCOLN PARK'].overlay(
+        shape,
+        how='intersection'
+    )
+).plot(ax=ax, legend=True)
+ax = chipop.boundary.plot(ax=ax, color='#666666', linewidth=0.8)
+ax = lp.boundary.plot(color='red', ax=ax)
+ax = hp.boundary.plot(color='red', ax=ax)
+ax.set_axis_off()
+_ = ax.set_title('Intersection of Humboldt Park & ClimRR data')
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-11-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=11}
+``` {.python .cell-code}
+fig, ax = plt.subplots(figsize=(10, 7))
+chiwind = data['WindSpeed'].overlay(
+    chipop,
+    how='intersection'
+).overlay(chipop, how='union')
+ax = chiwind.boundary.plot(ax=ax, color='#666666', linewidth=0.8)
+ax.set_axis_off()
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-12-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=12}
+``` {.python .cell-code}
+_, ax = plt.subplots(figsize=(10, 7))
+ax = chipop.boundary.plot(color='#666666', linewidth=0.8, ax=ax, alpha=0.2)
+ax = chiwind.plot(column='hist', ax=ax, legend=True)
+ax.set_axis_off()
+ax.set_title('Historical Wind Data across Chicago Neighborhoods')
+plt.tight_layout()
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-13-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=13}
+``` {.python .cell-code}
+chiwind.explore(column='hist')
+```
+
+::: {.cell-output .cell-output-display execution_count=13}
+
+```{=html}
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
     
-    <meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; />
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
     
-        <script>
+        &lt;script&gt;
             L_NO_TOUCH = false;
             L_DISABLE_3D = false;
-        </script>
+        &lt;/script&gt;
     
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;></script>
-    <script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;></script>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;></script>
-    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;></script>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/>
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
     
-            <meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
-            <style>
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
                 #map_736d2ae11394dc339f10e975182924c2 {
                     position: relative;
                     width: 100.0%;
@@ -743,10 +506,10 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
                     top: 0.0%;
                 }
                 .leaflet-container { font-size: 1rem; }
-            </style>
+            &lt;/style&gt;
         
     
-                    <style>
+                    &lt;style&gt;
                         .foliumtooltip {
                             
                         }
@@ -759,17 +522,17 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
                         .foliumtooltip th{
                             padding: 2px; padding-right: 8px;
                         }
-                    </style>
+                    &lt;/style&gt;
             
-    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js&quot;></script>
-</head>
-<body>
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_736d2ae11394dc339f10e975182924c2&quot; ></div>
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_736d2ae11394dc339f10e975182924c2&quot; &gt;&lt;/div&gt;
         
-</body>
-<script>
+&lt;/body&gt;
+&lt;script&gt;
     
     
             var map_736d2ae11394dc339f10e975182924c2 = L.map(
@@ -876,21 +639,21 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     
     geo_json_dba2a81e93d48ddc1483ca2a5c2af934.bindTooltip(
     function(layer){
-    let div = L.DomUtil.create('div');
+    let div = L.DomUtil.create(&#x27;div&#x27;);
     
-    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let handleObject = feature=&gt;typeof(feature)==&#x27;object&#x27; ? JSON.stringify(feature) : feature;
     let fields = [&quot;OBJECTID&quot;, &quot;Crossmodel&quot;, &quot;Shape_Leng&quot;, &quot;Shape_Area&quot;, &quot;hist&quot;, &quot;rcp45_midc&quot;, &quot;rcp45_endc&quot;, &quot;rcp85_midc&quot;, &quot;rcp85_endc&quot;, &quot;mid45_hist&quot;, &quot;end45_hist&quot;, &quot;mid85_hist&quot;, &quot;end85_hist&quot;, &quot;mid85_45&quot;, &quot;end85_45&quot;, &quot;community_1&quot;, &quot;NID_1&quot;, &quot;POP2010_1&quot;, &quot;POP2000_1&quot;, &quot;POPCH_1&quot;, &quot;POPPERCH_1&quot;, &quot;popplus_1&quot;, &quot;popneg_1&quot;, &quot;community_2&quot;, &quot;NID_2&quot;, &quot;POP2010_2&quot;, &quot;POP2000_2&quot;, &quot;POPCH_2&quot;, &quot;POPPERCH_2&quot;, &quot;popplus_2&quot;, &quot;popneg_2&quot;];
     let aliases = [&quot;OBJECTID&quot;, &quot;Crossmodel&quot;, &quot;Shape_Leng&quot;, &quot;Shape_Area&quot;, &quot;hist&quot;, &quot;rcp45_midc&quot;, &quot;rcp45_endc&quot;, &quot;rcp85_midc&quot;, &quot;rcp85_endc&quot;, &quot;mid45_hist&quot;, &quot;end45_hist&quot;, &quot;mid85_hist&quot;, &quot;end85_hist&quot;, &quot;mid85_45&quot;, &quot;end85_45&quot;, &quot;community_1&quot;, &quot;NID_1&quot;, &quot;POP2010_1&quot;, &quot;POP2000_1&quot;, &quot;POPCH_1&quot;, &quot;POPPERCH_1&quot;, &quot;popplus_1&quot;, &quot;popneg_1&quot;, &quot;community_2&quot;, &quot;NID_2&quot;, &quot;POP2010_2&quot;, &quot;POP2000_2&quot;, &quot;POPCH_2&quot;, &quot;POPPERCH_2&quot;, &quot;popplus_2&quot;, &quot;popneg_2&quot;];
-    let table = '<table>' +
+    let table = &#x27;&lt;table&gt;&#x27; +
         String(
         fields.map(
-        (v,i)=>
-        `<tr>
-            <th>${aliases[i]}</th>
+        (v,i)=&gt;
+        `&lt;tr&gt;
+            &lt;th&gt;${aliases[i]}&lt;/th&gt;
             
-            <td>${handleObject(layer.feature.properties[v])}</td>
-        </tr>`).join(''))
-    +'</table>';
+            &lt;td&gt;${handleObject(layer.feature.properties[v])}&lt;/td&gt;
+        &lt;/tr&gt;`).join(&#x27;&#x27;))
+    +&#x27;&lt;/table&gt;&#x27;;
     div.innerHTML=table;
     
     return div
@@ -903,25 +666,25 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     
     color_map_cee3d49f5f5c95e414f81a6aa3e98a93.color = d3.scale.threshold()
               .domain([7.19385004, 7.200137313767535, 7.2064245875350705, 7.212711861302605, 7.21899913507014, 7.225286408837675, 7.231573682605211, 7.237860956372746, 7.24414823014028, 7.250435503907815, 7.256722777675351, 7.263010051442886, 7.269297325210421, 7.275584598977956, 7.281871872745491, 7.288159146513026, 7.294446420280561, 7.3007336940480965, 7.307020967815632, 7.313308241583166, 7.319595515350701, 7.3258827891182365, 7.332170062885772, 7.338457336653307, 7.344744610420841, 7.351031884188377, 7.357319157955912, 7.363606431723447, 7.369893705490982, 7.376180979258517, 7.382468253026052, 7.388755526793587, 7.395042800561122, 7.401330074328658, 7.407617348096193, 7.413904621863727, 7.4201918956312625, 7.426479169398798, 7.432766443166333, 7.439053716933868, 7.4453409907014025, 7.451628264468938, 7.457915538236473, 7.464202812004008, 7.4704900857715435, 7.476777359539078, 7.483064633306613, 7.489351907074148, 7.495639180841684, 7.501926454609219, 7.508213728376753, 7.514501002144288, 7.520788275911824, 7.527075549679359, 7.533362823446894, 7.5396500972144285, 7.545937370981964, 7.552224644749499, 7.558511918517034, 7.564799192284569, 7.571086466052105, 7.577373739819639, 7.583661013587174, 7.5899482873547095, 7.596235561122245, 7.60252283488978, 7.608810108657314, 7.61509738242485, 7.621384656192385, 7.62767192995992, 7.633959203727455, 7.6402464774949905, 7.646533751262525, 7.65282102503006, 7.659108298797595, 7.665395572565131, 7.671682846332666, 7.6779701201002, 7.684257393867735, 7.690544667635271, 7.696831941402806, 7.703119215170341, 7.7094064889378755, 7.715693762705411, 7.721981036472946, 7.728268310240481, 7.7345555840080165, 7.740842857775551, 7.747130131543086, 7.753417405310621, 7.7597046790781565, 7.765991952845692, 7.772279226613227, 7.778566500380761, 7.784853774148297, 7.791141047915832, 7.797428321683367, 7.803715595450901, 7.810002869218437, 7.816290142985972, 7.822577416753507, 7.828864690521042, 7.835151964288578, 7.841439238056112, 7.847726511823647, 7.8540137855911825, 7.860301059358718, 7.866588333126253, 7.872875606893787, 7.8791628806613225, 7.885450154428858, 7.891737428196393, 7.898024701963928, 7.9043119757314635, 7.910599249498998, 7.916886523266533, 7.923173797034068, 7.929461070801604, 7.935748344569138, 7.942035618336673, 7.948322892104208, 7.954610165871744, 7.960897439639279, 7.967184713406814, 7.9734719871743485, 7.979759260941884, 7.986046534709419, 7.992333808476954, 7.998621082244489, 8.004908356012024, 8.011195629779559, 8.017482903547094, 8.02377017731463, 8.030057451082165, 8.0363447248497, 8.042631998617235, 8.04891927238477, 8.055206546152304, 8.06149381991984, 8.067781093687374, 8.07406836745491, 8.080355641222445, 8.08664291498998, 8.092930188757515, 8.09921746252505, 8.105504736292586, 8.111792010060121, 8.118079283827655, 8.12436655759519, 8.130653831362725, 8.13694110513026, 8.143228378897795, 8.14951565266533, 8.155802926432866, 8.162090200200401, 8.168377473967936, 8.174664747735472, 8.180952021503007, 8.18723929527054, 8.193526569038076, 8.19981384280561, 8.206101116573146, 8.212388390340681, 8.218675664108217, 8.224962937875752, 8.231250211643287, 8.237537485410822, 8.243824759178358, 8.250112032945893, 8.256399306713426, 8.262686580480961, 8.268973854248497, 8.275261128016032, 8.281548401783567, 8.287835675551102, 8.294122949318638, 8.300410223086173, 8.306697496853708, 8.312984770621243, 8.319272044388779, 8.325559318156312, 8.331846591923847, 8.338133865691383, 8.344421139458918, 8.350708413226453, 8.356995686993988, 8.363282960761524, 8.369570234529059, 8.375857508296594, 8.38214478206413, 8.388432055831665, 8.394719329599198, 8.401006603366733, 8.407293877134268, 8.413581150901804, 8.419868424669339, 8.426155698436874, 8.43244297220441, 8.438730245971945, 8.44501751973948, 8.451304793507013, 8.457592067274549, 8.463879341042084, 8.470166614809619, 8.476453888577154, 8.48274116234469, 8.489028436112225, 8.49531570987976, 8.501602983647295, 8.507890257414829, 8.514177531182366, 8.5204648049499, 8.526752078717434, 8.53303935248497, 8.539326626252505, 8.54561390002004, 8.551901173787575, 8.55818844755511, 8.564475721322646, 8.570762995090181, 8.577050268857715, 8.58333754262525, 8.589624816392785, 8.59591209016032, 8.602199363927856, 8.60848663769539, 8.614773911462926, 8.621061185230461, 8.627348458997997, 8.633635732765532, 8.639923006533067, 8.6462102803006, 8.652497554068136, 8.658784827835671, 8.665072101603206, 8.671359375370741, 8.677646649138277, 8.683933922905812, 8.690221196673347, 8.696508470440882, 8.702795744208418, 8.709083017975953, 8.715370291743486, 8.721657565511022, 8.727944839278557, 8.734232113046092, 8.740519386813627, 8.746806660581163, 8.753093934348698, 8.759381208116233, 8.765668481883768, 8.771955755651303, 8.778243029418839, 8.784530303186372, 8.790817576953907, 8.797104850721443, 8.803392124488978, 8.809679398256513, 8.815966672024048, 8.822253945791584, 8.828541219559119, 8.834828493326654, 8.84111576709419, 8.847403040861725, 8.853690314629258, 8.859977588396793, 8.866264862164329, 8.872552135931864, 8.878839409699399, 8.885126683466934, 8.89141395723447, 8.897701231002005, 8.90398850476954, 8.910275778537073, 8.916563052304609, 8.922850326072144, 8.92913759983968, 8.935424873607214, 8.94171214737475, 8.947999421142285, 8.95428669490982, 8.960573968677355, 8.96686124244489, 8.973148516212426, 8.97943578997996, 8.985723063747495, 8.99201033751503, 8.998297611282565, 9.0045848850501, 9.010872158817635, 9.01715943258517, 9.023446706352706, 9.029733980120241, 9.036021253887776, 9.042308527655312, 9.048595801422845, 9.05488307519038, 9.061170348957916, 9.06745762272545, 9.073744896492986, 9.080032170260521, 9.086319444028057, 9.092606717795592, 9.098893991563127, 9.105181265330662, 9.111468539098198, 9.117755812865731, 9.124043086633266, 9.130330360400801, 9.136617634168337, 9.142904907935872, 9.149192181703407, 9.155479455470942, 9.161766729238478, 9.168054003006013, 9.174341276773548, 9.180628550541083, 9.186915824308617, 9.193203098076152, 9.199490371843687, 9.205777645611223, 9.212064919378758, 9.218352193146293, 9.224639466913828, 9.230926740681362, 9.237214014448899, 9.243501288216432, 9.24978856198397, 9.256075835751503, 9.262363109519038, 9.268650383286573, 9.274937657054108, 9.281224930821644, 9.287512204589179, 9.293799478356714, 9.30008675212425, 9.306374025891785, 9.312661299659318, 9.318948573426855, 9.325235847194389, 9.331523120961924, 9.337810394729459, 9.344097668496994, 9.35038494226453, 9.356672216032065, 9.3629594897996, 9.369246763567135, 9.37553403733467, 9.381821311102204, 9.38810858486974, 9.394395858637274, 9.40068313240481, 9.406970406172345, 9.41325767993988, 9.419544953707415, 9.42583222747495, 9.432119501242486, 9.43840677501002, 9.444694048777556, 9.45098132254509, 9.457268596312625, 9.46355587008016, 9.469843143847696, 9.47613041761523, 9.482417691382766, 9.488704965150301, 9.494992238917837, 9.501279512685372, 9.507566786452905, 9.513854060220442, 9.520141333987976, 9.526428607755511, 9.532715881523046, 9.539003155290581, 9.545290429058117, 9.551577702825652, 9.557864976593187, 9.564152250360722, 9.570439524128258, 9.576726797895791, 9.583014071663328, 9.589301345430862, 9.595588619198397, 9.601875892965932, 9.608163166733467, 9.614450440501003, 9.620737714268538, 9.627024988036073, 9.633312261803606, 9.639599535571142, 9.645886809338677, 9.652174083106212, 9.658461356873747, 9.664748630641283, 9.671035904408818, 9.677323178176353, 9.683610451943888, 9.689897725711422, 9.696184999478959, 9.702472273246492, 9.708759547014028, 9.715046820781563, 9.721334094549098, 9.727621368316633, 9.733908642084169, 9.740195915851704, 9.746483189619239, 9.752770463386774, 9.759057737154308, 9.765345010921845, 9.771632284689378, 9.777919558456913, 9.784206832224449, 9.790494105991984, 9.79678137975952, 9.803068653527054, 9.80935592729459, 9.815643201062125, 9.82193047482966, 9.828217748597194, 9.83450502236473, 9.840792296132264, 9.8470795698998, 9.853366843667335, 9.85965411743487, 9.865941391202405, 9.87222866496994, 9.878515938737475, 9.88480321250501, 9.891090486272546, 9.89737776004008, 9.903665033807616, 9.90995230757515, 9.916239581342685, 9.92252685511022, 9.928814128877756, 9.93510140264529, 9.941388676412826, 9.947675950180361, 9.953963223947897, 9.960250497715432, 9.966537771482965, 9.9728250452505, 9.979112319018036, 9.985399592785571, 9.991686866553106, 9.997974140320641, 10.004261414088177, 10.010548687855712, 10.016835961623247, 10.02312323539078, 10.029410509158318, 10.035697782925851, 10.041985056693386, 10.048272330460922, 10.054559604228457, 10.060846877995992, 10.067134151763527, 10.073421425531063, 10.079708699298598, 10.085995973066133, 10.092283246833667, 10.098570520601204, 10.104857794368737, 10.111145068136272, 10.117432341903807, 10.123719615671343, 10.130006889438878, 10.136294163206413, 10.142581436973948, 10.148868710741484, 10.155155984509019, 10.161443258276552, 10.16773053204409, 10.174017805811623, 10.180305079579158, 10.186592353346693, 10.192879627114229, 10.199166900881764, 10.205454174649299, 10.211741448416834, 10.21802872218437, 10.224315995951905, 10.230603269719438, 10.236890543486975, 10.243177817254509, 10.249465091022044, 10.25575236478958, 10.262039638557114, 10.26832691232465, 10.274614186092185, 10.28090145985972, 10.287188733627255, 10.29347600739479, 10.299763281162324, 10.30605055492986, 10.312337828697395, 10.31862510246493, 10.324912376232465, 10.33119965])
-              .range(['#440154ff', '#440155ff', '#440256ff', '#440356ff', '#450457ff', '#450458ff', '#450559ff', '#450659ff', '#46075aff', '#46075bff', '#46085cff', '#46095cff', '#460a5dff', '#460a5eff', '#460b5eff', '#460c5fff', '#470d60ff', '#470d61ff', '#470e61ff', '#470f62ff', '#471063ff', '#471064ff', '#471164ff', '#471265ff', '#471365ff', '#481366ff', '#481467ff', '#481568ff', '#481668ff', '#481669ff', '#481769ff', '#48176aff', '#48186bff', '#48196cff', '#481a6cff', '#481a6dff', '#481b6dff', '#481c6eff', '#481c6eff', '#481d6fff', '#481d6fff', '#481f70ff', '#481f70ff', '#482071ff', '#482072ff', '#482173ff', '#482273ff', '#482374ff', '#482374ff', '#482475ff', '#482476ff', '#482576ff', '#482577ff', '#482677ff', '#482778ff', '#482878ff', '#482879ff', '#482979ff', '#47297aff', '#472a7aff', '#472b7aff', '#472c7aff', '#472c7bff', '#472d7bff', '#472d7cff', '#472e7cff', '#472e7dff', '#472f7dff', '#462f7eff', '#46307eff', '#46317eff', '#46327eff', '#46327fff', '#46337fff', '#463480ff', '#453480ff', '#453581ff', '#453581ff', '#453681ff', '#453781ff', '#453882ff', '#443882ff', '#443983ff', '#443983ff', '#443a83ff', '#443a83ff', '#443b84ff', '#433c84ff', '#433d84ff', '#433d85ff', '#433e85ff', '#423e85ff', '#423f85ff', '#423f86ff', '#424086ff', '#424086ff', '#424186ff', '#414187ff', '#414287ff', '#414387ff', '#414487ff', '#404488ff', '#404588ff', '#404588ff', '#404688ff', '#3f4688ff', '#3f4788ff', '#3f4789ff', '#3f4889ff', '#3e4889ff', '#3e4989ff', '#3e4a89ff', '#3e4a89ff', '#3e4b8aff', '#3d4c8aff', '#3d4d8aff', '#3d4d8aff', '#3d4e8aff', '#3c4e8aff', '#3c4f8aff', '#3c4f8aff', '#3c508bff', '#3b508bff', '#3b518bff', '#3b518bff', '#3b528bff', '#3a528bff', '#3a538bff', '#3a538bff', '#3a548cff', '#39548cff', '#39558cff', '#39558cff', '#39568cff', '#38578cff', '#38588cff', '#38588cff', '#38598cff', '#37598cff', '#375a8cff', '#375a8dff', '#375b8dff', '#365b8dff', '#365c8dff', '#365c8dff', '#365d8dff', '#355d8dff', '#355e8dff', '#355f8dff', '#355f8dff', '#34608dff', '#34608dff', '#34618dff', '#34618dff', '#33628dff', '#33628dff', '#33638dff', '#32638dff', '#32648eff', '#32648eff', '#32658eff', '#31658eff', '#31668eff', '#31668eff', '#31678eff', '#31678eff', '#31688eff', '#30688eff', '#30698eff', '#30698eff', '#306a8eff', '#2f6a8eff', '#2f6b8eff', '#2f6b8eff', '#2f6c8eff', '#2e6c8eff', '#2e6d8eff', '#2e6d8eff', '#2e6e8eff', '#2e6e8eff', '#2e6f8eff', '#2d6f8eff', '#2d708eff', '#2d708eff', '#2d718eff', '#2c718eff', '#2c718eff', '#2c728eff', '#2c728eff', '#2c738eff', '#2c738eff', '#2b748eff', '#2b748eff', '#2b758eff', '#2b758eff', '#2a768eff', '#2a768eff', '#2a778eff', '#2a778eff', '#2a788eff', '#29788eff', '#29798eff', '#29798eff', '#297a8eff', '#297a8eff', '#297b8eff', '#287b8eff', '#287c8eff', '#287c8eff', '#287d8eff', '#277d8eff', '#277e8eff', '#277e8eff', '#277f8eff', '#277f8eff', '#27808eff', '#26808eff', '#26818eff', '#26818eff', '#26828eff', '#26828eff', '#26828eff', '#25828eff', '#25838eff', '#25838eff', '#25848eff', '#25858eff', '#25858eff', '#24868eff', '#24868eff', '#24878eff', '#24878eff', '#23888eff', '#23888eff', '#23898eff', '#23898eff', '#238a8dff', '#238a8dff', '#228b8dff', '#228b8dff', '#228c8dff', '#228c8dff', '#228d8dff', '#218d8dff', '#218e8dff', '#218e8dff', '#218f8dff', '#218f8dff', '#21908dff', '#21908dff', '#21918cff', '#20918cff', '#20928cff', '#20928cff', '#20928cff', '#20928cff', '#20938cff', '#1f938cff', '#1f948cff', '#1f948cff', '#1f958bff', '#1f958bff', '#1f968bff', '#1f968bff', '#1f978bff', '#1f988bff', '#1f988bff', '#1f998bff', '#1f998aff', '#1f9a8aff', '#1f9a8aff', '#1e9b8aff', '#1e9b8aff', '#1e9c8aff', '#1e9c89ff', '#1e9d89ff', '#1e9d89ff', '#1e9e89ff', '#1f9e89ff', '#1f9f88ff', '#1f9f88ff', '#1fa088ff', '#1fa088ff', '#1fa188ff', '#1fa188ff', '#1fa187ff', '#1fa187ff', '#1fa287ff', '#1fa287ff', '#1fa386ff', '#20a386ff', '#20a486ff', '#20a486ff', '#20a585ff', '#21a585ff', '#21a685ff', '#21a685ff', '#21a785ff', '#22a785ff', '#22a884ff', '#22a884ff', '#22a983ff', '#23a983ff', '#23aa83ff', '#24ab83ff', '#25ab82ff', '#25ac82ff', '#25ac82ff', '#25ad82ff', '#26ad81ff', '#26ad81ff', '#27ad81ff', '#27ae81ff', '#28ae80ff', '#28af80ff', '#29af7fff', '#29b07fff', '#2ab07fff', '#2bb17eff', '#2cb17eff', '#2cb27dff', '#2db27dff', '#2db37cff', '#2eb37cff', '#2eb47cff', '#2fb47cff', '#30b57bff', '#31b57bff', '#31b67aff', '#32b67aff', '#33b679ff', '#34b679ff', '#34b779ff', '#35b779ff', '#36b878ff', '#37b878ff', '#37b977ff', '#38b977ff', '#39ba76ff', '#3aba76ff', '#3abb75ff', '#3bbb75ff', '#3cbc74ff', '#3dbc74ff', '#3ebc73ff', '#3fbd73ff', '#40bd72ff', '#40be72ff', '#41be71ff', '#42bf71ff', '#43bf70ff', '#45c070ff', '#46c06fff', '#47c16fff', '#48c16eff', '#49c16eff', '#4ac16dff', '#4bc26cff', '#4cc26cff', '#4dc36bff', '#4ec36bff', '#4fc46aff', '#50c46aff', '#51c569ff', '#52c569ff', '#53c568ff', '#54c568ff', '#55c667ff', '#56c667ff', '#57c766ff', '#58c765ff', '#59c864ff', '#5ac864ff', '#5bc863ff', '#5cc863ff', '#5dc962ff', '#5ec962ff', '#5fca61ff', '#60ca60ff', '#62cb5fff', '#63cb5fff', '#64cb5eff', '#65cc5dff', '#66cc5cff', '#67cd5cff', '#68cd5bff', '#6acd5bff', '#6bcd5aff', '#6cce59ff', '#6ece58ff', '#6fcf58ff', '#70cf57ff', '#71d057ff', '#72d056ff', '#74d055ff', '#75d054ff', '#76d153ff', '#77d153ff', '#78d152ff', '#7ad151ff', '#7bd250ff', '#7cd250ff', '#7dd34fff', '#7fd34eff', '#80d34dff', '#81d34dff', '#82d44cff', '#84d44bff', '#85d54aff', '#86d549ff', '#88d548ff', '#89d548ff', '#8ad647ff', '#8bd646ff', '#8dd645ff', '#8ed645ff', '#8fd744ff', '#90d743ff', '#92d742ff', '#93d741ff', '#94d840ff', '#96d83fff', '#97d83eff', '#99d93dff', '#9ad93cff', '#9bd93cff', '#9dd93bff', '#9eda3aff', '#9fda39ff', '#a1da38ff', '#a2da37ff', '#a3db36ff', '#a4db36ff', '#a6db35ff', '#a8db34ff', '#a9dc33ff', '#aadc32ff', '#abdc31ff', '#addc30ff', '#aedd2fff', '#b0dd2fff', '#b1dd2eff', '#b2dd2dff', '#b3de2cff', '#b5de2bff', '#b6de2aff', '#b8de29ff', '#b9de28ff', '#bade28ff', '#bcdf27ff', '#bddf26ff', '#bfdf25ff', '#c0df25ff', '#c1df24ff', '#c2df23ff', '#c4e022ff', '#c5e021ff', '#c7e020ff', '#c8e020ff', '#c9e11fff', '#cbe11eff', '#cce11dff', '#cee11dff', '#cfe11cff', '#d1e11bff', '#d2e21bff', '#d3e21aff', '#d4e21aff', '#d6e219ff', '#d7e219ff', '#d9e319ff', '#dae319ff', '#dbe318ff', '#dde318ff', '#dee318ff', '#dfe318ff', '#e0e418ff', '#e2e418ff', '#e3e418ff', '#e5e418ff', '#e6e419ff', '#e7e419ff', '#e8e519ff', '#eae519ff', '#ebe51aff', '#ece51aff', '#ede51bff', '#efe51bff', '#f0e51cff', '#f1e51dff', '#f3e61dff', '#f4e61eff', '#f5e61eff', '#f6e61fff', '#f7e620ff', '#f8e621ff', '#fae722ff', '#fbe723ff', '#fce724ff', '#fde725ff']);
+              .range([&#x27;#440154ff&#x27;, &#x27;#440155ff&#x27;, &#x27;#440256ff&#x27;, &#x27;#440356ff&#x27;, &#x27;#450457ff&#x27;, &#x27;#450458ff&#x27;, &#x27;#450559ff&#x27;, &#x27;#450659ff&#x27;, &#x27;#46075aff&#x27;, &#x27;#46075bff&#x27;, &#x27;#46085cff&#x27;, &#x27;#46095cff&#x27;, &#x27;#460a5dff&#x27;, &#x27;#460a5eff&#x27;, &#x27;#460b5eff&#x27;, &#x27;#460c5fff&#x27;, &#x27;#470d60ff&#x27;, &#x27;#470d61ff&#x27;, &#x27;#470e61ff&#x27;, &#x27;#470f62ff&#x27;, &#x27;#471063ff&#x27;, &#x27;#471064ff&#x27;, &#x27;#471164ff&#x27;, &#x27;#471265ff&#x27;, &#x27;#471365ff&#x27;, &#x27;#481366ff&#x27;, &#x27;#481467ff&#x27;, &#x27;#481568ff&#x27;, &#x27;#481668ff&#x27;, &#x27;#481669ff&#x27;, &#x27;#481769ff&#x27;, &#x27;#48176aff&#x27;, &#x27;#48186bff&#x27;, &#x27;#48196cff&#x27;, &#x27;#481a6cff&#x27;, &#x27;#481a6dff&#x27;, &#x27;#481b6dff&#x27;, &#x27;#481c6eff&#x27;, &#x27;#481c6eff&#x27;, &#x27;#481d6fff&#x27;, &#x27;#481d6fff&#x27;, &#x27;#481f70ff&#x27;, &#x27;#481f70ff&#x27;, &#x27;#482071ff&#x27;, &#x27;#482072ff&#x27;, &#x27;#482173ff&#x27;, &#x27;#482273ff&#x27;, &#x27;#482374ff&#x27;, &#x27;#482374ff&#x27;, &#x27;#482475ff&#x27;, &#x27;#482476ff&#x27;, &#x27;#482576ff&#x27;, &#x27;#482577ff&#x27;, &#x27;#482677ff&#x27;, &#x27;#482778ff&#x27;, &#x27;#482878ff&#x27;, &#x27;#482879ff&#x27;, &#x27;#482979ff&#x27;, &#x27;#47297aff&#x27;, &#x27;#472a7aff&#x27;, &#x27;#472b7aff&#x27;, &#x27;#472c7aff&#x27;, &#x27;#472c7bff&#x27;, &#x27;#472d7bff&#x27;, &#x27;#472d7cff&#x27;, &#x27;#472e7cff&#x27;, &#x27;#472e7dff&#x27;, &#x27;#472f7dff&#x27;, &#x27;#462f7eff&#x27;, &#x27;#46307eff&#x27;, &#x27;#46317eff&#x27;, &#x27;#46327eff&#x27;, &#x27;#46327fff&#x27;, &#x27;#46337fff&#x27;, &#x27;#463480ff&#x27;, &#x27;#453480ff&#x27;, &#x27;#453581ff&#x27;, &#x27;#453581ff&#x27;, &#x27;#453681ff&#x27;, &#x27;#453781ff&#x27;, &#x27;#453882ff&#x27;, &#x27;#443882ff&#x27;, &#x27;#443983ff&#x27;, &#x27;#443983ff&#x27;, &#x27;#443a83ff&#x27;, &#x27;#443a83ff&#x27;, &#x27;#443b84ff&#x27;, &#x27;#433c84ff&#x27;, &#x27;#433d84ff&#x27;, &#x27;#433d85ff&#x27;, &#x27;#433e85ff&#x27;, &#x27;#423e85ff&#x27;, &#x27;#423f85ff&#x27;, &#x27;#423f86ff&#x27;, &#x27;#424086ff&#x27;, &#x27;#424086ff&#x27;, &#x27;#424186ff&#x27;, &#x27;#414187ff&#x27;, &#x27;#414287ff&#x27;, &#x27;#414387ff&#x27;, &#x27;#414487ff&#x27;, &#x27;#404488ff&#x27;, &#x27;#404588ff&#x27;, &#x27;#404588ff&#x27;, &#x27;#404688ff&#x27;, &#x27;#3f4688ff&#x27;, &#x27;#3f4788ff&#x27;, &#x27;#3f4789ff&#x27;, &#x27;#3f4889ff&#x27;, &#x27;#3e4889ff&#x27;, &#x27;#3e4989ff&#x27;, &#x27;#3e4a89ff&#x27;, &#x27;#3e4a89ff&#x27;, &#x27;#3e4b8aff&#x27;, &#x27;#3d4c8aff&#x27;, &#x27;#3d4d8aff&#x27;, &#x27;#3d4d8aff&#x27;, &#x27;#3d4e8aff&#x27;, &#x27;#3c4e8aff&#x27;, &#x27;#3c4f8aff&#x27;, &#x27;#3c4f8aff&#x27;, &#x27;#3c508bff&#x27;, &#x27;#3b508bff&#x27;, &#x27;#3b518bff&#x27;, &#x27;#3b518bff&#x27;, &#x27;#3b528bff&#x27;, &#x27;#3a528bff&#x27;, &#x27;#3a538bff&#x27;, &#x27;#3a538bff&#x27;, &#x27;#3a548cff&#x27;, &#x27;#39548cff&#x27;, &#x27;#39558cff&#x27;, &#x27;#39558cff&#x27;, &#x27;#39568cff&#x27;, &#x27;#38578cff&#x27;, &#x27;#38588cff&#x27;, &#x27;#38588cff&#x27;, &#x27;#38598cff&#x27;, &#x27;#37598cff&#x27;, &#x27;#375a8cff&#x27;, &#x27;#375a8dff&#x27;, &#x27;#375b8dff&#x27;, &#x27;#365b8dff&#x27;, &#x27;#365c8dff&#x27;, &#x27;#365c8dff&#x27;, &#x27;#365d8dff&#x27;, &#x27;#355d8dff&#x27;, &#x27;#355e8dff&#x27;, &#x27;#355f8dff&#x27;, &#x27;#355f8dff&#x27;, &#x27;#34608dff&#x27;, &#x27;#34608dff&#x27;, &#x27;#34618dff&#x27;, &#x27;#34618dff&#x27;, &#x27;#33628dff&#x27;, &#x27;#33628dff&#x27;, &#x27;#33638dff&#x27;, &#x27;#32638dff&#x27;, &#x27;#32648eff&#x27;, &#x27;#32648eff&#x27;, &#x27;#32658eff&#x27;, &#x27;#31658eff&#x27;, &#x27;#31668eff&#x27;, &#x27;#31668eff&#x27;, &#x27;#31678eff&#x27;, &#x27;#31678eff&#x27;, &#x27;#31688eff&#x27;, &#x27;#30688eff&#x27;, &#x27;#30698eff&#x27;, &#x27;#30698eff&#x27;, &#x27;#306a8eff&#x27;, &#x27;#2f6a8eff&#x27;, &#x27;#2f6b8eff&#x27;, &#x27;#2f6b8eff&#x27;, &#x27;#2f6c8eff&#x27;, &#x27;#2e6c8eff&#x27;, &#x27;#2e6d8eff&#x27;, &#x27;#2e6d8eff&#x27;, &#x27;#2e6e8eff&#x27;, &#x27;#2e6e8eff&#x27;, &#x27;#2e6f8eff&#x27;, &#x27;#2d6f8eff&#x27;, &#x27;#2d708eff&#x27;, &#x27;#2d708eff&#x27;, &#x27;#2d718eff&#x27;, &#x27;#2c718eff&#x27;, &#x27;#2c718eff&#x27;, &#x27;#2c728eff&#x27;, &#x27;#2c728eff&#x27;, &#x27;#2c738eff&#x27;, &#x27;#2c738eff&#x27;, &#x27;#2b748eff&#x27;, &#x27;#2b748eff&#x27;, &#x27;#2b758eff&#x27;, &#x27;#2b758eff&#x27;, &#x27;#2a768eff&#x27;, &#x27;#2a768eff&#x27;, &#x27;#2a778eff&#x27;, &#x27;#2a778eff&#x27;, &#x27;#2a788eff&#x27;, &#x27;#29788eff&#x27;, &#x27;#29798eff&#x27;, &#x27;#29798eff&#x27;, &#x27;#297a8eff&#x27;, &#x27;#297a8eff&#x27;, &#x27;#297b8eff&#x27;, &#x27;#287b8eff&#x27;, &#x27;#287c8eff&#x27;, &#x27;#287c8eff&#x27;, &#x27;#287d8eff&#x27;, &#x27;#277d8eff&#x27;, &#x27;#277e8eff&#x27;, &#x27;#277e8eff&#x27;, &#x27;#277f8eff&#x27;, &#x27;#277f8eff&#x27;, &#x27;#27808eff&#x27;, &#x27;#26808eff&#x27;, &#x27;#26818eff&#x27;, &#x27;#26818eff&#x27;, &#x27;#26828eff&#x27;, &#x27;#26828eff&#x27;, &#x27;#26828eff&#x27;, &#x27;#25828eff&#x27;, &#x27;#25838eff&#x27;, &#x27;#25838eff&#x27;, &#x27;#25848eff&#x27;, &#x27;#25858eff&#x27;, &#x27;#25858eff&#x27;, &#x27;#24868eff&#x27;, &#x27;#24868eff&#x27;, &#x27;#24878eff&#x27;, &#x27;#24878eff&#x27;, &#x27;#23888eff&#x27;, &#x27;#23888eff&#x27;, &#x27;#23898eff&#x27;, &#x27;#23898eff&#x27;, &#x27;#238a8dff&#x27;, &#x27;#238a8dff&#x27;, &#x27;#228b8dff&#x27;, &#x27;#228b8dff&#x27;, &#x27;#228c8dff&#x27;, &#x27;#228c8dff&#x27;, &#x27;#228d8dff&#x27;, &#x27;#218d8dff&#x27;, &#x27;#218e8dff&#x27;, &#x27;#218e8dff&#x27;, &#x27;#218f8dff&#x27;, &#x27;#218f8dff&#x27;, &#x27;#21908dff&#x27;, &#x27;#21908dff&#x27;, &#x27;#21918cff&#x27;, &#x27;#20918cff&#x27;, &#x27;#20928cff&#x27;, &#x27;#20928cff&#x27;, &#x27;#20928cff&#x27;, &#x27;#20928cff&#x27;, &#x27;#20938cff&#x27;, &#x27;#1f938cff&#x27;, &#x27;#1f948cff&#x27;, &#x27;#1f948cff&#x27;, &#x27;#1f958bff&#x27;, &#x27;#1f958bff&#x27;, &#x27;#1f968bff&#x27;, &#x27;#1f968bff&#x27;, &#x27;#1f978bff&#x27;, &#x27;#1f988bff&#x27;, &#x27;#1f988bff&#x27;, &#x27;#1f998bff&#x27;, &#x27;#1f998aff&#x27;, &#x27;#1f9a8aff&#x27;, &#x27;#1f9a8aff&#x27;, &#x27;#1e9b8aff&#x27;, &#x27;#1e9b8aff&#x27;, &#x27;#1e9c8aff&#x27;, &#x27;#1e9c89ff&#x27;, &#x27;#1e9d89ff&#x27;, &#x27;#1e9d89ff&#x27;, &#x27;#1e9e89ff&#x27;, &#x27;#1f9e89ff&#x27;, &#x27;#1f9f88ff&#x27;, &#x27;#1f9f88ff&#x27;, &#x27;#1fa088ff&#x27;, &#x27;#1fa088ff&#x27;, &#x27;#1fa188ff&#x27;, &#x27;#1fa188ff&#x27;, &#x27;#1fa187ff&#x27;, &#x27;#1fa187ff&#x27;, &#x27;#1fa287ff&#x27;, &#x27;#1fa287ff&#x27;, &#x27;#1fa386ff&#x27;, &#x27;#20a386ff&#x27;, &#x27;#20a486ff&#x27;, &#x27;#20a486ff&#x27;, &#x27;#20a585ff&#x27;, &#x27;#21a585ff&#x27;, &#x27;#21a685ff&#x27;, &#x27;#21a685ff&#x27;, &#x27;#21a785ff&#x27;, &#x27;#22a785ff&#x27;, &#x27;#22a884ff&#x27;, &#x27;#22a884ff&#x27;, &#x27;#22a983ff&#x27;, &#x27;#23a983ff&#x27;, &#x27;#23aa83ff&#x27;, &#x27;#24ab83ff&#x27;, &#x27;#25ab82ff&#x27;, &#x27;#25ac82ff&#x27;, &#x27;#25ac82ff&#x27;, &#x27;#25ad82ff&#x27;, &#x27;#26ad81ff&#x27;, &#x27;#26ad81ff&#x27;, &#x27;#27ad81ff&#x27;, &#x27;#27ae81ff&#x27;, &#x27;#28ae80ff&#x27;, &#x27;#28af80ff&#x27;, &#x27;#29af7fff&#x27;, &#x27;#29b07fff&#x27;, &#x27;#2ab07fff&#x27;, &#x27;#2bb17eff&#x27;, &#x27;#2cb17eff&#x27;, &#x27;#2cb27dff&#x27;, &#x27;#2db27dff&#x27;, &#x27;#2db37cff&#x27;, &#x27;#2eb37cff&#x27;, &#x27;#2eb47cff&#x27;, &#x27;#2fb47cff&#x27;, &#x27;#30b57bff&#x27;, &#x27;#31b57bff&#x27;, &#x27;#31b67aff&#x27;, &#x27;#32b67aff&#x27;, &#x27;#33b679ff&#x27;, &#x27;#34b679ff&#x27;, &#x27;#34b779ff&#x27;, &#x27;#35b779ff&#x27;, &#x27;#36b878ff&#x27;, &#x27;#37b878ff&#x27;, &#x27;#37b977ff&#x27;, &#x27;#38b977ff&#x27;, &#x27;#39ba76ff&#x27;, &#x27;#3aba76ff&#x27;, &#x27;#3abb75ff&#x27;, &#x27;#3bbb75ff&#x27;, &#x27;#3cbc74ff&#x27;, &#x27;#3dbc74ff&#x27;, &#x27;#3ebc73ff&#x27;, &#x27;#3fbd73ff&#x27;, &#x27;#40bd72ff&#x27;, &#x27;#40be72ff&#x27;, &#x27;#41be71ff&#x27;, &#x27;#42bf71ff&#x27;, &#x27;#43bf70ff&#x27;, &#x27;#45c070ff&#x27;, &#x27;#46c06fff&#x27;, &#x27;#47c16fff&#x27;, &#x27;#48c16eff&#x27;, &#x27;#49c16eff&#x27;, &#x27;#4ac16dff&#x27;, &#x27;#4bc26cff&#x27;, &#x27;#4cc26cff&#x27;, &#x27;#4dc36bff&#x27;, &#x27;#4ec36bff&#x27;, &#x27;#4fc46aff&#x27;, &#x27;#50c46aff&#x27;, &#x27;#51c569ff&#x27;, &#x27;#52c569ff&#x27;, &#x27;#53c568ff&#x27;, &#x27;#54c568ff&#x27;, &#x27;#55c667ff&#x27;, &#x27;#56c667ff&#x27;, &#x27;#57c766ff&#x27;, &#x27;#58c765ff&#x27;, &#x27;#59c864ff&#x27;, &#x27;#5ac864ff&#x27;, &#x27;#5bc863ff&#x27;, &#x27;#5cc863ff&#x27;, &#x27;#5dc962ff&#x27;, &#x27;#5ec962ff&#x27;, &#x27;#5fca61ff&#x27;, &#x27;#60ca60ff&#x27;, &#x27;#62cb5fff&#x27;, &#x27;#63cb5fff&#x27;, &#x27;#64cb5eff&#x27;, &#x27;#65cc5dff&#x27;, &#x27;#66cc5cff&#x27;, &#x27;#67cd5cff&#x27;, &#x27;#68cd5bff&#x27;, &#x27;#6acd5bff&#x27;, &#x27;#6bcd5aff&#x27;, &#x27;#6cce59ff&#x27;, &#x27;#6ece58ff&#x27;, &#x27;#6fcf58ff&#x27;, &#x27;#70cf57ff&#x27;, &#x27;#71d057ff&#x27;, &#x27;#72d056ff&#x27;, &#x27;#74d055ff&#x27;, &#x27;#75d054ff&#x27;, &#x27;#76d153ff&#x27;, &#x27;#77d153ff&#x27;, &#x27;#78d152ff&#x27;, &#x27;#7ad151ff&#x27;, &#x27;#7bd250ff&#x27;, &#x27;#7cd250ff&#x27;, &#x27;#7dd34fff&#x27;, &#x27;#7fd34eff&#x27;, &#x27;#80d34dff&#x27;, &#x27;#81d34dff&#x27;, &#x27;#82d44cff&#x27;, &#x27;#84d44bff&#x27;, &#x27;#85d54aff&#x27;, &#x27;#86d549ff&#x27;, &#x27;#88d548ff&#x27;, &#x27;#89d548ff&#x27;, &#x27;#8ad647ff&#x27;, &#x27;#8bd646ff&#x27;, &#x27;#8dd645ff&#x27;, &#x27;#8ed645ff&#x27;, &#x27;#8fd744ff&#x27;, &#x27;#90d743ff&#x27;, &#x27;#92d742ff&#x27;, &#x27;#93d741ff&#x27;, &#x27;#94d840ff&#x27;, &#x27;#96d83fff&#x27;, &#x27;#97d83eff&#x27;, &#x27;#99d93dff&#x27;, &#x27;#9ad93cff&#x27;, &#x27;#9bd93cff&#x27;, &#x27;#9dd93bff&#x27;, &#x27;#9eda3aff&#x27;, &#x27;#9fda39ff&#x27;, &#x27;#a1da38ff&#x27;, &#x27;#a2da37ff&#x27;, &#x27;#a3db36ff&#x27;, &#x27;#a4db36ff&#x27;, &#x27;#a6db35ff&#x27;, &#x27;#a8db34ff&#x27;, &#x27;#a9dc33ff&#x27;, &#x27;#aadc32ff&#x27;, &#x27;#abdc31ff&#x27;, &#x27;#addc30ff&#x27;, &#x27;#aedd2fff&#x27;, &#x27;#b0dd2fff&#x27;, &#x27;#b1dd2eff&#x27;, &#x27;#b2dd2dff&#x27;, &#x27;#b3de2cff&#x27;, &#x27;#b5de2bff&#x27;, &#x27;#b6de2aff&#x27;, &#x27;#b8de29ff&#x27;, &#x27;#b9de28ff&#x27;, &#x27;#bade28ff&#x27;, &#x27;#bcdf27ff&#x27;, &#x27;#bddf26ff&#x27;, &#x27;#bfdf25ff&#x27;, &#x27;#c0df25ff&#x27;, &#x27;#c1df24ff&#x27;, &#x27;#c2df23ff&#x27;, &#x27;#c4e022ff&#x27;, &#x27;#c5e021ff&#x27;, &#x27;#c7e020ff&#x27;, &#x27;#c8e020ff&#x27;, &#x27;#c9e11fff&#x27;, &#x27;#cbe11eff&#x27;, &#x27;#cce11dff&#x27;, &#x27;#cee11dff&#x27;, &#x27;#cfe11cff&#x27;, &#x27;#d1e11bff&#x27;, &#x27;#d2e21bff&#x27;, &#x27;#d3e21aff&#x27;, &#x27;#d4e21aff&#x27;, &#x27;#d6e219ff&#x27;, &#x27;#d7e219ff&#x27;, &#x27;#d9e319ff&#x27;, &#x27;#dae319ff&#x27;, &#x27;#dbe318ff&#x27;, &#x27;#dde318ff&#x27;, &#x27;#dee318ff&#x27;, &#x27;#dfe318ff&#x27;, &#x27;#e0e418ff&#x27;, &#x27;#e2e418ff&#x27;, &#x27;#e3e418ff&#x27;, &#x27;#e5e418ff&#x27;, &#x27;#e6e419ff&#x27;, &#x27;#e7e419ff&#x27;, &#x27;#e8e519ff&#x27;, &#x27;#eae519ff&#x27;, &#x27;#ebe51aff&#x27;, &#x27;#ece51aff&#x27;, &#x27;#ede51bff&#x27;, &#x27;#efe51bff&#x27;, &#x27;#f0e51cff&#x27;, &#x27;#f1e51dff&#x27;, &#x27;#f3e61dff&#x27;, &#x27;#f4e61eff&#x27;, &#x27;#f5e61eff&#x27;, &#x27;#f6e61fff&#x27;, &#x27;#f7e620ff&#x27;, &#x27;#f8e621ff&#x27;, &#x27;#fae722ff&#x27;, &#x27;#fbe723ff&#x27;, &#x27;#fce724ff&#x27;, &#x27;#fde725ff&#x27;]);
     
 
     color_map_cee3d49f5f5c95e414f81a6aa3e98a93.x = d3.scale.linear()
               .domain([7.19385004, 10.33119965])
               .range([0, 450 - 50]);
 
-    color_map_cee3d49f5f5c95e414f81a6aa3e98a93.legend = L.control({position: 'topright'});
-    color_map_cee3d49f5f5c95e414f81a6aa3e98a93.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_cee3d49f5f5c95e414f81a6aa3e98a93.legend = L.control({position: &#x27;topright&#x27;});
+    color_map_cee3d49f5f5c95e414f81a6aa3e98a93.legend.onAdd = function (map) {var div = L.DomUtil.create(&#x27;div&#x27;, &#x27;legend&#x27;); return div};
     color_map_cee3d49f5f5c95e414f81a6aa3e98a93.legend.addTo(map_736d2ae11394dc339f10e975182924c2);
 
     color_map_cee3d49f5f5c95e414f81a6aa3e98a93.xAxis = d3.svg.axis()
         .scale(color_map_cee3d49f5f5c95e414f81a6aa3e98a93.x)
         .orient(&quot;top&quot;)
         .tickSize(1)
-        .tickValues([7.19385004, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 7.513736666901961, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 7.833623293803922, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 8.153509920705883, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 8.473396547607843, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 8.793283174509805, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 9.113169801411765, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 9.433056428313726, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 9.752943055215686, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 10.072829682117646, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+        .tickValues([7.19385004, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 7.513736666901961, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 7.833623293803922, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 8.153509920705883, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 8.473396547607843, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 8.793283174509805, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 9.113169801411765, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 9.433056428313726, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 9.752943055215686, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 10.072829682117646, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;]);
 
     color_map_cee3d49f5f5c95e414f81a6aa3e98a93.svg = d3.select(&quot;.legend.leaflet-control&quot;).append(&quot;svg&quot;)
-        .attr(&quot;id&quot;, 'legend')
+        .attr(&quot;id&quot;, &#x27;legend&#x27;)
         .attr(&quot;width&quot;, 450)
         .attr(&quot;height&quot;, 40);
 
@@ -933,7 +696,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
         .data(color_map_cee3d49f5f5c95e414f81a6aa3e98a93.color.range().map(function(d, i) {
           return {
             x0: i ? color_map_cee3d49f5f5c95e414f81a6aa3e98a93.x(color_map_cee3d49f5f5c95e414f81a6aa3e98a93.color.domain()[i - 1]) : color_map_cee3d49f5f5c95e414f81a6aa3e98a93.x.range()[0],
-            x1: i < color_map_cee3d49f5f5c95e414f81a6aa3e98a93.color.domain().length ? color_map_cee3d49f5f5c95e414f81a6aa3e98a93.x(color_map_cee3d49f5f5c95e414f81a6aa3e98a93.color.domain()[i]) : color_map_cee3d49f5f5c95e414f81a6aa3e98a93.x.range()[1],
+            x1: i &lt; color_map_cee3d49f5f5c95e414f81a6aa3e98a93.color.domain().length ? color_map_cee3d49f5f5c95e414f81a6aa3e98a93.x(color_map_cee3d49f5f5c95e414f81a6aa3e98a93.color.domain()[i]) : color_map_cee3d49f5f5c95e414f81a6aa3e98a93.x.range()[1],
             z: d
           };
         }))
@@ -947,486 +710,142 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
         .attr(&quot;class&quot;, &quot;caption&quot;)
         .attr(&quot;y&quot;, 21)
         .text(&quot;hist&quot;);
-</script>
-</html>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
-</div>
-</div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>_, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chiwind.plot(column<span class="op">=</span><span class="st">'hist'</span>, scheme<span class="op">=</span><span class="st">'quantiles'</span>, k<span class="op">=</span><span class="dv">8</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_title(<span class="st">'WindSpeed, historical'</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chiwind.plot(column<span class="op">=</span><span class="st">'rcp45_midc'</span>, scheme<span class="op">=</span><span class="st">'quantiles'</span>, k<span class="op">=</span><span class="dv">3</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_title(<span class="st">'WindSpeed, Mid-Century [RCP45]'</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-16-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> chiwind.plot(column<span class="op">=</span><span class="st">'rcp45_endc'</span>, scheme<span class="op">=</span><span class="st">'quantiles'</span>, k<span class="op">=</span><span class="dv">3</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_title(<span class="st">'WindSpeed, End-Century [RCP45]'</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-17-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">7</span>))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ax0 <span class="op">=</span> chiwind.plot(<span class="st">'hist'</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>])</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> chiwind.plot(<span class="st">'rcp45_midc'</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>])</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> chiwind.plot(<span class="st">'rcp45_midc'</span>, ax<span class="op">=</span>ax[<span class="dv">2</span>])</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ax0.set_axis_off()</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>ax1.set_axis_off()</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>ax2.set_axis_off()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="4-chicago_files/figure-html/cell-18-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'WindSpeed'</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>(62834, 18)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>selection <span class="op">=</span> shape[<span class="dv">0</span>:<span class="dv">5</span>]</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> selection.iterrows():</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the area of the polygon</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    poly_area <span class="op">=</span> row[<span class="st">'geometry'</span>].area</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    console.<span class="bu">print</span>(<span class="ss">f"Polygon area at </span><span class="sc">{</span>index<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>poly_area<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
+```
+
+:::
+:::
+
+
+::: {.cell execution_count=14}
+``` {.python .cell-code}
+_, ax = plt.subplots()
+ax = chiwind.plot(column='hist', scheme='quantiles', k=8, ax=ax)
+_ = ax.set_title('WindSpeed, historical')
+ax.set_axis_off()
+plt.tight_layout()
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-15-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=15}
+``` {.python .cell-code}
+fig, ax = plt.subplots()
+ax = chiwind.plot(column='rcp45_midc', scheme='quantiles', k=3, ax=ax)
+ax.set_axis_off()
+_ = ax.set_title('WindSpeed, Mid-Century [RCP45]')
+plt.tight_layout()
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-16-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=16}
+``` {.python .cell-code}
+fig, ax = plt.subplots()
+ax = chiwind.plot(column='rcp45_endc', scheme='quantiles', k=3, ax=ax)
+_ = ax.set_title('WindSpeed, End-Century [RCP45]')
+plt.tight_layout()
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-17-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=17}
+``` {.python .cell-code}
+fig, ax = plt.subplots(ncols=3, figsize=(16, 7))
+ax0 = chiwind.plot('hist', ax=ax[0])
+ax1 = chiwind.plot('rcp45_midc', ax=ax[1])
+ax2 = chiwind.plot('rcp45_midc', ax=ax[2])
+ax0.set_axis_off()
+ax1.set_axis_off()
+ax2.set_axis_off()
+```
+
+::: {.cell-output .cell-output-display}
+![](4-chicago_files/figure-html/cell-18-output-1.svg){}
+:::
+:::
+
+
+::: {.cell execution_count=18}
+``` {.python .cell-code}
+data['WindSpeed'].shape
+```
+
+::: {.cell-output .cell-output-display execution_count=18}
+```
+(62834, 18)
+```
+:::
+:::
+
+
+::: {.cell execution_count=19}
+``` {.python .cell-code}
+selection = shape[0:5]
+
+for index, row in selection.iterrows():
+    # get the area of the polygon
+    poly_area = row['geometry'].area
+    console.print(f"Polygon area at {index} is {poly_area:.3f}")
+```
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Polygon area at <span style="color: #2094f3; text-decoration-color: #2094f3">0</span> is <span style="color: #2094f3; text-decoration-color: #2094f3">252927293.657</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Polygon area at <span style="color: #2094f3; text-decoration-color: #2094f3">1</span> is <span style="color: #2094f3; text-decoration-color: #2094f3">235501313.715</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Polygon area at <span style="color: #2094f3; text-decoration-color: #2094f3">2</span> is <span style="color: #2094f3; text-decoration-color: #2094f3">233416379.950</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Polygon area at <span style="color: #2094f3; text-decoration-color: #2094f3">3</span> is <span style="color: #2094f3; text-decoration-color: #2094f3">261761834.191</span>
 </pre>
-</div>
-<div class="cell-output cell-output-display">
+```
+
+:::
+
+::: {.cell-output .cell-output-display}
+
+```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Polygon area at <span style="color: #2094f3; text-decoration-color: #2094f3">4</span> is <span style="color: #2094f3; text-decoration-color: #2094f3">226073092.218</span>
 </pre>
-</div>
-</div>
+```
+
+:::
+:::
 
 
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2023,
-  author = {Foreman, Sam},
-  title = {Energy {Justice} {Analysis} of {Climate} {Data} with
-    {ClimRR}},
-  date = {2023-08-01},
-  url = {https://saforem2.github.io/climate-analysis},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Foreman, Sam. 2023. <span>“Energy Justice Analysis of Climate Data with
-ClimRR.”</span> Intro to HPC Bootcamp @ NERSC. August 1, 2023. <a href="https://saforem2.github.io/climate-analysis">https://saforem2.github.io/climate-analysis</a>.
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'alternate';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
-      });
-    }
-  }
-});
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../qmd/01-ClimRR/1-definitions.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Variable Definitions</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../qmd/01-ClimRR/2-chicago-temp.html" class="pagination-link">
-        <span class="nav-page-text">Example: ClimRR Temperature Analysis</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
-</div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2023, Sam Foreman</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/qmd/00-GettingStarted/4-chicago.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/saforem2/quarto-examples">
-      <i class="bi bi-github" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/saforem2">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
-
-
-
-</body></html>
