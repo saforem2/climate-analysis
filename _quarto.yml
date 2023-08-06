@@ -22,7 +22,7 @@ author:
 citation:
    author: Sam Foreman
    type: webpage
-   title: "Intro to HPC @ NERSC: ClimRR"
+   title: "Energy Justice Analysis of Climate Data with ClimRR"
    # container-title: "Intro to HPC: Climate Analysis with ClimRR"
    url: https://saforem2.github.io/climate-analysis
    genre: "Intro to HPC Bootcamp @ NERSC"
@@ -200,6 +200,7 @@ format:
       dark:
         - css/common.scss
         - css/dark.scss 
+        - css/syntax-dark.scss
       light:
         - css/common.scss
         - css/light.scss

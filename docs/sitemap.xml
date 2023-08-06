@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://saforem2.github.io/climate-analysis/index.html</loc>
-    <lastmod>2023-08-04T13:17:37.182Z</lastmod>
+    <lastmod>2023-08-06T02:32:26.641Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/GettingStarted/setup.html</loc>
@@ -54,11 +54,11 @@
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/3-analysis.html</loc>
-    <lastmod>2023-08-02T13:01:09.862Z</lastmod>
+    <lastmod>2023-08-04T19:00:59.744Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/1-definitions.html</loc>
-    <lastmod>2023-08-02T21:16:21.371Z</lastmod>
+    <lastmod>2023-08-04T20:06:02.210Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/4-chicago.html</loc>
@@ -66,11 +66,11 @@
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/2-intro.html</loc>
-    <lastmod>2023-08-04T00:48:34.300Z</lastmod>
+    <lastmod>2023-08-04T20:37:25.267Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/1-setup.html</loc>
-    <lastmod>2023-08-03T19:04:58.925Z</lastmod>
+    <lastmod>2023-08-06T02:31:02.250Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/3-example.html</loc>
@@ -78,23 +78,23 @@
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/0-ClimRR.html</loc>
-    <lastmod>2023-08-03T13:50:25.137Z</lastmod>
+    <lastmod>2023-08-04T18:51:52.528Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/2-chicago-temp.html</loc>
-    <lastmod>2023-08-02T23:06:12.578Z</lastmod>
+    <lastmod>2023-08-04T19:00:14.312Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/0-python.html</loc>
-    <lastmod>2023-08-04T13:19:38.651Z</lastmod>
+    <lastmod>2023-08-06T02:32:19.486Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/extras/0-illinois.html</loc>
-    <lastmod>2023-08-02T12:54:43.372Z</lastmod>
+    <lastmod>2023-08-06T01:23:33.346Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/overview.html</loc>
-    <lastmod>2023-08-04T13:18:25.285Z</lastmod>
+    <lastmod>2023-08-06T02:32:04.776Z</lastmod>
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/extras/1-iris.html</loc>
@@ -102,6 +102,6 @@
   </url>
   <url>
     <loc>https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/3-example-groceries.html</loc>
-    <lastmod>2023-08-04T01:15:41.625Z</lastmod>
+    <lastmod>2023-08-06T01:25:16.641Z</lastmod>
   </url>
 </urlset>
