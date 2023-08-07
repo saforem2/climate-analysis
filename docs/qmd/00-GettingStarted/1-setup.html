@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
-<meta name="dcterms.date" content="2023-08-02">
+<meta name="dcterms.date" content="2023-08-06">
 
-<title>Intro to HPC Bootcamp: ClimRR - Intro to HPC @ NERSC: ClimRR</title>
+<title>Intro to HPC Bootcamp: ClimRR - Intro HPC @ NERSC: ClimRR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../qmd/00-GettingStarted/2-intro.html" rel="next">
-<link href="../../qmd/00-GettingStarted/0-python.html" rel="prev">
+<link href="../../qmd/overview.html" rel="prev">
 <link href="../.././assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -111,19 +111,35 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </script>
 <link href="https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css" rel="stylesheet">
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../css/default.css">
 <link rel="stylesheet" href="../../css/callouts.css">
-<meta property="og:title" content="Intro to HPC Bootcamp: ClimRR - Intro to HPC @ NERSC: ClimRR">
+<meta property="og:title" content="Intro to HPC Bootcamp: ClimRR - Intro HPC @ NERSC: ClimRR">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://saforem2.github.io/climate-analysis/qmd/00-GettingStarted/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site-name" content="Intro to HPC Bootcamp: ClimRR">
 <meta name="citation_title" content="Energy Justice Analysis of Climate Data with ClimRR">
 <meta name="citation_author" content="Sam Foreman">
-<meta name="citation_publication_date" content="2023-08-02">
-<meta name="citation_cover_date" content="2023-08-02">
+<meta name="citation_publication_date" content="2023-08-06">
+<meta name="citation_cover_date" content="2023-08-06">
 <meta name="citation_year" content="2023">
-<meta name="citation_online_date" content="2023-08-02">
+<meta name="citation_online_date" content="2023-08-06">
 <meta name="citation_fulltext_html_url" content="https://saforem2.github.io/climate-analysis">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
@@ -178,7 +194,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/00-GettingStarted/0-python.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../qmd/00-GettingStarted/1-setup.html">Setup and Installation</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/00-GettingStarted/1-setup.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../qmd/00-GettingStarted/1-setup.html">Setup and Installation</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -221,12 +237,6 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/0-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../qmd/00-GettingStarted/1-setup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Setup and Installation</span></a>
   </div>
@@ -264,6 +274,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../../qmd/01-ClimRR/1-definitions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variable Definitions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/01-ClimRR/1p5-DataDictionary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ClimRR: Data Dictionary</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -319,7 +335,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#overview-of-python" id="toc-overview-of-python" class="nav-link active" data-scroll-target="#overview-of-python">Overview of Python</a>
+  <ul class="collapse">
+  <li><a href="#invoking-python" id="toc-invoking-python" class="nav-link" data-scroll-target="#invoking-python">Invoking Python</a></li>
+  </ul></li>
+  <li><a href="#modules-and-packages-in-python" id="toc-modules-and-packages-in-python" class="nav-link" data-scroll-target="#modules-and-packages-in-python">Modules and Packages in Python</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/qmd/00-GettingStarted/1-setup.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -354,7 +375,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading"></div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 2, 2023</p>
+      <p class="date">August 6, 2023</p>
     </div>
   </div>
   
@@ -387,8 +408,75 @@ Intro to Unix
 <p>Our project directory can be found at:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/global/cfs/cdirs/m4388/Project2-ClimRR/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>All of the data needed for this project has already been copied to the filesystem on NERSC.</p>
-<div class="callout callout-style-simple callout-important callout-titled" title="Finding the data" style="width:100%; place-self: end;">
+<p>In addition, we provide a pre-built (<code>hpc-bootcamp</code>) python kernel which we will use for running our code in Jupyter @ NERSC.</p>
+<p>This <code>hpc-bootcamp</code> kernel has everything we will need for this project, including the <a href="https://github.com/saforem2/climate-analysis/tree/main/src/ClimRR"><code>ClimRR</code> Python package</a>.</p>
+<section id="overview-of-python" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-python">Overview of Python</h2>
+<div class="callout callout-style-simple callout-caution callout-titled" title="Reference" style="width:100%;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reference
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Material below modified from<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></strong>: <a href="https://earth-env-data-science.github.io/lectures/core_python/python_fundamentals.html">Python Fundamentals</a></p>
+</div>
+</div>
+</div>
+<section id="invoking-python" class="level3">
+<h3 class="anchored" data-anchor-id="invoking-python">Invoking Python</h3>
+<p>There are three main ways to use Python:</p>
+<ol type="1">
+<li>Running / executing a Python file, e.g.&nbsp;<code>python filename.py</code>
+<ul>
+<li>this will launch python, execute (line by line) the contents of <code>filename.py</code>, and return</li>
+</ul></li>
+<li>Interactively, either through:
+<ol type="1">
+<li>a <strong>console</strong> (e.g.&nbsp;the Python interpreter <code>python</code> or an <a href="https://ipython.org/">IPython</a> shell <code>ipython</code>)</li>
+<li>a <strong>notebook</strong> (e.g.&nbsp;Jupyter notebook)*</li>
+</ol></li>
+</ol>
+<p>*we will (mostly) focus on using Jupyter notebooks for this project.</p>
+</section>
+</section>
+<section id="modules-and-packages-in-python" class="level2">
+<h2 class="anchored" data-anchor-id="modules-and-packages-in-python">Modules and Packages in Python</h2>
+<p>As an illustrative example for how to use and work with Python, we’ve included a simple Python package (<code>ClimRR</code>) in our <a href="https://github.com/saforem2/climate-analysis"> <code>climate-analysis/</code></a> repo.</p>
+<p>This Python package, <code>CLimRR</code>, is located in <a href="../../src/ClimRR"><code>src/ClimRR/</code></a> and contains the following<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
+<!-- package, `ClimRR`, located in  -->
+<!-- This python package, `ClimRR` is located in [`src/ClimRR`](../../src/ClimRR/), -->
+<!-- and contains only a few (relatively) simple Python -->
+<!-- `modules`[^modules] as we can see by looking in the  -->
+<ul>
+<li> <a href="../../"><strong>climate-analysis</strong>/</a>
+<ul>
+<li>📂 <a href="../../src/"><strong>src</strong>/</a>
+<ul>
+<li>📂 <a href="../../src/ClimRR/"><strong>ClimRR</strong>/</a>
+<ul>
+<li>🐍 <a href="src/ClimRR/__about__.py">__about__.py</a></li>
+<li>🐍 <a href="src/ClimRR/__init__.py">__init__.py</a></li>
+<li>🐍 <a href="src/ClimRR/__init__.py">data.py</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>In particular, the <em>Python package<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></em> that we will use for this project, <code>ClimRR</code> is located inside our <code>src/ClimRR</code> directory.</p>
+<p>This is a simple example just to</p>
+<ul>
+<li><p><a href="../../src/ClimRR/__init__.py"><code>__init__.py</code></a>: Any folder containing an <code>__init__.py</code> file is considered a Python library.</p>
+<p>Oftentimes they are empty<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, but ours contains some (not terribly important) functions for <a href="https://github.com/saforem2/climate-analysis/src/ClimRR/__init__.py#L29">specifying where our data lives</a>, <a href="https://github.com/saforem2/climate-analysis/src/ClimRR/__init__.py#L107">setting up logging</a>, etc.</p></li>
+<li><p><a href="../../src/ClimRR/__about__.py"><code>__about__.py</code></a>: A <strong>strictly informational</strong> (<code>metadata</code>!) file that can be used to (dynamically!) specify a package version. Again, this isn’t important for our purposes but incase you’re wondering what it does<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p></li>
+<li><p><a href="../src/ClimRR/data.py"><code>data.py</code></a>: Contains some simple (but useful!) functions for <a href="https://github.com/saforem2/climate-analysis/src/ClimRR/data.py#L77">loading our Shapefile</a>, <a href="https://github.com/saforem2/climate-analysis/blob/8d6a62896112963d2fd95ef86f14cdf0df4834eb/src/ClimRR/data.py#L37">loading US County data</a>, and loading <a href="https://github.com/saforem2/climate-analysis/blob/8d6a62896112963d2fd95ef86f14cdf0df4834eb/src/ClimRR/data.py#L61"><code>ClimRR</code> climate data from <code>*.CSV</code>s</a></p></li>
+</ul>
+<div class="callout callout-style-simple callout-important callout-titled" title="Finding the data" style="width:100%; place-self: end;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -397,9 +485,10 @@ Finding the data
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The data needed for this project has already been copied to the NERSC systems and can be found at:</p>
+<p>For those curious, the ClimRR data we will be working with looks something like:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tree /global/cfs/cdirs/m4388/Project2-ClimRR/data/ClimRR/</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/global/cfs/cdirs/m4388/Project2-ClimRR/data/ClimRR/</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> AnnualTemperatureMaximum.csv</span>
@@ -419,6 +508,7 @@ Finding the data
 </div>
 </div>
 </div>
+</section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>To get started, we will need to:</p>
@@ -436,17 +526,28 @@ Finding the data
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2023,
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Which <em>itself</em> is modified from the <a href="https://docs.python.org/3/tutorial/">official python tutorial</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Recall, a Python <em>module</em> is an individual file <code>.py</code> containing some Python code. A Python <em>library</em> is then a collection of these <em>modules</em>, organized around some central idea or purpose.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Roughly, <code>package</code> <span class="math inline">\simeq</span> <code>library</code> for our purposes<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>More information on <code>__init__.py</code> and Python packages can be found <a href="https://docs.python.org/3/tutorial/modules.html#packages">here</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Additional information <a href="https://hatch.pypa.io/latest/version/">here</a>. Again, understanding the details of python packaging is <strong>well beyond</strong> the scope of this project, but I’ve included some details here for those curious.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2023,
   author = {Foreman, Sam},
   title = {Energy {Justice} {Analysis} of {Climate} {Data} with
     {ClimRR}},
-  date = {2023-08-02},
+  date = {2023-08-06},
   url = {https://saforem2.github.io/climate-analysis},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2023" class="csl-entry quarto-appendix-citeas" role="listitem">
 Foreman, Sam. 2023. <span>“Energy Justice Analysis of Climate Data with
-ClimRR.”</span> Intro to HPC Bootcamp @ NERSC. August 2, 2023. <a href="https://saforem2.github.io/climate-analysis">https://saforem2.github.io/climate-analysis</a>.
+ClimRR.”</span> Intro to HPC Bootcamp @ NERSC: ClimRR. August 6, 2023.
+<a href="https://saforem2.github.io/climate-analysis">https://saforem2.github.io/climate-analysis</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -798,8 +899,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../qmd/00-GettingStarted/0-python.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Working with Python</span>
+      <a href="../../qmd/overview.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Project Overview</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -1,4 +1,4 @@
-title: "Intro to HPC @ NERSC: ClimRR"
+title: "Intro HPC @ NERSC: ClimRR"
 # date: today
 date: last-modified
 author-title: ""
@@ -25,7 +25,7 @@ citation:
    title: "Energy Justice Analysis of Climate Data with ClimRR"
    # container-title: "Intro to HPC: Climate Analysis with ClimRR"
    url: https://saforem2.github.io/climate-analysis
-   genre: "Intro to HPC Bootcamp @ NERSC"
+   genre: "Intro to HPC Bootcamp @ NERSC: ClimRR"
 
 # filters:
 #   - lua/callouts.lua
@@ -96,8 +96,8 @@ website:
         text: Project Overview
       - section: "Getting Started"
         contents:
-          - href: qmd/00-GettingStarted/0-python.qmd
-            text: Working with Python
+          # - href: qmd/00-GettingStarted/0-python.qmd
+          #   text: Working with Python
           - href: qmd/00-GettingStarted/1-setup.qmd
             text: Setup and Installation
           - href: qmd/00-GettingStarted/2-intro.qmd
@@ -110,6 +110,8 @@ website:
             text: Overview of ClimRR
           - href: qmd/01-ClimRR/1-definitions.qmd
             text: Variable Definitions
+          - href: qmd/01-ClimRR/1p5-DataDictionary.qmd
+            text: "ClimRR: Data Dictionary"
           - href: qmd/00-GettingStarted/4-chicago.qmd
             text: "Example: ClimRR in Chicago"
           - href: qmd/01-ClimRR/2-chicago-temp.qmd

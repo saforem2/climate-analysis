@@ -28,6 +28,7 @@ dependencies = [
   "ipympl",
   "matplotlib",
   "geopandas",
+  "geodatasets",
   "xagg",
   "numpy",
   "pandas",

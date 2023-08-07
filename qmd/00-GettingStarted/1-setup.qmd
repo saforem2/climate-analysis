@@ -27,9 +27,106 @@ Our project directory can be found at:
 
 All of the data needed for this project has already been copied to the filesystem on NERSC.
 
+In addition, we provide a pre-built (`hpc-bootcamp`) python kernel which we will use for running our code in Jupyter @ NERSC.
+
+This `hpc-bootcamp` kernel has everything we will need for this project,
+including the [`ClimRR` Python
+package](https://github.com/saforem2/climate-analysis/tree/main/src/ClimRR).
+
+## Overview of Python
+
+::: {.callout-caution title="Reference" collapse="true" style="width:100%;"}
+
+**Material below modified from[^modified]**: [Python
+Fundamentals](https://earth-env-data-science.github.io/lectures/core_python/python_fundamentals.html)
+
+:::
+
+[^modified]: Which _itself_ is modified from the [official python
+tutorial](https://docs.python.org/3/tutorial/)
+
+### Invoking Python
+
+There are three main ways to use Python:
+
+1. Running / executing a Python file, e.g. `python filename.py`
+    - this will launch python, execute (line by line) the contents of `filename.py`, and return
+2. Interactively, either through:
+    1. a **console** (e.g. the Python interpreter `python` or an [IPython](https://ipython.org/) shell `ipython`)
+    2. a **notebook** (e.g. Jupyter notebook)*
+
+*we will (mostly) focus on using Jupyter notebooks for this project.
+
+## Modules and Packages in Python
+
+As an illustrative example for how to use and work with Python, we've included
+a simple Python package (`ClimRR`) in our [{{< fa brands github >}}
+`climate-analysis/`](https://github.com/saforem2/climate-analysis) repo.
+
+This Python package, `CLimRR`, is located in [`src/ClimRR/`](../../src/ClimRR) and contains the following[^modules]:
+
+<!-- package, `ClimRR`, located in  -->
+<!-- This python package, `ClimRR` is located in [`src/ClimRR`](../../src/ClimRR/), -->
+<!-- and contains only a few (relatively) simple Python -->
+<!-- `modules`[^modules] as we can see by looking in the  -->
+
+   - {{< fa brands github >}} [__climate\-analysis__/](../../)
+      - 📂 [__src__/](../../src/)
+         - 📂 [__ClimRR__/](../../src/ClimRR/)
+            - 🐍 [\_\_about\_\_.py](src/ClimRR/__about__.py)
+            - 🐍 [\_\_init\_\_.py](src/ClimRR/__init__.py)
+            - 🐍 [data.py](src/ClimRR/__init__.py)
+
+In particular, the _Python package[^package]_ that we will use for this
+project, `ClimRR` is located inside our `src/ClimRR` directory.
+
+This is a simple example just to 
+
+- [`__init__.py`](../../src/ClimRR/__init__.py): Any folder containing an `__init__.py` file is considered a
+  Python library.  
+
+  Oftentimes they are empty[^init_files], but ours contains some (not terribly
+  important) functions for [specifying where our data
+  lives](https://github.com/saforem2/climate-analysis/src/ClimRR/__init__.py#L29),
+  [setting up
+  logging](https://github.com/saforem2/climate-analysis/src/ClimRR/__init__.py#L107),
+  etc.
+
+- [`__about__.py`](../../src/ClimRR/__about__.py): A **strictly informational**
+(`metadata`!) file that can be used to (dynamically!) specify a package
+version. Again, this isn't important for our purposes but incase you're
+wondering what it does[^about_files].
+
+- [`data.py`](../src/ClimRR/data.py): Contains some simple (but useful!)
+functions for [loading our
+Shapefile](https://github.com/saforem2/climate-analysis/src/ClimRR/data.py#L77),
+[loading US County
+data](https://github.com/saforem2/climate-analysis/blob/8d6a62896112963d2fd95ef86f14cdf0df4834eb/src/ClimRR/data.py#L37),
+and loading [`ClimRR` climate data from
+`*.CSV`s](https://github.com/saforem2/climate-analysis/blob/8d6a62896112963d2fd95ef86f14cdf0df4834eb/src/ClimRR/data.py#L61)
+
+
+[^package]: Roughly, `package` $\simeq$ `library` for our purposes
+
+[^about_files]:  
+   Additional information
+   [here](https://hatch.pypa.io/latest/version/). Again, understanding the details
+   of python packaging is **well beyond** the scope of this project, but I've
+   included some details here for those curious.
+
+[^init_files]:  
+   More information on `__init__.py` and Python packages can be found
+   [here](https://docs.python.org/3/tutorial/modules.html#packages)
+
+[^modules]: Recall, a Python _module_ is an individual file `.py` containing
+some Python code. A Python _library_ is then a collection of these _modules_,
+organized around some central idea or purpose.
+
 ::: {.callout-important title="Finding the data" collapse="true" style="width:100%; place-self: end;"}
 
 The data needed for this project has already been copied to the NERSC systems and can be found at:
+
+For those curious, the ClimRR data we will be working with looks something like:
 
 ```bash
 $ tree /global/cfs/cdirs/m4388/Project2-ClimRR/data/ClimRR/

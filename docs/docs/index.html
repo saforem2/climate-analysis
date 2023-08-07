@@ -9,7 +9,7 @@
 <meta name="author" content="Sam Foreman">
 <meta name="dcterms.date" content="2023-08-06">
 
-<title>Intro to HPC Bootcamp: ClimRR - Intro HPC @ NERSC: ClimRR</title>
+<title>Intro to HPC Bootcamp: ClimRR - Intro to HPC @ NERSC: ClimRR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,30 +22,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../qmd/01-ClimRR/1p5-DataDictionary.html" rel="next">
-<link href="../../qmd/01-ClimRR/0-ClimRR.html" rel="prev">
-<link href="../.././assets/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./qmd/overview.html" rel="next">
+<link href="././assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,28 +110,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </script>
 <link href="https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css" rel="stylesheet">
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
-<link rel="stylesheet" href="../../css/default.css">
-<link rel="stylesheet" href="../../css/callouts.css">
-<meta property="og:title" content="Intro to HPC Bootcamp: ClimRR - Intro HPC @ NERSC: ClimRR">
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/callouts.css">
+<meta property="og:title" content="Intro to HPC Bootcamp: ClimRR - Intro to HPC @ NERSC: ClimRR">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://saforem2.github.io/climate-analysis/qmd/01-ClimRR/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:image" content="https://saforem2.github.io/climate-analysis/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site-name" content="Intro to HPC Bootcamp: ClimRR">
 <meta name="citation_title" content="Energy Justice Analysis of Climate Data with ClimRR">
 <meta name="citation_author" content="Sam Foreman">
@@ -125,10 +142,10 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Intro to HPC Bootcamp: ClimRR</span>
     </a>
   </div>
@@ -160,7 +177,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/01-ClimRR/0-ClimRR.html">ClimRR</a></li><li class="breadcrumb-item"><a href="../../qmd/01-ClimRR/1-definitions.html">Variable Definitions</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -182,13 +199,13 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/overview.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Overview</span></a>
   </div>
 </li>
@@ -203,19 +220,25 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/1-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/00-GettingStarted/0-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qmd/00-GettingStarted/1-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup and Installation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/2-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/00-GettingStarted/2-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro: Working with GeoSpatial Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/3-example-groceries.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/00-GettingStarted/3-example-groceries.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Example: Groceries in Chicago</span></a>
   </div>
 </li>
@@ -232,43 +255,37 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/0-ClimRR.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/01-ClimRR/0-ClimRR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview of ClimRR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/1-definitions.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qmd/01-ClimRR/1-definitions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variable Definitions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/1p5-DataDictionary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ClimRR: Data Dictionary</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/00-GettingStarted/4-chicago.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/00-GettingStarted/4-chicago.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Example: ClimRR in Chicago</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/2-chicago-temp.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/01-ClimRR/2-chicago-temp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Example: ClimRR Temperature Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/01-ClimRR/3-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/01-ClimRR/3-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Analysis with ClimRR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/extras/0-illinois.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/extras/0-illinois.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Illinois</span></a>
   </div>
 </li>
@@ -285,7 +302,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/extras/0-illinois.html" class="sidebar-item-text sidebar-link">
+  <a href="./qmd/extras/0-illinois.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Illinois</span></a>
   </div>
 </li>
@@ -301,26 +318,17 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#temperature-annual" id="toc-temperature-annual" class="nav-link active" data-scroll-target="#temperature-annual">Temperature (Annual)</a></li>
-  <li><a href="#temperature-seasonal" id="toc-temperature-seasonal" class="nav-link" data-scroll-target="#temperature-seasonal">Temperature (Seasonal)</a></li>
-  <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation">Precipitation</a></li>
-  <li><a href="#wind-speed" id="toc-wind-speed" class="nav-link" data-scroll-target="#wind-speed">Wind Speed</a></li>
-  <li><a href="#consecutive-days-with-no-precipitation" id="toc-consecutive-days-with-no-precipitation" class="nav-link" data-scroll-target="#consecutive-days-with-no-precipitation">Consecutive Days With No Precipitation</a></li>
-  <li><a href="#degree-days" id="toc-degree-days" class="nav-link" data-scroll-target="#degree-days">Degree Days</a></li>
-  <li><a href="#fire-weather-index" id="toc-fire-weather-index" class="nav-link" data-scroll-target="#fire-weather-index">Fire Weather Index</a>
-  <ul class="collapse">
-  <li><a href="#components-of-the-fwi" id="toc-components-of-the-fwi" class="nav-link" data-scroll-target="#components-of-the-fwi">Components of the FWI</a></li>
-  <li><a href="#calculating-seasonal-averages" id="toc-calculating-seasonal-averages" class="nav-link" data-scroll-target="#calculating-seasonal-averages">Calculating Seasonal Averages</a></li>
-  </ul></li>
+  <li><a href="#climate-risk-resilience-portal-climrr" id="toc-climate-risk-resilience-portal-climrr" class="nav-link active" data-scroll-target="#climate-risk-resilience-portal-climrr">Climate Risk &amp; Resilience Portal (<code>ClimRR</code>)</a></li>
+  <li><a href="#additional-projects" id="toc-additional-projects" class="nav-link" data-scroll-target="#additional-projects">Additional Projects</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/qmd/01-ClimRR/1-definitions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/saforem2/climate-analysis/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/saforem2/climate-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Climate Variables</h1>
+<h1 class="title">Intro to HPC: ClimRR</h1>
 </div>
 
 
@@ -356,125 +364,165 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 </header>
 
-<section id="temperature-annual" class="level2">
-<h2 class="anchored" data-anchor-id="temperature-annual">Temperature (Annual)</h2>
-<p>Each climate model generates temperature readings every 3 hours, or 8 temperature readings per day.</p>
-<p>The maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.</p>
-<p>Similarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.</p>
-<p>Argonne calculated the annual average of both the maximum and minimum daily temperatures.</p>
-<p>These daily high / low readings were then used to calculate the annual average maximum or minimum daily temperature for that scenario’s model year (e.g.&nbsp;the average max daily temperature for 2045 using the CCSM model under RCP4.5).</p>
-<p>This process was repeated for each year within a given time period / scenario (e.g.&nbsp;2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).</p>
-<p>Finally, the 30 individual annual averages for a given time period/scenario were themselves averaged, producing a multi-model ensemble mean that represents the annual average of the maximum or minimum daily temperature for a given time period / scenario.</p>
-</section>
-<section id="temperature-seasonal" class="level2">
-<h2 class="anchored" data-anchor-id="temperature-seasonal">Temperature (Seasonal)</h2>
-<p>Each climate model generates temperature readings every 3 hours, or 8 temperature readings per day.</p>
-<p>The maximum daily temperature refers to the highest of these 8 readings, which often occurs in the middle of the daytime and is comparable to the ‘high temperature’ in a daily weather forecast.</p>
-<p>Similarly, the minimum daily temperature refers to the lowest of these 8 readings, which often occurs overnight and is comparable to the ‘low temperature’ in a daily weather forecast.</p>
-<p>Argonne calculated the seasonal average of both the maximum and minimum daily temperatures; the seasons are segmented as</p>
+<div id="fig-climrr" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: <a href="https://disgeoportal.egs.anl.gov/ClimRR/">ClimRR</a>: Empowering individuals, governments, and organizations to examine simulated future climate conditions at mid- and end-of-century for a range of climate perils<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></figcaption>
+</figure>
+</div>
+<section id="climate-risk-resilience-portal-climrr" class="level2">
+<h2 class="anchored" data-anchor-id="climate-risk-resilience-portal-climrr">Climate Risk &amp; Resilience Portal (<code>ClimRR</code>)</h2>
+<p>The <a href="https://www.anl.gov/ccrds/ClimRR">ClimRR Portal</a> can be viewed online, and is a great resource for interactive exploration.</p>
+<p>Climate change is increasing the complexity, intensity, and frequency of disasters.</p>
+<p>Understanding future climate conditions in cities and towns across the United States is necessary to prepare for future climate realities.</p>
+<p>To address this requirement, ClimRR<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> — the Climate Risk and Resilience Portal — empowers individuals, governments, and organizations to examine simulated future climate conditions at mid- and end-of-century for a range of climate perils.</p>
+<!-- ::: {.grid style="justify-items: start; align-items: center;"}
+
+::: {.g-col-6 style="text-align:left; place-self: center;"}
+
+_Empowering individuals, governments, and organizations to examine simulated
+future climate conditions at mid- and end-of-century for a range of climate
+perils._
+
+::: {.g-col-6 style="text-align:left; place-self: end;"}
+
+:::
+
+:::
+  
+::: {.g-col-6 style="align-self: center;"}
+
+::: {#fig-climrr style="text-align:center;"}
+![[](https://www.anl.gov/ccrds/ClimRR)](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
+
+[Image Source](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)
+:::
+
+:::
+
+::: -->
+<div class="callout callout-style-simple callout-important callout-titled" title="Finding the data" style="width:100%; place-self: end;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Finding the data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li>Winter (Dec, Jan, Feb)</li>
-<li>Spring (March, April, May)</li>
-<li>Summer (June, July, Aug)</li>
-<li>Autumn (Sep, Oct, Nov)</li>
+<li>The data needed for this project has already been copied to the NERSC systems and can be found at:</li>
 </ul>
-<p>These calculations involved extracting the highest temperature reading and lowest temperature reading for each individual day of a year (e.g.&nbsp;2045) within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM).</p>
-<p>These daily high / low readings were then classified by season and used to calculate the seasonal average maximum or minimum daily temperature for that scenario’s model year (e.g.&nbsp;the average daily max temperature for summer of 2045 using the CCSM model under RCP4.5).</p>
-<p>This process was repeated for each year within a given time period / scenario (e.g.&nbsp;2046, 2047, and so forth) across all three climate models (CCSM, GFDL, and HadGEM).</p>
-<p>Finally, the 30 individual seasonal averages for a given time period / scenario were themselves averaged, producing a multi-modal ensemble mean that represents the seasonal average of the maximum or minimum daily temperature for a given time period / scenario.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls /global/cfs/cdirs/m4388/Project2-ClimRR/data/ClimRR/</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">AnnualTemperatureMaximum.csv</span>  <span class="st">'ClimRR Metadata and Data Dictionary.pdf'</span>   FireWeatherIndex_Wildfire.csv   GridCellsShapefile.zip   Precipitation_inches_AnnualTotal.csv   SeasonalTemperatureMaximum.csv   WindSpeed.csv</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">AnnualTemperatureMinimum.csv</span>   ConsecutiveDayswithNoPrecipitation.csv     GridCells2Shapefile.zip         HeatingDegreeDays.csv    README.txt                             SeasonalTemperatureMinimum.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>the data is also available online and can be downloaded from <a href="https://anl.box.com/s/hmkkgkrkzxxocfe9kpgrzk2gfc4gizp8">ClimRR Data Download (ANL)</a></p>
+<!-- - [Counties - United States of America](https://public.opendatasoft.com/explore/dataset/georef-united-states-of-america-county/export/?disjunctive.ste_code&disjunctive.ste_name&disjunctive.coty_code&disjunctive.coty_name&sort=year&dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6Imdlb3JlZi11bml0ZWQtc3RhdGVzLW9mLWFtZXJpY2EtY291bnR5Iiwib3B0aW9ucyI6eyJkaXNqdW5jdGl2ZS5zdGVfY29kZSI6dHJ1ZSwiZGlzanVuY3RpdmUuc3RlX25hbWUiOnRydWUsImRpc2p1bmN0aXZlLmNvdHlfY29kZSI6dHJ1ZSwiZGlzanVuY3RpdmUuY290eV9uYW1lIjp0cnVlLCJzb3J0IjoieWVhciJ9fSwiY2hhcnRzIjpbeyJhbGlnbk1vbnRoIjp0cnVlLCJ0eXBlIjoibGluZSIsImZ1bmMiOiJDT1VOVCIsInNjaWVudGlmaWNEaXNwbGF5Ijp0cnVlLCJjb2xvciI6IiNGRjUxNUEifV0sInhBeGlzIjoieWVhciIsIm1heHBvaW50cyI6IiIsInRpbWVzY2FsZSI6InllYXIiLCJzb3J0IjoiIn1dLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D) -->
+<!---->
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<blockquote class="blockquote">
+<div style="font-size:1.5em; padding-top: -1em!important; margin:auto;">
+<p><strong>Project Description</strong></p>
+</div>
+<p>Are different populations unequally affected by climate change? This project will explore the intersection of climate data and energy justice, providing an introductory understanding of data science techniques in assessing disparate outcomes on vulnerable or underserved populations in the United States. By shedding light on energy disparities, the project aims to contribute to the ongoing discussions surrounding energy equity and inform policymakers and stakeholders for more inclusive energy initiatives. Energy justice refers to the equitable distribution of clean, affordable, and reliable energy resources among all communities, regardless of their socioeconomic status or demographic characteristics.</p>
+<p>This project will focus on the analysis of climate data and low-income energy affordability data across the United States. The analysis will focus on examining energy consumption patterns, renewable energy adoption rates, and energy affordability across different geographical regions and demographic groups.</p>
+<p>To assess disparate outcomes, the project will employ various statistical techniques to compare energy-related indicators among vulnerable populations.</p>
+<p>This work may involve analyzing energy access in low-income neighborhoods, evaluating the impact of energy policies on marginalized communities, or examining the correlation between energy affordability and socioeconomic factors.</p>
+<p>The findings of the analysis will be interpreted to gain insights into the disparities in energy justice and its impact on vulnerable populations. The project aims to identify areas where energy inequalities exist and provide a data-driven foundation for advocating for equitable energy policies and programs.</p>
+</blockquote>
 </section>
-<section id="precipitation" class="level2">
-<h2 class="anchored" data-anchor-id="precipitation">Precipitation</h2>
-<p>Each climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e.&nbsp;every 3 hours, of every day, for all modeled years).</p>
-<p>These 3-hour precipitation estimates can be used to calculate the total precipitation over a designated period of time, ranging from daily to annually.</p>
-<p>Argonne calculated total annual precipitation by adding all 3-hour precipitation estimates for a given year (e.g.&nbsp;2045) within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM), which produced the total annual precipitation for that scenario’s model year, such as CCSM’s estimate of annual precipitation in 2045 under climate scenario RCP4.5.</p>
-<p>This process was repeated for each year within a given time period / scenario (e.g.&nbsp;2046, 2047, and so forth) and across all three climate models (CCSM, GFDL, and HadGEM), producing a total of 30 estimates of total annual precipitation for a given time period / scenario.</p>
-<p>The average of these values was taken to produce the ensemble mean of the total annual precipitation (in inches) for each time period / scenario.</p>
+<section id="additional-projects" class="level2 column-page">
+<h2 class="anchored" data-anchor-id="additional-projects">Additional Projects</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Project (and link project description)</strong></th>
+<th style="text-align: center;">Institution</th>
+<th style="text-align: center;"><strong>Lead</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://shinstitute.org/ai-powered-equity-analysis-of-renewable-energy-laws/">AI-Powered Equity Analysis of Renewable Energy Laws</a></td>
+<td style="text-align: center;">ANL</td>
+<td style="text-align: center;">Murat Keceli</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://shinstitute.org/solar-power-for-affordable-housing-through-computational-design-of-low-cost-high-efficiency-solar-cells/">Solar Power for Affordable Housing through Computational Design of Low-Cost/High-Efficiency Solar Cells</a></td>
+<td style="text-align: center;">ANL</td>
+<td style="text-align: center;">Alvaro Vazquez-Mayagoita</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://shinstitute.org/energy-justice-analysis-of-climate-data/">Energy Justice Analysis of Climate Data</a></td>
+<td style="text-align: center;">ANL</td>
+<td style="text-align: center;">Sam Foreman</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://shinstitute.org/energy-cost-for-disadvantaged-populations-and-methods-of-energy-efficiency-and-energy-optimization-in-computing-systems/">Energy Cost for Disadvantaged Populations and Methods of Energy Efficiency and Energy Optimization in Computing Systems</a></td>
+<td style="text-align: center;">NERSC</td>
+<td style="text-align: center;">Charles Lively</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://shinstitute.org/understanding-the-impact-of-hpc-center-energy-usage-on-low-income-and-minority-populations/">Understanding the Impact of HPC Center Energy Usage on Low-income and Minority Populations</a></td>
+<td style="text-align: center;">NERSC</td>
+<td style="text-align: center;">Charles Lively</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://shinstitute.org/power-outages-and-inequities-in-energy-access-for-medically-vulnerable-populations/">Power Outages and Inequities in Energy Access for Medically Vulnerable Populations</a></td>
+<td style="text-align: center;">OLCF</td>
+<td style="text-align: center;">Subil Abraham</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://shinstitute.org/socioeconomics-of-power-outages-and-heatwaves/">Socioeconomics of Power Outages and Heatwaves</a></td>
+<td style="text-align: center;">OLCF</td>
+<td style="text-align: center;">Suzanne Parete-Koon</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="wind-speed" class="level2">
-<h2 class="anchored" data-anchor-id="wind-speed">Wind Speed</h2>
-<p>Each climate model generates estimated wind speed readings (in miles per hour, or <code>mph</code>) every 3 hours, or 8 wind speed readings per day.</p>
-<p>These values are irrespective of wind direction and only represent the magnitude of wind speed.</p>
-<p>Using these readings, Argonne calculated the average daily wind speed (the average of each day’s 8 wind speed readings) for every day within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for each climate model (CCSM, GFDL, and HadGEM).</p>
-<p>Argonne then took the average of each daily average wind speed for a given year (e.g.&nbsp;2045) and within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM), which produced the annual average wind speed for that scenario’s model year, such as CCSM’s estimate of annual average wind speeds in 2045 under climate scenario RCP4.5.</p>
-<p>This process was repeated for each year within a given time period / scenario.</p>
-<p>The average of these values was taken to produce the ensemble mean of the annual average wind speed (in <code>mph</code>) for each time period / scenario.</p>
-</section>
-<section id="consecutive-days-with-no-precipitation" class="level2">
-<h2 class="anchored" data-anchor-id="consecutive-days-with-no-precipitation">Consecutive Days With No Precipitation</h2>
-<p>Each climate model estimates an amount of precipitation (whether rain, snow, sleet, or ice) that occurs every 3 hours across the entire modeled time period (i.e.&nbsp;every 3 hours, of every day, for all modeled years).</p>
-<p>These 3-hour precipitation estimates were used to calculate the daily precipitation quantities by adding all 8 precipitation readings for each day of a given year (e.g.&nbsp;2045) within a given time period / scenario (e.g. mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM).</p>
-<p>This process produced the total daily precipitation for every day in a scenario’s model year, such as CCSM’s daily estimates of total precipitation for the year 2045 under climate scenario RCP4.5.</p>
-<p>Using this information, Argonne identified the greatest number of <em>consecutive</em> days in which <em>no</em> precipitation occurred (i.e.&nbsp;the total daily precipitation quantity equaled zero) for that scenario’s model year (e.g.&nbsp;for the year 2045 under scenario RCP4.5, the highest number of consecutive days without any precipitation was X).</p>
-<p>This process was repeated for each year within a given time period / scenario (e.g.&nbsp;2046, 2047 and so forth) across all three climate models (CCSM, GFDL, and HadGEM) producing 10 yearly values for each model, with each value representing the longest consecutive span with no precipitation for that year.</p>
-<p>Of the 10 yearly values for each climate model, the maximum value was selected (e.g.&nbsp;the decadal maximum). This resulted in 3 values for each climate model’s 10 years of data.</p>
-<p>The average of these maximum of the maxima was then taken to produce the ensemble mean of the decade’s highest number of consecutive days without precipitation in a single year.</p>
-</section>
-<section id="degree-days" class="level2">
-<h2 class="anchored" data-anchor-id="degree-days">Degree Days</h2>
-<p>Degree days measure how cold or warm a location is by comparing the daily average temperature to a reference temperature, usually <span class="math inline">65\degree</span> F (<span class="math inline">18.33\degree</span> C).</p>
-<p>Heating or cooling degree days roughly correlate with building heating or cooling needs, providing a simple useful estimate in energy planning.</p>
-<p>Heating degree days (HDD) measure how cold the temperature was on a given day or a period of days,which shapes the need for a certain amount of building heating.</p>
-<p>For example, a day with an average temperature of <span class="math inline">40\degree</span> F has 25 HDD (<span class="math inline">65 - 40 = 25</span> HDD).</p>
-<p>Similarly, cooling degree days (CDD) measure how hot the temperature was on a given day; a day with an average temperature of <span class="math inline">90\degree</span> F has 25 CDD (<span class="math inline">90 - 65 = 25</span> CDD).</p>
-<p>The calculations of HDD and CDD for this portal began with each climate model, which generates temperature readings every 3 hours, or 8 temperature readings per day.</p>
-<p>For each, the maximum temperature (the daily high) and the minimum temperature (daily low) were extracted and used to estimate the daily average temperature.</p>
-<p>This daily average temperature was then used to calculate that day’s HDD (if the average temperature was below <span class="math inline">65\degree</span> F) or CDD (above <span class="math inline">65\degree</span> F).</p>
-<p>This process was conducted for each individual day of a year (e.g.&nbsp;2045) within a given time period / scenario (e.g.&nbsp;mid-century RCP4.5) and for a given climate model (e.g.&nbsp;CCSM).</p>
-<p>These daily HDD/CDD values were then used to calculate the total number of HDD/CDD for that scenario’s model year (e.g.&nbsp;the total HDD for 2045 using CCSM model under RCP4.5).</p>
-<p>This process was repeated for each year within a given time period / scenario (e.g.&nbsp;2046, 2047, …) across all three climate models (CCSM, GFDL, and HadGEM).</p>
-<p>Finally, the 30 annual total HDD / CDD estimates for a given time period / scenario were themselves arranged, producing a multi-model ensemble mean that represents the annual total HDD or CDD for a given time period / scenario.</p>
-</section>
-<section id="fire-weather-index" class="level2">
-<h2 class="anchored" data-anchor-id="fire-weather-index">Fire Weather Index</h2>
-<p>The Fire Weather Index (FWI), also known as the Canadian Forest Fire Weather Index, was developed by the Canadian Forest Service.</p>
-<p>It estimates the wildfire danger using information on weather conditions that influence the spread of wildfires.</p>
-<p>The FWI is comprised of multiple components that are developed using daily readings of temperature, relative humidity, wind speed, and 24-hour precipitation.</p>
-<p>This weather information is used to estimate the dryness of soils and organic materials (which act as fuel for wildfires) and the rate of fire spread.</p>
-<p>The FWI is useful for evaluating weather-based conditions that heighten the danger of wildfire spread <em>once ignition has occurred</em>; it does not account for sources of ignition, which can have both natural and human causes.</p>
-<p>The FWI rangers from zero to <span class="math inline">\infty</span>, with higher numbers corresponding to greater fire danger.</p>
-<p>The level of wildfire danger, as represented by FWI, varies based on regional characteristics, such as a region’s typical level of fire danger and its land cover.</p>
-<p>For example, areas in the U.S. Southwest, which are often exceptionally dry, will have a higher average daily FWI values than areas in the Northeast.</p>
-<p>A relatively high FWI that suggests a heightened level of fire danger in the Northeast might correspond to average fire danger in the Southwest.</p>
-<p>Despite this variation, FWI values in excess of 20 typically represent high levels of fire danger, with levels above 30 representing very high to potentially extreme levels of fire danger.</p>
-<p>A representative example of fire danger classes used by the European Forest Fire Information System can be found <a href="https://effis.jrc.ec.europa.eu/about-effis/technical-background/fire-danger-forecast">here</a>.</p>
-<section id="components-of-the-fwi" class="level3">
-<h3 class="anchored" data-anchor-id="components-of-the-fwi">Components of the FWI</h3>
-<p>The FWI is comprised of six components that are developed using daily readings of temperature, relative humidity, wind speed, and 24-hour precipitation.</p>
-<p>These readings are taken at solar noon and reflect fire danger at early- to mid-afternoon, typically the time of day in which fire weather conditions are more conducive to fire spread.</p>
-<p>Three of the FWI’s components estimate the amount of moisture on and beneath the forest floor.</p>
-<p>These include measures of the moisture content of:</p>
-<ol type="1">
-<li>Fine fuels or forest litter (e.g.&nbsp;dried leaves) on top of the forest floor;</li>
-<li>Intermediate organic layers, such as decomposing plant matter;</li>
-<li>Deep organic layers and soils, which correspond to drought measures.</li>
+<!-- :::: {} -->
+<!---->
+<!-- ::: {style="float:left; position:relative; top:0px; padding:30px;"} -->
+<!---->
+<!-- ![[ClimRR](https://www.anl.gov/ccrds/ClimRR)](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg) -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ::: {style="float:right!important; position:relative; top:0px; padding:30px;"} -->
+<!---->
+<!-- Climate change is increasing the complexity, intensity, and frequency of -->
+<!-- disasters. Understanding future climate conditions in cities and towns across -->
+<!-- the United States is necessary to prepare for future climate realities. To -->
+<!-- address this requirement, ClimRR — the Climate Risk and Resilience Portal — -->
+<!-- empowers individuals, governments, and organizations to examine simulated -->
+<!-- future climate conditions at mid- and end-of-century for a range of climate -->
+<!-- perils.   -->
+<!---->
+<!-- ClimRR was developed by the Center for Climate Resilience and Decision -->
+<!-- Science (CCRDS) at Argonne National Laboratory in collaboration with AT&T and -->
+<!-- the United States Department of Homeland Security’s Federal Emergency -->
+<!-- Management Agency (FEMA). -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- :::: -->
+
+
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg">Image Source</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>ClimRR was developed by the Center for Climate Resilience and Decision Science (CCRDS) at Argonne National Laboratory in collaboration with AT&amp;T and the United States Department of Homeland Security’s Federal Emergency Management Agency (FEMA). Climate change is increasing the complexity, intensity, and frequency of disasters. Understanding future climate conditions in cities and towns across the United States is necessary to prepare for future climate realities.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>These moisture content components feed into the two primary subindices that generate the FWI.</p>
-<p>The first of these is the Initial Spread Index, which measures the expected rate of fire spread; it is based on wind speeds and the moisture content of fine fuels (1. above).</p>
-<p>The second is the Buildup index,w hich represents the total amount of forest fuel available for consumption, as measured via moisture in intermediate and deep organic layers (2. and 3. above).</p>
-<p>The Initial Spread Index and the Buildup Index combine to generate the Fire Weather Index, or the index depicted in ClimRR.</p>
-<p>For more information on the FWI and its methodology, please visit the <a href="https://www.nwcg.gov/publications/pms437/cffdrs/fire-weather-index-system">National Wildfire Coordinating Group</a> or the <a href="https://cfs.nrcan.gc.ca/pubwarehouse/pdfs/19927.pdf">Canadian Forestry Service’s report</a> detailing FWI’s development and structure.</p>
-</section>
-<section id="calculating-seasonal-averages" class="level3">
-<h3 class="anchored" data-anchor-id="calculating-seasonal-averages">Calculating Seasonal Averages</h3>
-<p>Daily FWI values were calculated using daily weather readings from Argonne’s downscaled 12km climate data.</p>
-<p>For a detailed description of each weather variable included in the calculations, along with the formulas used to calculate FWI, see <a href="https://cfs.nrcan.gc.ca/pubwarehouse/pdfs/19973.pdf">Van Wagner and Pickett</a></p>
-<p>Argonne calculated the average daily FWI value by season for each year within a given scenario (e.g.&nbsp;mid-century RCP4.5) and climate model (e.g.&nbsp;CCSM).</p>
-<p>The seasons are segmented as</p>
-<ol type="1">
-<li>Winter (Dec, Jan, Feb)</li>
-<li>Spring (March, April, May)</li>
-<li>Summer (June, July, Aug)</li>
-<li>Autumn (Sep, Oct, Nov)</li>
-</ol>
-<p>Each year’s seasonal average daily FWI was used to calculate a decadal average daily FWI value for that season (e.g.&nbsp;the average daily FWI value in winter at mid-century under RCP4.5)</p>
-<p>This process was repeated across all scenarios and all three climate models (CCSM, GFDL, and HadGEM), followed by calculating the multi-model ensemble mean of each scenario’s seasonal average daily FWI value.</p>
-
-
-</section>
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2023,
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2023,
   author = {Foreman, Sam},
   title = {Energy {Justice} {Analysis} of {Climate} {Data} with
     {ClimRR}},
@@ -484,8 +532,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2023" class="csl-entry quarto-appendix-citeas" role="listitem">
 Foreman, Sam. 2023. <span>“Energy Justice Analysis of Climate Data with
-ClimRR.”</span> Intro to HPC Bootcamp @ NERSC: ClimRR. August 6, 2023.
-<a href="https://saforem2.github.io/climate-analysis">https://saforem2.github.io/climate-analysis</a>.
+ClimRR.”</span> Intro to HPC Bootcamp @ NERSC. August 6, 2023. <a href="https://saforem2.github.io/climate-analysis">https://saforem2.github.io/climate-analysis</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -837,13 +884,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../qmd/01-ClimRR/0-ClimRR.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview of ClimRR</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../qmd/01-ClimRR/1p5-DataDictionary.html" class="pagination-link">
-        <span class="nav-page-text">ClimRR: Data Dictionary</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./qmd/overview.html" class="pagination-link">
+        <span class="nav-page-text">Project Overview</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

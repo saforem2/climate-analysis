@@ -168,4 +168,125 @@ precipitation in a single year.
 
 ## Degree Days
 
+Degree days measure how cold or warm a location is by comparing the daily
+average temperature to a reference temperature, usually $65\degree$ F
+($18.33\degree$ C).
+
+Heating or cooling degree days roughly correlate with building heating or
+cooling needs, providing a simple useful estimate in energy planning.
+
+Heating degree days (HDD) measure how cold the temperature was on a given day
+or a period of days,which shapes the need for a certain amount of building
+heating.
+
+For example, a day with an average temperature of $40\degree$ F has 25 HDD ($65
+- 40 = 25$ HDD).
+
+Similarly, cooling degree days (CDD) measure how hot the temperature was on a
+given day; a day with an average temperature of $90\degree$ F has 25 CDD ($90 -
+65 = 25$ CDD).
+
+The calculations of HDD and CDD for this portal began with each climate model,
+which generates temperature readings every 3 hours, or 8 temperature readings
+per day.
+
+For each, the maximum temperature (the daily high) and the minimum temperature
+(daily low) were extracted and used to estimate the daily average temperature. 
+
+This daily average temperature was then used to calculate that day's HDD (if
+the average temperature was below $65\degree$ F) or CDD (above $65\degree$ F).
+
+This process was conducted for each individual day of a year (e.g. 2045) within
+a given time period / scenario (e.g. mid-century RCP4.5) and for a given
+climate model  (e.g. CCSM).
+
+These daily HDD/CDD values were then used to calculate the total number of
+HDD/CDD for that scenario's model year (e.g. the total HDD for 2045 using CCSM
+model under RCP4.5).
+
+This process was repeated for each year within a given time period / scenario
+(e.g. 2046, 2047, ...) across all three climate models (CCSM, GFDL, and
+HadGEM).
+
+Finally, the 30 annual total HDD / CDD estimates for a given time period /
+scenario were themselves arranged, producing a multi-model ensemble mean that
+represents the annual total HDD or CDD for a given time period / scenario.
+
+
+## Fire Weather Index
+
+The Fire Weather Index (FWI), also known as the Canadian Forest Fire Weather Index, was developed by the Canadian Forest Service.
+
+It estimates the wildfire danger using information on weather conditions that influence the spread of wildfires. 
+
+The FWI is comprised of multiple components that are developed using daily readings of temperature, relative humidity, wind speed, and 24-hour precipitation.
+
+This weather information is used to estimate the dryness of soils and organic materials (which act as fuel for wildfires) and the rate of fire spread.
+
+The FWI is useful for evaluating weather-based conditions that heighten the danger of wildfire spread _once ignition has occurred_; it does not account for sources of ignition, which can have both natural and human causes.
+
+The FWI rangers from zero to $\infty$, with higher numbers corresponding to greater fire danger.
+
+The level of wildfire danger, as represented by FWI, varies based on regional characteristics, such as a region's typical level of fire danger and its land cover.
+
+For example, areas in the U.S. Southwest, which are often exceptionally dry, will have a higher average daily FWI values than areas in the Northeast.
+
+A relatively high FWI that suggests a heightened level of fire danger in the Northeast might correspond to average fire danger in the Southwest.
+
+Despite this variation, FWI values in excess of 20 typically represent high levels of fire danger, with levels above 30 representing very high to potentially extreme levels of fire danger.
+
+A representative example of fire danger classes used by the European Forest Fire Information System can be found [here](https://effis.jrc.ec.europa.eu/about-effis/technical-background/fire-danger-forecast).
+
+### Components of the FWI
+
+The FWI is comprised of six components that are developed using daily readings
+of temperature, relative humidity, wind speed, and 24-hour precipitation.
+
+These readings are taken at solar noon and reflect fire danger at early- to mid-afternoon, typically the time of day in which fire weather conditions are more conducive to fire spread.
+
+Three of the FWI's components estimate the amount of moisture on and beneath the forest floor.
+
+These include measures of the moisture content of:
+
+1. Fine fuels or forest litter (e.g. dried leaves) on top of the forest floor;
+2. Intermediate organic layers, such as decomposing plant matter;
+3. Deep organic layers and soils, which correspond to drought measures.
+
+These moisture content components feed into the two primary subindices that generate the FWI.
+
+The first of these is the Initial Spread Index, which measures the expected rate of fire spread; it is based on wind speeds and the moisture content of fine fuels (1. above).
+
+The second is the Buildup index,w hich represents the total amount of forest fuel available for consumption, as measured via moisture in intermediate and deep organic layers (2. and 3. above).
+
+The Initial Spread Index and the Buildup Index combine to generate the Fire Weather Index, or the index depicted in ClimRR.
+
+For more information on the FWI and its methodology, please visit the [National Wildfire Coordinating Group](https://www.nwcg.gov/publications/pms437/cffdrs/fire-weather-index-system) or the [Canadian Forestry Service's report](https://cfs.nrcan.gc.ca/pubwarehouse/pdfs/19927.pdf) detailing FWI's development and structure.
+
+### Calculating Seasonal Averages
+
+Daily FWI values were calculated using daily weather readings from Argonne's
+downscaled 12km climate data.
+
+For a detailed description of each weather variable included in the
+calculations, along with the formulas used to calculate FWI, see [Van Wagner
+and Pickett](https://cfs.nrcan.gc.ca/pubwarehouse/pdfs/19973.pdf)
+
+Argonne calculated the average daily FWI value by season for each year within a
+given scenario (e.g. mid-century RCP4.5) and climate model (e.g. CCSM).
+
+The seasons are segmented as
+
+1. Winter (Dec, Jan, Feb)
+2. Spring (March, April, May)
+3. Summer (June, July, Aug)
+4. Autumn (Sep, Oct, Nov)
+
+Each year's seasonal average daily FWI was used to calculate a decadal average
+daily FWI value for that season (e.g. the average daily FWI value in winter at
+mid-century under RCP4.5)
+
+This process was repeated across all scenarios and all three climate models
+(CCSM, GFDL, and HadGEM), followed by calculating the multi-model ensemble mean
+of each scenario's seasonal average daily FWI value.
+
 

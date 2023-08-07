@@ -9,7 +9,7 @@
 <meta name="author" content="Sam Foreman">
 <meta name="dcterms.date" content="2023-08-02">
 
-<title>Intro to HPC Bootcamp: ClimRR - Intro to HPC @ NERSC: ClimRR</title>
+<title>Intro to HPC Bootcamp: ClimRR - Intro HPC @ NERSC: ClimRR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../qmd/00-GettingStarted/0-python.html" rel="next">
+<link href="../qmd/00-GettingStarted/1-setup.html" rel="next">
 <link href="../index.html" rel="prev">
 <link href=".././assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -80,7 +80,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../css/default.css">
 <link rel="stylesheet" href="../css/callouts.css">
-<meta property="og:title" content="Intro to HPC Bootcamp: ClimRR - Intro to HPC @ NERSC: ClimRR">
+<meta property="og:title" content="Intro to HPC Bootcamp: ClimRR - Intro HPC @ NERSC: ClimRR">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://saforem2.github.io/climate-analysis/qmd/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site-name" content="Intro to HPC Bootcamp: ClimRR">
@@ -187,12 +187,6 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qmd/00-GettingStarted/0-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../qmd/00-GettingStarted/1-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup and Installation</span></a>
   </div>
@@ -230,6 +224,12 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../qmd/01-ClimRR/1-definitions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variable Definitions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qmd/01-ClimRR/1p5-DataDictionary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ClimRR: Data Dictionary</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -498,7 +498,8 @@ Climate Risk &amp; Resilience Portal
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2023" class="csl-entry quarto-appendix-citeas" role="listitem">
 Foreman, Sam. 2023. <span>“Energy Justice Analysis of Climate Data with
-ClimRR.”</span> Intro to HPC Bootcamp @ NERSC. August 2, 2023. <a href="https://saforem2.github.io/climate-analysis">https://saforem2.github.io/climate-analysis</a>.
+ClimRR.”</span> Intro to HPC Bootcamp @ NERSC: ClimRR. August 2, 2023.
+<a href="https://saforem2.github.io/climate-analysis">https://saforem2.github.io/climate-analysis</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -855,8 +856,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../qmd/00-GettingStarted/0-python.html" class="pagination-link">
-        <span class="nav-page-text">Working with Python</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qmd/00-GettingStarted/1-setup.html" class="pagination-link">
+        <span class="nav-page-text">Setup and Installation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
