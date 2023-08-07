@@ -557,7 +557,7 @@
     "href": "qmd/00-GettingStarted/1-setup.html#setup",
     "title": "Getting Started",
     "section": "Setup",
-    "text": "Setup\nTo get started, we will need to:\n\nCreate a symlink from the project directory, /global/cfs/cdirs/m4388/Project2-ClimRR/ into your $HOME directory\nln -s /global/cfs/cdirs/m4388/Project2-ClimRR/ $HOME/Project2-ClimRR\nNavigate into here and create your personal directory (where you will store and work on your project):\ncd $HOME/Project2-ClimRR/\nmkdir $USER\ncd $USER\nClone the  GitHub repo\ngit clone https://github.com/saforem2/climate-analysis"
+    "text": "Setup\nTo get started, we will need to:\n\nCreate a symlink from the project directory, /global/cfs/cdirs/m4388/Project2-ClimRR/ into your $HOME directory\nln -s /global/cfs/cdirs/m4388/Project2-ClimRR/ $HOME/Project2-ClimRR\nNavigate into here and create your personal directory (where you will store and work on your project):\ncd $HOME/Project2-ClimRR/\nmkdir $USER\ncd $USER\nClone the  GitHub repo\ngit clone https://github.com/saforem2/climate-analysis\nNavigate to jupyter.nersc.gov and login.\n\nJupyter for the New User to NERSC\nUsing Jupyter at NERSC\n\nNavigate into your personal directory in our /global/cfs/cdirs/m4388/Project2-ClimRR/ project space:\n\n\n  Screenshots of the Jupyter interface at NERSC\nFigure 1: ?(caption)"
   },
   {
     "objectID": "qmd/00-GettingStarted/3-example.html",

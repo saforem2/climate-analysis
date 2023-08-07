@@ -11,6 +11,13 @@ execute:
 
 # Intro to HPC: ClimRR
 
+## TODO
+
+- [ ] Update instructions to use `hpc-bootcamp` kernel in NERSC Jupyterlab
+- [ ] Remove unnecessary text about data locations etc, mention global location and structure + filetypes
+- [ ] Add text about project ideas / external data sources that could be combined / interesting
+ 
+
 ::: {#fig-climrr}
 
 ![](https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg)

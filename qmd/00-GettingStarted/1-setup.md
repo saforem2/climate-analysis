@@ -179,4 +179,17 @@ To get started, we will need to:
    git clone https://github.com/saforem2/climate-analysis
    ```
 
+4. Navigate to [`jupyter.nersc.gov`](https://jupyter.nersc.gov/hub/) and login.
+      - [Jupyter for the New User to NERSC](https://www.nersc.gov/assets/Uploads/13-Using-Jupyter-20200616.pdf)
+      - [Using Jupyter at NERSC](https://www.nersc.gov/assets/Uploads/13-Using-Jupyter-20200616.pdf)
+
+5. Navigate into your personal directory in our `/global/cfs/cdirs/m4388/Project2-ClimRR/` project space:
+
+   ::: {#fig-jupyter-nersc}
+
+   ![](https://github.com/saforem2/climate-analysis/blob/main/assets/jupyter1-dark.png?raw=true)
+   ![](https://github.com/saforem2/climate-analysis/blob/main/assets/jupyter2-dark.png?raw=true)
+   Screenshots of the Jupyter interface at NERSC
+   :::
+
 
