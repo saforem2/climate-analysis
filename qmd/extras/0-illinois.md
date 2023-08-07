@@ -41,13 +41,11 @@ log = get_logger('ClimRR')
 console = Console(theme=theme, log_path=False, markup=True)
 ```
 
-::: {.cell-output .cell-output-display}
-
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Using updated plot style for matplotlib
-</pre>
+::: {.cell-output .cell-output-stderr}
 ```
-
+/Users/samforeman/miniconda3/envs/ClimRR/lib/python3.11/site-packages/pyproj/__init__.py:91: UserWarning: Valid PROJ data directory not found. Either set the path using the environmental variable PROJ_DATA (PROJ 9.1+) | PROJ_LIB (PROJ<9.1) or with `pyproj.datadir.set_data_dir`.
+  warnings.warn(str(err))
+```
 :::
 :::
 
@@ -179,7 +177,7 @@ console.log("\n".join(list(data.keys())))
 ::: {.cell-output .cell-output-display}
 
 ```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[07:54:38] </span>FireWeatherIndex_Wildfire                                                         
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[07:00:13] </span>FireWeatherIndex_Wildfire                                                         
 <span style="color: #696969; text-decoration-color: #696969">           </span>HeatingDegreeDays                                                                 
 <span style="color: #696969; text-decoration-color: #696969">           </span>AnnualTemperatureMinimum                                                          
 <span style="color: #696969; text-decoration-color: #696969">           </span>SeasonalTemperatureMaximum                                                        

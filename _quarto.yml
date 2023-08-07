@@ -119,7 +119,7 @@ website:
           - href: qmd/01-ClimRR/3-analysis.qmd
             text: Data Analysis with ClimRR
           - href: ./qmd/extras/0-illinois.qmd
-            text: Illinois
+            text: "Example: Looking Deeper at Climate Variables"
       - section: "Extras"
         contents:
           - href: qmd/extras/0-illinois.qmd

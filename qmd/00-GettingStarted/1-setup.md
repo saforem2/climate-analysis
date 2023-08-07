@@ -189,6 +189,7 @@ To get started, we will need to:
 
    ![](https://github.com/saforem2/climate-analysis/blob/main/assets/jupyter1-dark.png?raw=true)
    ![](https://github.com/saforem2/climate-analysis/blob/main/assets/jupyter2-dark.png?raw=true)
+
    Screenshots of the Jupyter interface at NERSC
    :::
 
