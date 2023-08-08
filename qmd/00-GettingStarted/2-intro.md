@@ -75,6 +75,13 @@ gdf = gpd.read_file(geodatasets.get_path("geoda.chicago_commpop"))
 gdf.head(n=2)
 ```
 
+::: {.cell-output .cell-output-stderr}
+```
+/Users/samforeman/miniconda3/envs/ClimRR/lib/python3.11/site-packages/pyproj/__init__.py:91: UserWarning: Valid PROJ data directory not found. Either set the path using the environmental variable PROJ_DATA (PROJ 9.1+) | PROJ_LIB (PROJ<9.1) or with `pyproj.datadir.set_data_dir`.
+  warnings.warn(str(err))
+```
+:::
+
 ::: {.cell-output .cell-output-display execution_count=1}
 
 ```{=html}
@@ -197,15 +204,6 @@ console = Console(
     width=512
 )
 ```
-
-::: {.cell-output .cell-output-display}
-
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Using updated plot style for matplotlib
-</pre>
-```
-
-:::
 :::
 
 
@@ -270,7 +268,7 @@ be downloaded as a `*.zip` file, and contains:
 
 One of the most common file formats for vector data is the [ESRI
 shapefile](https://en.wikipedia.org/wiki/Shapefile), which is what we will be
-working with in be working with in this project.
+working with for this project.
 
 ### Metadata
 
@@ -526,7 +524,7 @@ cell.explore()
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_9ce69683ebd212d7855d871422e101c4 {
+                #map_b70d712a386da276168c48036ba9854e {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -556,14 +554,14 @@ cell.explore()
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_9ce69683ebd212d7855d871422e101c4&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_b70d712a386da276168c48036ba9854e&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_9ce69683ebd212d7855d871422e101c4 = L.map(
-                &quot;map_9ce69683ebd212d7855d871422e101c4&quot;,
+            var map_b70d712a386da276168c48036ba9854e = L.map(
+                &quot;map_b70d712a386da276168c48036ba9854e&quot;,
                 {
                     center: [35.41360412198978, -78.53675982344929],
                     crs: L.CRS.EPSG3857,
@@ -572,77 +570,77 @@ cell.explore()
                     preferCanvas: false,
                 }
             );
-            L.control.scale().addTo(map_9ce69683ebd212d7855d871422e101c4);
+            L.control.scale().addTo(map_b70d712a386da276168c48036ba9854e);
 
             
 
         
     
-            var tile_layer_9e8a92da97e2e648ad9eb0a508551c83 = L.tileLayer(
+            var tile_layer_243fb61238690c7000bf0f8ecece5f9b = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_9ce69683ebd212d7855d871422e101c4);
+            ).addTo(map_b70d712a386da276168c48036ba9854e);
         
     
-            map_9ce69683ebd212d7855d871422e101c4.fitBounds(
+            map_b70d712a386da276168c48036ba9854e.fitBounds(
                 [[35.34284968968893, -78.62357613774547], [35.484358554290615, -78.4499435091531]],
                 {}
             );
         
     
-        function geo_json_6acc9a7fc1468722776bd58585298d04_styler(feature) {
+        function geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_styler(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
             }
         }
-        function geo_json_6acc9a7fc1468722776bd58585298d04_highlighter(feature) {
+        function geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_highlighter(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;fillOpacity&quot;: 0.75};
             }
         }
-        function geo_json_6acc9a7fc1468722776bd58585298d04_pointToLayer(feature, latlng) {
+        function geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_pointToLayer(feature, latlng) {
             var opts = {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 2, &quot;stroke&quot;: true, &quot;weight&quot;: 3};
             
-            let style = geo_json_6acc9a7fc1468722776bd58585298d04_styler(feature)
+            let style = geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_styler(feature)
             Object.assign(opts, style)
             
             return new L.CircleMarker(latlng, opts)
         }
 
-        function geo_json_6acc9a7fc1468722776bd58585298d04_onEachFeature(feature, layer) {
+        function geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_onEachFeature(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if(typeof e.target.setStyle === &quot;function&quot;){
-                        geo_json_6acc9a7fc1468722776bd58585298d04.resetStyle(e.target);
+                        geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6.resetStyle(e.target);
                     }
                 },
                 mouseover: function(e) {
                     if(typeof e.target.setStyle === &quot;function&quot;){
-                        const highlightStyle = geo_json_6acc9a7fc1468722776bd58585298d04_highlighter(e.target.feature)
+                        const highlightStyle = geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_highlighter(e.target.feature)
                         e.target.setStyle(highlightStyle);
                     }
                 },
             });
         };
-        var geo_json_6acc9a7fc1468722776bd58585298d04 = L.geoJson(null, {
-                onEachFeature: geo_json_6acc9a7fc1468722776bd58585298d04_onEachFeature,
+        var geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6 = L.geoJson(null, {
+                onEachFeature: geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_onEachFeature,
             
-                style: geo_json_6acc9a7fc1468722776bd58585298d04_styler,
-                pointToLayer: geo_json_6acc9a7fc1468722776bd58585298d04_pointToLayer
+                style: geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_styler,
+                pointToLayer: geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_pointToLayer
         });
 
-        function geo_json_6acc9a7fc1468722776bd58585298d04_add (data) {
-            geo_json_6acc9a7fc1468722776bd58585298d04
+        function geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_add (data) {
+            geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6
                 .addData(data)
-                .addTo(map_9ce69683ebd212d7855d871422e101c4);
+                .addTo(map_b70d712a386da276168c48036ba9854e);
         }
-            geo_json_6acc9a7fc1468722776bd58585298d04_add({&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;features&quot;: [{&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[-78.4499435091531, 35.44601079149053], [-78.4970385718653, 35.34284968968893], [-78.62357613774547, 35.38112534319517], [-78.57665372045108, 35.484358554290615], [-78.4499435091531, 35.44601079149053]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;4&quot;, &quot;properties&quot;: {&quot;Crossmodel&quot;: &quot;R146C497&quot;, &quot;OBJECTID&quot;: 5, &quot;Shape_Area&quot;: 226073092.218, &quot;Shape_Leng&quot;: 60142.9194675}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+            geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6_add({&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;features&quot;: [{&quot;bbox&quot;: [-78.62357613774547, 35.34284968968893, -78.4499435091531, 35.484358554290615], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[-78.4499435091531, 35.44601079149053], [-78.4970385718653, 35.34284968968893], [-78.62357613774547, 35.38112534319517], [-78.57665372045108, 35.484358554290615], [-78.4499435091531, 35.44601079149053]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;4&quot;, &quot;properties&quot;: {&quot;Crossmodel&quot;: &quot;R146C497&quot;, &quot;OBJECTID&quot;: 5, &quot;Shape_Area&quot;: 226073092.218, &quot;Shape_Leng&quot;: 60142.9194675}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
 
         
     
-    geo_json_6acc9a7fc1468722776bd58585298d04.bindTooltip(
+    geo_json_8c1daed0ff5bf2ee68127e0f2ad491e6.bindTooltip(
     function(layer){
     let div = L.DomUtil.create(&#x27;div&#x27;);
     
@@ -700,7 +698,7 @@ for f in csvs:
 ::: {.cell-output .cell-output-display}
 
 ```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[07:47:08] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'FireWeatherIndex_Wildfire'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">35</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[20:42:54] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'FireWeatherIndex_Wildfire'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">35</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 </pre>
 ```
 
@@ -709,7 +707,7 @@ for f in csvs:
 ::: {.cell-output .cell-output-display}
 
 ```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[07:47:09] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'HeatingDegreeDays'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">10</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'HeatingDegreeDays'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">10</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 </pre>
 ```
 
@@ -718,7 +716,7 @@ for f in csvs:
 ::: {.cell-output .cell-output-display}
 
 ```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'AnnualTemperatureMinimum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[20:42:55] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'AnnualTemperatureMinimum'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">62834</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 </pre>
 ```
 
@@ -772,7 +770,7 @@ for f in csvs:
 ::: {.cell-output .cell-output-display}
 
 ```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">[07:47:10] </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'Precipitation_inches_AnnualTotal'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #696969; text-decoration-color: #696969">           </span>data<span style="font-weight: bold">[</span><span style="color: #008000; text-decoration-color: #008000">'Precipitation_inches_AnnualTotal'</span><span style="font-weight: bold">]</span>.<span style="color: #7d8697; text-decoration-color: #7d8697">shape</span>=<span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">55896</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">18</span><span style="font-weight: bold">)</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 </pre>
 ```
 

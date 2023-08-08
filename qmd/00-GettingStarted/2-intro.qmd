@@ -155,7 +155,7 @@ be downloaded as a `*.zip` file, and contains:
 
 One of the most common file formats for vector data is the [ESRI
 shapefile](https://en.wikipedia.org/wiki/Shapefile), which is what we will be
-working with in be working with in this project.
+working with for this project.
 
 ### Metadata
 

@@ -10,6 +10,8 @@ number-sections: false
 bibliography: references.bib
 # appendix-cite-as: display
 favicon: "./assets/favicon.svg"
+twitter-card: true
+site-url: https://saforem2.github.io/climate-analysis
 google-scholar: true
 citeproc: true
 author:

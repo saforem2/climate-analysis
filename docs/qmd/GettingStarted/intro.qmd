@@ -9,6 +9,13 @@ execute:
 
 # Climate Analysis with ClimRR
 
+
+::: {#fig-xkcd}
+
+![](https://imgs.xkcd.com/comics/meteorologist_2x.png)
+:::
+
+
 ## Getting Started
 
 ### Reading and Writing Files
